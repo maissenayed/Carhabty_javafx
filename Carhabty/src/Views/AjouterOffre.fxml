@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.AjouterOffreController">
+   <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="475.0" prefWidth="663.0">
+         <children>
+            <JFXButton layoutX="190.0" layoutY="414.0" style="-fx-background-color: #2ecc71;" text="Ajouter l'offre" />
+            <JFXButton layoutX="348.0" layoutY="414.0" prefHeight="25.0" prefWidth="89.0" style="-fx-background-color: #8e44ad;" text="Retour" />
+            <JFXTextField layoutX="182.0" layoutY="46.0" prefHeight="25.0" prefWidth="227.0" promptText="Nom de l'offre" />
+            <JFXTextField layoutX="182.0" layoutY="191.0" prefHeight="25.0" prefWidth="227.0" promptText="Prix" />
+            <JFXTextArea layoutX="181.0" layoutY="95.0" prefHeight="51.0" prefWidth="227.0" promptText="Description " />
+            <JFXTextField layoutX="181.0" layoutY="270.0" prefHeight="25.0" prefWidth="227.0" promptText="Reduction" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>

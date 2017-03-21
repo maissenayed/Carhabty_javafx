@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeTableColumn?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.AfficherOffreController">
+	<VBox maxHeight="665.0" maxWidth="924.0" prefHeight="527.0" prefWidth="739.0" spacing="10">
+		<children>
+			<HBox alignment="CENTER" />
+
+			<HBox alignment="CENTER">
+				<Label styleClass="title-label" text="Dashbord offre">
+               <font>
+                  <Font size="23.0" />
+               </font></Label>
+				<Label fx:id="editableTreeTableViewCount" styleClass="title-label" />
+				<StackPane HBox.hgrow="ALWAYS"><StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT"><JFXTextField fx:id="searchField2" promptText="Search..." /></StackPane></StackPane>
+			</HBox>
+			<JFXTreeTableView fx:id="editableTreeTableView" prefHeight="291.0" prefWidth="739.0">
+				<columns>
+					<JFXTreeTableColumn fx:id="firstNameEditableColumn" minWidth="95.0" prefWidth="127.0" resizable="false" text="Nom offre" />
+					<JFXTreeTableColumn fx:id="lastNameEditableColumn" minWidth="71.0" prefWidth="136.0" resizable="false" text="Description" />
+					<JFXTreeTableColumn fx:id="ageEditableColumn" minWidth="0.0" prefWidth="96.0" resizable="false" text="Prix" />
+               <JFXTreeTableColumn fx:id="firstNameEditableColumn1" minWidth="33.0" prefWidth="109.0" resizable="false" text="Réduction" />
+               <JFXTreeTableColumn fx:id="firstNameEditableColumn2" minWidth="100.0" prefWidth="139.0" resizable="false" text="Date d'ajout" />
+               <JFXTreeTableColumn fx:id="firstNameEditableColumn21" minWidth="125.0" prefWidth="131.0" resizable="false" text="Date d'expiration" />
+				</columns>
+			</JFXTreeTableView>
+         <AnchorPane prefHeight="146.0" prefWidth="739.0">
+            <children>
+               <JFXButton layoutX="534.0" layoutY="21.0" prefHeight="43.0" prefWidth="178.0" style="-fx-background-color: #e67e22;" text="Modifier" textFill="#fcfcfc" />
+               <JFXButton layoutX="534.0" layoutY="81.0" prefHeight="43.0" prefWidth="178.0" style="-fx-background-color: #e74c3c;" text="Supprimer" textFill="WHITE" />
+            </children>
+         </AnchorPane>
+		</children>
+	</VBox>
+</StackPane>
