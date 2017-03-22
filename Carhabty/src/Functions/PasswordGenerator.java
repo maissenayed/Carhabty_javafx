@@ -38,7 +38,7 @@ public class PasswordGenerator {
                           }
                           
                           hashf = Base64.getEncoder().encode(garci);
-                          // System.out.println("Result: " + new String(hashf));
+                  
                           
                          
                       } catch (NoSuchAlgorithmException ex) {
@@ -47,4 +47,23 @@ public class PasswordGenerator {
                      
          return new String(hashf);   }
     
+                  
+                  
+                  
+                  public static String DemergeSaltPassword(String password){
+                  
+                  
+                      return "ggg";
+                      
+                      
+                      
+                      
+                  
+                  }
+                  
+                  
+                  
+                  
+                  
+                  
 }

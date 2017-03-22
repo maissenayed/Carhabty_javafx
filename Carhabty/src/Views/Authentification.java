@@ -5,29 +5,34 @@
  */
 package Views;
 
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- *
- * @author GARCII
- */
-public class AjouterUser extends Application {
+public class Authentification extends Application {
 
+    
+   
+    
+    
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/AjouterUser.fxml"));
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/Authentification.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 600, 600));
+        Scene scene = new Scene(root, 730, 500);
+        
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-
+    
+    
+   
+    
     public static void main(String[] args) {
         launch(args);
     }
 }
-

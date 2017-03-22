@@ -2,6 +2,7 @@ package Carhabty;
 
 import Entities.Offre;
 import Entities.User;
+import Services.AuthentificationServices;
 import Services.OffreServices;
 import Services.UserServices;
 import java.security.SecureRandom;
@@ -41,9 +42,9 @@ public class Carhabty {
     
     //   userService.isfound(u);
       //  userService.getListePartenaire().forEach(System.out::println);
-        
-        
-      
+      // String r = "a:1:{i:0;s:15:\"ROLE_PATICULIER\";}";
+      //  System.out.println(r);
+       
       
 }
 

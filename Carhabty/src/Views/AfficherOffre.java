@@ -10,7 +10,7 @@ public class AfficherOffre extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("AfficherOffre.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("Views/fxml/AfficherOffre.fxml"));
         primaryStage.setTitle("Hello World");
         Scene scene = new Scene(root, 730, 500);
        

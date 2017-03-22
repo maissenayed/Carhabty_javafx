@@ -10,18 +10,17 @@ import Entities.User;
 import Functions.PasswordGenerator;
 import Functions.SaltGenerator;
 import Interfaces.IService;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+
 import java.io.IOException;
-import java.security.SecureRandom;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -51,7 +50,7 @@ public class UserServices implements IService<User>{
         y.append("ROLE_PATICULIER");
         y.append('"');
         y.append(";}");
-        
+       
         try {
              
             PreparedStatement ps = conn.prepareStatement(req);

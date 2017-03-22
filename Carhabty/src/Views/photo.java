@@ -15,7 +15,7 @@ public class photo extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("photo.fxml"));
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/photo.fxml"));
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();

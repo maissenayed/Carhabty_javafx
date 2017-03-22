@@ -5,6 +5,8 @@
  */
 package DataBase;
 
+import Entities.User;
+
 /**
  *
  * @author skin
@@ -12,21 +14,33 @@ package DataBase;
 public class Session {
     
     
-        public static int id;
+        public static boolean connecte;
+        
+        public static User actualUser;
         
         public Session(){}
+
+        public static User getActualUser() {
         
-        
-        public int getId(){
-            
-          return id;
+            return actualUser;
         }
+
+           public static void setActualUser(User actualUser) {
         
-        public static void setId(int id){
+          Session.actualUser = actualUser;
+            }
         
-          Session.id=id;
-            
-        }
+       
     
+        public boolean getConnecte(){
+        
+        return connecte;
+        }
+        
+        public static void setConnecte(boolean connecte){
+        
+        Session.connecte=connecte;
+            
+        }
     
 }
