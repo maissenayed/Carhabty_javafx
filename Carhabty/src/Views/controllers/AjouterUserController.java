@@ -8,6 +8,7 @@ package Views.controllers;
 import Entities.User;
 import Services.UserServices;
 import com.jfoenix.controls.*;
+import io.datafx.controller.FXMLController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -25,6 +26,7 @@ import javafx.scene.paint.Color;
  *
  * @author GARCII
  */
+@FXMLController(value = "/Views/fxml/AjouterUser.fxml", title = "Carhabty")
 public class AjouterUserController implements Initializable {
 
    

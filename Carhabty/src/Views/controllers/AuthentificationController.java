@@ -7,21 +7,20 @@ package Views.controllers;
 
 import DataBase.Session;
 import Services.AuthentificationServices;
-import Views.AccueilPartenaire;
-import Views.Authentification;
 import com.jfoenix.controls.*;
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import com.jfoenix.controls.JFXDialog.DialogTransition;
+import io.datafx.controller.FXMLController;
+import io.datafx.controller.flow.action.ActionMethod;
+import io.datafx.controller.flow.action.ActionTrigger;
+import io.datafx.controller.flow.action.LinkAction;
+import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.ViewFlowContext;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+
+
 
 
 /**
@@ -29,25 +28,45 @@ import javafx.stage.Stage;
  *
  * @author GARCII
  */
-public class AuthentificationController implements Initializable {
+@FXMLController(value = "/Views/fxml/Authentification.fxml", title = "Carhabty")
+public class AuthentificationController  {
 
     
+    Stage stage;
     public String roleParticulier="a:1:{i:0;s:15:\"ROLE_PATICULIER\";}";
     public String rolePartenaire="a:1:{i:0;s:15:\"ROLE_PARTENAIRE\";}";
-   
+    
+
+    @FXMLViewFlowContext
+	private ViewFlowContext context;
+    
+    @FXML private StackPane root;
+    //private 
+    
     @FXML
     private JFXTextField username;
 
     @FXML
     private JFXPasswordField password;
-    
-     @FXML
-    private AnchorPane rootPane;
-    
-    
-    
+     
     @FXML
-    void Login(ActionEvent event) throws IOException, Exception {
+    @ActionTrigger("login")
+    private JFXButton login;
+
+    @FXML
+    @LinkAction(AjouterUserController.class)
+    private JFXButton inscription;
+    
+  
+    
+   
+	
+
+    
+    
+    
+   @ActionMethod("login")
+   public void Login()  {
 
         
         String nomUser = username.getText();
@@ -58,15 +77,8 @@ public class AuthentificationController implements Initializable {
             
             
             if(Session.actualUser.getRole().equals(rolePartenaire)){
-               
                 
-             try {
-             AnchorPane pane = FXMLLoader.load(getClass().getClassLoader().getResource(("Views/fxml/AccueilPartenaire.fxml")));
-            rootPane.getChildren().setAll(pane);
-
-                } catch (IOException ex) {
-                    Logger.getLogger(AuthentificationController.class.getName()).log(Level.SEVERE, null, ex);
-                }    
+            
 
             
             }else if(Session.actualUser.getRole().equals(roleParticulier)){
@@ -90,6 +102,8 @@ public class AuthentificationController implements Initializable {
         
         
     }
+   
+ 
 
     @FXML
     void Register(ActionEvent event) {
@@ -110,10 +124,7 @@ public class AuthentificationController implements Initializable {
     }
 
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-     
-    }    
+    
     
     
    

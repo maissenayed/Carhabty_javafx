@@ -1,16 +1,12 @@
 package Views.controllers;
 
-import javafx.fxml.Initializable;
+import io.datafx.controller.FXMLController;
 
 
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class AfficherOffreController implements Initializable {
+@FXMLController(value = "/Views/fxml/AfficherOffre.fxml", title = "Material Design Example")
+public class AfficherOffreController {
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-
-    }
+    
 }

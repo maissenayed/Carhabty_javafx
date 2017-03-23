@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="748.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="Views.controllers.AjouterUserController">
+<AnchorPane id="AnchorPane" prefHeight="503.0" prefWidth="748.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" >
    <children>
       <JFXButton layoutX="174.0" layoutY="455.0" onAction="#register" prefHeight="34.0" prefWidth="178.0" text="Ajouter" />
       <JFXTextField fx:id="username" layoutX="195.0" layoutY="54.0" />

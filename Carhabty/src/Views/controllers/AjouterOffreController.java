@@ -1,17 +1,11 @@
 package Views.controllers;
 
-
-import javafx.fxml.Initializable;
-
-
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class AjouterOffreController implements Initializable {
+import io.datafx.controller.FXMLController;
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
 
-    }
+@FXMLController(value = "/Views/fxml/AjouterOffre.fxml", title = "Ajouter votre offre - Carhabty")
+public class AjouterOffreController  {
+
+
 }
