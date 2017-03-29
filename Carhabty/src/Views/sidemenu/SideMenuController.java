@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 
 import javax.annotation.PostConstruct;
 
-@FXMLController(value = "/Views/fxml/SideMenu.fxml", title = "Material Design Example")
+@FXMLController(value = "/Views/fxml/SideMenu.fxml", title = "")
 public class SideMenuController {
 
 	@FXMLViewFlowContext
@@ -24,14 +24,20 @@ public class SideMenuController {
 
 	
 	@FXML
-	@ActionTrigger("treetableview")
-	private Label treetableview;
+	@ActionTrigger("profile")
+	private Label profile;
 	
-	@FXML
-	@ActionTrigger("alo")
-	private Label alo;
+        
+        @FXML
+	@ActionTrigger("offres")
+	private Label offres;
+        
+        
+        @FXML
+	@ActionTrigger("localisation")
+	private Label localisation;
+        
 
-	
 	
 	@FXML
 	private JFXListView<Label> sideList;
@@ -51,8 +57,10 @@ public class SideMenuController {
 		});
 		Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
 
-		bindNodeToController(treetableview, TreeTableViewController.class, contentFlow, contentFlowHandler);
-                bindNodeToController(alo, TestController.class, contentFlow, contentFlowHandler);
+		
+                  bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(offres, AfficherOffreController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(localisation, MapController.class, contentFlow, contentFlowHandler);
 
 	}
 

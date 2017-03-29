@@ -5,6 +5,8 @@
  */
 package Interfaces;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -24,6 +26,8 @@ public interface IService<T> {
 
     T findById(int id);
 
+   
+    
 }
     
 

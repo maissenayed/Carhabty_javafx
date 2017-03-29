@@ -71,14 +71,16 @@ public class AuthentificationServices  {
                 u.setId(resultat1.getInt("id"));
                 u.setUsername(resultat1.getString("username"));
                 u.setEmail(resultat1.getString("email"));
+                u.setPassword(resultat1.getString("password"));
                 u.setNom(resultat1.getString("nom"));
                 u.setPrenom(resultat1.getString("prenom"));                                            
                 u.setTel(resultat1.getString("telephone"));
                 u.setAdresse(resultat1.getString("adresse"));
                 u.setRole(resultat1.getString("roles"));
                 u.setActivite(resultat1.getString("activite"));
-                u.setActivite(resultat1.getString("nomsociete"));       
+                u.setNomSociete(resultat1.getString("nomsociete"));       
                 u.setSiret(resultat1.getString("siret"));
+                u.setImage(resultat1.getString("photo"));
                 Session.setActualUser(u);
                
                 

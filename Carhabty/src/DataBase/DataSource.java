@@ -9,7 +9,7 @@ import java.sql.DriverManager;
 
 public class DataSource {
 
-    private String url = "jdbc:mysql://localhost:3306/pidev";
+    private String url = "jdbc:mysql://localhost:3306/carhabty";
     private String login = "root";
     private String password = "";
     private Connection connection;

@@ -6,6 +6,7 @@
 package Services;
 
 import DataBase.DataSource;
+import DataBase.Session;
 import Entities.User;
 import Functions.PasswordGenerator;
 import Functions.SaltGenerator;
@@ -86,7 +87,7 @@ public class UserServices implements IService<User>{
     @Override
     public boolean update(User t) {
        
-         String req = "UPDATE utilisateur SET username = ? , username_canonical = ? , email = ?, email_canonical = ? , password = ? , nom = ? , prenom = ? , telephone = ? , adresse = ? WHERE id = ?";
+         String req = "UPDATE utilisateur SET username = ? , username_canonical = ? , email = ?, email_canonical = ? , salt = ? , password = ? , nom = ? , prenom = ? , telephone = ? , adresse = ? WHERE id = ?";
         
           try {
              
@@ -95,12 +96,13 @@ public class UserServices implements IService<User>{
             ps.setString(2, t.getUsername());
             ps.setString(3, t.getEmail());
             ps.setString(4, t.getEmail());
-            ps.setString(5, PasswordGenerator.MergePasswordSalt(t.getPassword(), salt));
-            ps.setString(6, t.getNom());
-            ps.setString(7, t.getPrenom());
-            ps.setString(8, t.getTel());
-            ps.setString(9, t.getAdresse());
-            ps.setInt(10, t.getId());
+            ps.setString(5, salt);
+            ps.setString(6, PasswordGenerator.MergePasswordSalt(t.getPassword(), salt));
+            ps.setString(7, t.getNom());
+            ps.setString(8, t.getPrenom());
+            ps.setString(9, t.getTel());
+            ps.setString(10, t.getAdresse());
+            ps.setInt(11, t.getId());
             
             
             ps.executeUpdate();
@@ -125,10 +127,9 @@ public class UserServices implements IService<User>{
             ps.executeUpdate();
             System.out.println("utilisateur supprimé");
             return true;
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-           
-            ex.printStackTrace();
+       } catch (SQLException ex) {
+            System.out.println("Problème de suppression");
+            ex.printStackTrace(); 
             return false;
         }
         
@@ -163,10 +164,10 @@ public class UserServices implements IService<User>{
                 ListeUtilisateur.add(u);
                 
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Liste ne peut pas etre Affichée");
-            ex.printStackTrace();
+       } catch (SQLException ex) {
+            System.out.println("La liste ne peut pas etre affiché");
+            ex.printStackTrace(); 
+            
         }
         return ListeUtilisateur;        
     }
@@ -197,34 +198,33 @@ public class UserServices implements IService<User>{
                 u.setActivite(resultat.getString("nomsociete"));   
                 u.setActivite(resultat.getString("activite"));                   
                 u.setSiret(resultat.getString("siret"));
-                u.setId(id);          
+                     
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Liste ne peut pas etre Affichée");
-            ex.printStackTrace();
-        }             
+       } catch (SQLException ex) {
+            System.out.println("Problème d'affichage");
+            ex.printStackTrace(); 
+            
+        }
             return u ;      
     }
     
     
     
-     public boolean updatePhoto(User t) throws IOException {
+     public boolean updatePhoto(User t)  {
         try {
          
-            String req = "UPDATE utilisateur SET photo = ? WHERE id = ?";
+            String req = "UPDATE utilisateur SET photo = ? WHERE id = ? ";
             PreparedStatement ps = conn.prepareStatement(req);
            
             
-            
-            ps.setInt(2, t.getId());
+            ps.setString(1, t.getImage());
+            ps.setInt(2, Session.actualUser.getId());
             ps.executeUpdate();
             System.out.println("photo modifiée avec succées");
             return true;
         
         } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
-           
+                     System.out.println("photo n'est pas modifiée");
             ex.printStackTrace();
             return false;
         }
@@ -271,21 +271,7 @@ public class UserServices implements IService<User>{
         return ListPartenaire;
     }
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
+    
      
       public boolean isfound(User t) {
 
@@ -302,12 +288,20 @@ public class UserServices implements IService<User>{
                 return true;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, null, ex);
+           
             System.out.println("erreur isfound");
             ex.printStackTrace();
         }
 
         return false;
+    }
+
+   
+    public ResultSet List() throws SQLException {
+       
+        return List();
+        
+        
     }
     
     

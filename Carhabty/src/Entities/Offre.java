@@ -17,11 +17,34 @@ public class Offre {
     private int reduction;
     private LocalDate date;
     private Date dateExp;
-    private Blob image;
+    private String image;
     private User user;
 
     public Offre(){}
-    public Offre(String nom, String description, float prix, int reduction, LocalDate date, Date dateExp, Blob image) {
+
+     public Offre(int id,String nomOffre, String descriptionOffre, float prix, int reduction) {
+       
+        this.id=id;
+        this.nomOffre = nomOffre;
+        this.descriptionOffre = descriptionOffre;
+        this.prix = prix;
+        this.reduction = reduction;
+     }
+    
+    
+    public Offre(int id,String nomOffre, String descriptionOffre, float prix, int reduction, Date dateExp) {
+       
+        this.id=id;
+        this.nomOffre = nomOffre;
+        this.descriptionOffre = descriptionOffre;
+        this.prix = prix;
+        this.reduction = reduction;
+        this.dateExp = dateExp;
+    }
+    
+    
+    
+    public Offre(String nom, String description, float prix, int reduction, LocalDate date, Date dateExp, String image) {
         this.nomOffre = nom;
         this.descriptionOffre = description;
         this.prix = prix;
@@ -101,11 +124,11 @@ public class Offre {
         this.dateExp = dateExp;
     }
 
-    public Blob getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Blob image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

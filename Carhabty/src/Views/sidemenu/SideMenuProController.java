@@ -1,6 +1,5 @@
-package Views.controllers;
+package Views.sidemenu;
 
-import Views.sidemenu.*;
 import com.jfoenix.controls.JFXListView;
 import Views.controllers.*;
 import io.datafx.controller.FXMLController;
@@ -17,21 +16,35 @@ import javafx.scene.control.Label;
 
 import javax.annotation.PostConstruct;
 
-@FXMLController(value = "/Views/fxml/SideMenu.fxml", title = "Material Design Example")
-public class SideMenuController {
+@FXMLController(value = "/Views/fxml/SideMenuPro.fxml", title = "")
+public class SideMenuProController {
 
 	@FXMLViewFlowContext
 	private ViewFlowContext context;
 
 	
 	@FXML
-	@ActionTrigger("treetableview")
-	private Label treetableview;
+	@ActionTrigger("profile")
+	private Label profile;
 	
-	@FXML
-	@ActionTrigger("alo")
-	private Label alo;
-
+        @FXML
+	@ActionTrigger("dashboard")
+	private Label dashboard;
+        
+        
+        @FXML
+	@ActionTrigger("newoffre")
+	private Label newoffre;
+        
+        
+        @FXML
+	@ActionTrigger("stat")
+	private Label stat;
+        
+        @FXML
+	@ActionTrigger("deconnexion")
+	private Label deconnexion;
+        
 	
 	
 	@FXML
@@ -50,10 +63,14 @@ public class SideMenuController {
 				}			
 			}
 		});
-		Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+		  Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
 
-		bindNodeToController(treetableview, TreeTableViewController.class, contentFlow, contentFlowHandler);
-                bindNodeToController(alo, TestController.class, contentFlow, contentFlowHandler);
+		
+                  bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(dashboard, DashboardOffreController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(newoffre, AjouterOffreController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(stat, StatistiqueController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(deconnexion, AuthentificationController.class, contentFlow, contentFlowHandler);
 
 	}
 

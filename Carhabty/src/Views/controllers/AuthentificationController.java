@@ -7,18 +7,37 @@ package Views.controllers;
 
 import DataBase.Session;
 import Services.AuthentificationServices;
+import Views.main.MainController;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.JFXDialog.DialogTransition;
+import demos.datafx.AnimatedFlowContainer;
 import io.datafx.controller.FXMLController;
+import io.datafx.controller.flow.Flow;
+import io.datafx.controller.flow.FlowException;
+import io.datafx.controller.flow.FlowHandler;
 import io.datafx.controller.flow.action.ActionMethod;
 import io.datafx.controller.flow.action.ActionTrigger;
 import io.datafx.controller.flow.action.LinkAction;
+import io.datafx.controller.flow.container.ContainerAnimations;
+import io.datafx.controller.flow.container.DefaultFlowContainer;
+import io.datafx.controller.flow.context.ActionHandler;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
+import io.datafx.controller.flow.context.FlowActionHandler;
 import io.datafx.controller.flow.context.ViewFlowContext;
+import io.datafx.controller.util.VetoException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import javax.annotation.*;
 
 
 
@@ -28,98 +47,81 @@ import javafx.stage.Stage;
  *
  * @author GARCII
  */
-@FXMLController(value = "/Views/fxml/Authentification.fxml", title = "Carhabty")
-public class AuthentificationController  {
+@FXMLController(value = "/Views/fxml/Authentification.fxml", title = "Ajouter offre - Carhabty")
+public class AuthentificationController implements Initializable {
 
     
-    Stage stage;
-    public String roleParticulier="a:1:{i:0;s:15:\"ROLE_PATICULIER\";}";
-    public String rolePartenaire="a:1:{i:0;s:15:\"ROLE_PARTENAIRE\";}";
-    
-
-    @FXMLViewFlowContext
-	private ViewFlowContext context;
-    
-    @FXML private StackPane root;
-    //private 
+      @FXML
+    private AnchorPane pane;
     
     @FXML
     private JFXTextField username;
 
+   
     @FXML
     private JFXPasswordField password;
      
-    @FXML
-    @ActionTrigger("login")
+    @FXML 
     private JFXButton login;
 
-    @FXML
-    @LinkAction(AjouterUserController.class)
+    @FXML 
     private JFXButton inscription;
     
   
     
-   
-	
+  
+  
+    
+      @ActionHandler
+    protected FlowActionHandler actionHandler;
 
-    
-    
-    
-   @ActionMethod("login")
-   public void Login()  {
+    @FXML
+    void Inscription(ActionEvent event) throws IOException {
 
         
-        String nomUser = username.getText();
+         pane.getChildren().setAll( (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/AjouterUser.fxml")));
+        
+    }
+
+    @FXML
+    void Login(ActionEvent event) throws IOException, FlowException, VetoException {
+        
+       
+
+         String nomUser = username.getText();
         String password = this.password.getText();
         AuthentificationServices as = new AuthentificationServices();
          
         if(as.Authentification(nomUser,password)){
             
-            
-            if(Session.actualUser.getRole().equals(rolePartenaire)){
-                
-            
-
-            
-            }else if(Session.actualUser.getRole().equals(roleParticulier)){
-            
-                System.out.println("role particulier");
-            
-            }else {
+           
+		
+              
+		actionHandler.navigate(MainController.class);
             
             
+             //  pane.getChildren().setAll( (StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/Main.fxml")));
             
-            }
-        //System.out.println(as.Authentification(nomUser,password));
-       // System.out.println(Session.actualUser.getId()); 
-        //System.out.println(Session.actualUser.getRole());
-        
-        
-        
-        
+                          
         }
         
         
-        
     }
+    
+    
+
    
- 
-
-    @FXML
-    void Register(ActionEvent event) {
-
-        
-        
-        
-        
-        
-    }
     
     
       @FXML
-    void Exit(ActionEvent event) {
+    void Quitter(ActionEvent event) {
 
         System.exit(0);
+        
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         
     }
 

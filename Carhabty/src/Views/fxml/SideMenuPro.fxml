@@ -9,14 +9,11 @@
 		<String fx:value="side-menu" />
 	</styleClass>
 	<JFXListView  fx:id="sideList">
-		<Label fx:id="profile"> Profile </Label>
-		<Label fx:id="offres"> offres </Label>
-		<Label fx:id="localisation"> Localisation </Label>
-		<Label fx:id="annonce"> Annonces </Label>
-		<Label fx:id="astuce"> Astuce </Label>
-		<Label fx:id="code"> Code de la Route </Label>
-		<Label fx:id="event"> Evénements </Label>
-		<Label fx:id="contact"> Contact</Label>
+		
+                <Label fx:id="profile"> Profile </Label>		
+		<Label fx:id="dashboard"> Tableau de board offres </Label>
+		<Label fx:id="newoffre"> Ajouter une offre </Label>
+		<Label fx:id="stat"> statistique des ventes </Label>
 		<Label fx:id="deconnexion"> Déconnexion </Label>
 		
 	</JFXListView>
