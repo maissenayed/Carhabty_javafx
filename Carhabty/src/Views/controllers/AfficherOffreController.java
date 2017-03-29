@@ -41,8 +41,9 @@ public class AfficherOffreController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
 
         
-        Offre o = new Offre(1,"aaa","fff",20,15);
-        Liste.getItems().setAll(o);
+        OffreServices offreService = new OffreServices();
+       
+        Liste.getItems().setAll(offreService.findALL());
         
          Liste.setCellFactory(new Callback<ListView<Offre>, ListCell<Offre>>() { 
   

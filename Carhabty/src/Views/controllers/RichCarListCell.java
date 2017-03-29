@@ -12,6 +12,7 @@ import javafx.geometry.VPos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -86,8 +87,9 @@ public class RichCarListCell extends ListCell<Offre> {
         if (!empty && item != null) { 
             brandLabel.setText(item.getNomOffre()); 
             modelLabel.setText(item.getNomOffre()); 
-            //brandIcon.setImage(item.getBrandImage()); 
-           // carIcon.setImage(item.getCarImage()); 
+            System.out.println(item.getImage());
+            brandIcon.setImage(new Image("Image/"+item.getImage())); 
+         // carIcon.setImage(item.getImage(new Image(""+))); 
            // descriptionLabel.setText(String.format(", %d places, %d portes", item.getPrix(), item.getReduction())); 
           //  colorRect.setFill(item.getColor()); 
             setText(null); 

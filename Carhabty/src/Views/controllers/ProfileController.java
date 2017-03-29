@@ -89,8 +89,16 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-       System.out.println(Session.actualUser.getImage());
-        photo.setImage(new Image ("Image/"+Session.actualUser.getImage()));
+      //  System.out.println(Session.actualUser.getImage());
+       
+        if(Session.actualUser.getImage() == null){
+          photo.setImage(new Image("Image/avatar.jpg"));
+        }
+        else{
+        
+         photo.setImage(new Image ("Image/"+Session.actualUser.getImage()));
+        
+        }
         bienvenu.setText("Bienvenue " + Session.actualUser.getNom());
 
     }
