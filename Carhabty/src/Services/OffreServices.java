@@ -106,6 +106,7 @@ public class OffreServices implements IService<Offre> {
 
         ArrayList<Offre> offres = new ArrayList<>();
         Offre o;
+        User u;
 
         try {
             String req = "SELECT * FROM offre";
@@ -114,7 +115,7 @@ public class OffreServices implements IService<Offre> {
             ResultSet ps = stm.executeQuery(req);
 
             while (ps.next()) {
-                User u = new User();
+                u = new User();
                 o = new Offre();
                 o.setId(ps.getInt(1));
                 o.setNomOffre(ps.getString(2));
@@ -140,7 +141,7 @@ public class OffreServices implements IService<Offre> {
     public Offre findById(int id) {
 
         Offre o = null;
-
+        User u;
         try {
 
             String req = "SELECT * FROM `offre` WHERE id = ? ";
@@ -149,7 +150,7 @@ public class OffreServices implements IService<Offre> {
             ps.setInt(1, id);
             ResultSet resultat = ps.executeQuery();
             while (resultat.next()) {
-
+                u = new User();
                 o = new Offre();
 
                 o.setNomOffre(resultat.getString("nom_offre"));
@@ -158,6 +159,8 @@ public class OffreServices implements IService<Offre> {
                 o.setReduction(Integer.parseInt(resultat.getString("taux_reduction")));
                 o.setImage(resultat.getString("image_name"));
                 o.setDateExp(java.sql.Date.valueOf(resultat.getString("date_expiration_offre")));
+                u.setId(resultat.getInt("idUser"));               
+                o.setUser(u);
                
              
 

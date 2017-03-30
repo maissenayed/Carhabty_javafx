@@ -17,12 +17,7 @@ public class Authentification extends Application {
     private ViewFlowContext flowContext;
 
     public static void main(String[] args) {
-        
-        
-        
-        
-        
-        new Thread(()->{
+     new Thread(()->{
 			try {
 				SVGGlyphLoader.loadGlyphsFont(Authentification.class.getResourceAsStream("/Views/fonts/icomoon.svg"),"icomoon.svg");
 			} catch (Exception e) {
@@ -30,12 +25,7 @@ public class Authentification extends Application {
 				e.printStackTrace();
 			}	
 		}).start();
-        
-        
-        
-        
-        
-        
+   
         launch(args);
     }
 
