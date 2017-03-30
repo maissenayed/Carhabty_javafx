@@ -19,22 +19,22 @@
  
 @font-face {
   font-family: Roboto;
-  src: url("../../../../src/resources/font/roboto/Roboto-Regular.ttf");
+  src: url("../../Views/roboto/Roboto-Regular.ttf");
 }
 
 @font-face {
   font-family: "Roboto Medium";
-  src: url("../../../../src/resources/font/roboto/Roboto-Medium.ttf");
+  src: url("../../Views/roboto/Roboto-Medium.ttf");
 }
 
 @font-face {
   font-family: "Roboto Light";
-  src: url("../../../../src/resources/font/roboto/Roboto-Light.ttf");
+  src: url("../../Views/roboto/Roboto-Light.ttf");
 }
 
 @font-face {
   font-family: "Roboto Bold";
-  src: url("../../../../src/resources/font/roboto/Roboto-Bold.ttf");
+  src: url("../../Views/roboto/Roboto-Bold.ttf");
 }
 
 

@@ -2,6 +2,7 @@ package Views;
 
 import Views.controllers.AuthentificationController;
 import com.jfoenix.controls.JFXDecorator;
+import com.jfoenix.svg.SVGGlyphLoader;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
@@ -16,6 +17,25 @@ public class Authentification extends Application {
     private ViewFlowContext flowContext;
 
     public static void main(String[] args) {
+        
+        
+        
+        
+        
+        new Thread(()->{
+			try {
+				SVGGlyphLoader.loadGlyphsFont(Authentification.class.getResourceAsStream("/Views/fonts/icomoon.svg"),"icomoon.svg");
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}	
+		}).start();
+        
+        
+        
+        
+        
+        
         launch(args);
     }
 
