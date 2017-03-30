@@ -17,6 +17,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.Observable;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -49,20 +51,29 @@ public class AfficherOffreController implements Initializable {
   
     @Override 
     public ListCell<Offre> call(ListView<Offre> lv) { 
-         return new RichCarListCell(); 
+         return new OffreFactory(); 
     } 
 });
         
-        
-        
-     
+    
+         
+        Liste.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Offre>() {
 
+            @Override
+            public void changed(ObservableValue<? extends Offre> observable, Offre oldValue, Offre newValue) {
+                
+                
+                System.out.println(newValue);
+                
+            }
+         
+         
+         });
+         
+         
+         
+         
+         
        
-       
-       
-       
-       
-       
-       
-}
+    }
 }

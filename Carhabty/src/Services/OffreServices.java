@@ -114,6 +114,7 @@ public class OffreServices implements IService<Offre> {
             ResultSet ps = stm.executeQuery(req);
 
             while (ps.next()) {
+                User u = new User();
                 o = new Offre();
                 o.setId(ps.getInt(1));
                 o.setNomOffre(ps.getString(2));
@@ -121,6 +122,11 @@ public class OffreServices implements IService<Offre> {
                 o.setPrix(ps.getInt(4));
                 o.setReduction(ps.getInt(5));
                 o.setDateExp(ps.getDate(7));
+                o.setImage(ps.getString("image_name"));
+                
+                u.setId(ps.getInt("idUser"));
+                
+                o.setUser(u);
                 offres.add(o);
             }
         } catch (SQLException ex) {
@@ -199,7 +205,7 @@ public class OffreServices implements IService<Offre> {
 
     
     
-  
+                
     
     
      public List <Offre> SearchOffre (String entry) throws SQLException {
@@ -210,7 +216,7 @@ public class OffreServices implements IService<Offre> {
         ps.setString(1, "%" + entry + "%");
         ps.setString(2, "%" + entry + "%");
         ps.setString(3,"%" + entry + "%");
-//        ps.setInt(4,Session.actualUser.getId());
+       // ps.setInt(4,Session.getActualUser().getId());
         ResultSet set = ps.executeQuery();
         
         while (set.next())
