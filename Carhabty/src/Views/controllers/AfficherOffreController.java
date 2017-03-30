@@ -6,26 +6,23 @@
 package Views.controllers;
 
 import Entities.Offre;
+import Functions.CurrentOffre;
 import Services.OffreServices;
 import io.datafx.controller.FXMLController;
+import java.io.IOException;
 import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.beans.Observable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 
 /**
@@ -37,7 +34,14 @@ public class AfficherOffreController implements Initializable {
 
     @FXML
     private ListView Liste;
+    
+    @FXML
+    private AnchorPane pane;
 
+    
+    
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -58,11 +62,26 @@ public class AfficherOffreController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Offre> observable, Offre oldValue, Offre newValue) {
 
+                
+                CurrentOffre.setCurrentOffre(newValue);
                 System.out.println(newValue);
+                
+                
+                try {
+                    pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/DetailsOffre.fxml")));
+                } catch (IOException ex) {
+                   ex.printStackTrace();
+                }
 
             }
 
         });
 
+
     }
+
+
+       
+            
+
 }

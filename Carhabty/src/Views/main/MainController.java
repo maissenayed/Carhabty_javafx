@@ -115,6 +115,10 @@ public class MainController {
                 
                 factory = SideMenuAdminController.class;
                     
+                }else{
+                
+                    System.out.println("error");
+                    
                 }
                 
                 

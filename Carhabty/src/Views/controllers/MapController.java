@@ -48,7 +48,7 @@ import tray.notification.TrayNotification;
  *
  * @author GARCII
  */
-@FXMLController(value = "/Views/fxml/map.fxml", title = "")
+@FXMLController(value = "/Views/fxml/Map.fxml", title = "")
 public class MapController implements Initializable, MapComponentInitializedListener,DirectionsServiceCallback {
     
     @FXML
