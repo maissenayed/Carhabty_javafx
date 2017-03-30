@@ -34,14 +34,11 @@ import java.util.ResourceBundle;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
 import tray.notification.NotificationType;
-import static tray.notification.NotificationType.SUCCESS;
 import tray.notification.TrayNotification;
 
 /**

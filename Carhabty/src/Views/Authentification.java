@@ -40,7 +40,7 @@ public class Authentification extends Application {
         JFXDecorator decorator = new JFXDecorator(stage, container.getView());
         decorator.setCustomMaximize(true);
         Scene scene = new Scene(decorator, 1020, 700);
-        scene.getStylesheets().add(Authentification.class.getResource("/Views/css/jfoenix-fonts.css").toExternalForm());
+      //  scene.getStylesheets().add(Authentification.class.getResource("/Views/css/jfoenix-fonts.css").toExternalForm());
         scene.getStylesheets().add(Authentification.class.getResource("/Views/css/jfoenix-design.css").toExternalForm());
         scene.getStylesheets().add(Authentification.class.getResource("/Views/css/jfoenix-main-demo.css").toExternalForm());
         //		stage.initStyle(StageStyle.UNDECORATED);

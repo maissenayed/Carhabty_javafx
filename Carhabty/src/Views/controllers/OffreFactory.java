@@ -7,7 +7,6 @@ package Views.controllers;
 
 import Entities.Offre;
 import Services.UserServices;
-import java.awt.Rectangle;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.ContentDisplay;
@@ -21,7 +20,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.paint.Color;
+
 
 /**
  *
