@@ -1,7 +1,9 @@
 package Views.main;
 
 import DataBase.Session;
+import Views.controllers.DashboardAdminController;
 import Views.controllers.ProfileController;
+import Views.sidemenu.SideMenuAdminController;
 import com.jfoenix.controls.*;
 import com.jfoenix.controls.JFXPopup.PopupHPosition;
 import com.jfoenix.controls.JFXPopup.PopupVPosition;
@@ -46,6 +48,7 @@ public class MainController {
         
          public String roleParticulier="a:1:{i:0;s:15:\"ROLE_PATICULIER\";}";
         public String rolePartenaire="a:1:{i:0;s:15:\"ROLE_PARTENAIRE\";}";
+         public String roleAdmin="a:1:{i:0;s:15:\"ROLE_ADMIN\";}";
 
 	@PostConstruct
 	public void init() throws FlowException, VetoException {
@@ -108,9 +111,9 @@ public class MainController {
                 }else if(Session.actualUser.getRole().equals(roleParticulier)){
                 
                 factory = SideMenuController.class;
-                }else{
+                }else if(Session.actualUser.getRole().equals(roleAdmin)){
                 
-                
+                factory = SideMenuAdminController.class;
                     
                 }
                 
