@@ -7,6 +7,7 @@ package Views.controllers;
 
 import Functions.CurrentOffre;
 import Services.UserServices;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -14,10 +15,12 @@ import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -52,12 +55,20 @@ public class DetailsOffreController implements Initializable {
 
     @FXML
     private Label countdown;
+    
+    
+    @FXML
+    private AnchorPane pane;
 
     private float PrixFinal, economie;
 
     @FXML
-    void Paiement(ActionEvent event) {
+    void Paiement(ActionEvent event) throws IOException {
 
+        
+        pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/Payment.fxml")));
+        
+        
     }
 
     @Override
