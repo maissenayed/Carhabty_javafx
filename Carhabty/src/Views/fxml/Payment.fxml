@@ -7,46 +7,50 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="728.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="Views.controllers.PaymentController">
+<StackPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.PaymentController">
    <children>
-      <AnchorPane layoutX="45.0" layoutY="127.0" prefHeight="340.0" prefWidth="407.0" style="-fx-background-color: #ecf0f1;">
+      <AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="728.0">
          <children>
-            <JFXButton layoutX="124.0" layoutY="288.0" onAction="#pay" prefHeight="45.0" prefWidth="174.0" text="soumettre le paiement" />
-            <ImageView fitHeight="33.0" fitWidth="54.0" layoutX="258.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Image/amex.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="306.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Image/American.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="348.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Image/visa.png" />
-               </image>
-            </ImageView>
-            <JFXTextField layoutX="99.0" layoutY="88.0" prefHeight="33.0" prefWidth="223.0" />
-            <JFXTextField layoutX="100.0" layoutY="234.0" prefHeight="33.0" prefWidth="223.0" />
-            <JFXComboBox layoutX="247.0" layoutY="171.0" prefHeight="25.0" prefWidth="74.0" />
-            <JFXComboBox layoutX="98.0" layoutY="171.0" prefHeight="25.0" prefWidth="95.0" />
-            <Label layoutX="219.0" layoutY="184.0" text="/" />
+            <AnchorPane layoutX="178.0" layoutY="171.0" prefHeight="340.0" prefWidth="407.0" style="-fx-background-color: #ecf0f1;">
+               <children>
+                  <JFXButton layoutX="124.0" layoutY="288.0" onAction="#pay" prefHeight="45.0" prefWidth="174.0" text="soumettre le paiement" />
+                  <ImageView fitHeight="33.0" fitWidth="54.0" layoutX="258.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Image/amex.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="306.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Image/American.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="348.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Image/visa.png" />
+                     </image>
+                  </ImageView>
+                  <JFXTextField fx:id="card" layoutX="99.0" layoutY="88.0" prefHeight="33.0" prefWidth="223.0" />
+                  <JFXTextField fx:id="cvc" layoutX="100.0" layoutY="234.0" prefHeight="33.0" prefWidth="223.0" />
+                  <JFXComboBox fx:id="year" layoutX="247.0" layoutY="171.0" prefHeight="25.0" prefWidth="74.0" />
+                  <JFXComboBox fx:id="month" layoutX="98.0" layoutY="171.0" prefHeight="25.0" prefWidth="95.0" />
+                  <Label layoutX="219.0" layoutY="184.0" text="/" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="1.0" prefHeight="87.0" prefWidth="876.0">
+               <children>
+                  <ImageView fitHeight="141.0" fitWidth="216.0" layoutX="128.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Image/karhabty-logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="752.0" layoutY="14.0" prefHeight="33.0" prefWidth="104.0" text="+216 25 532 465" />
+                  <Label layoutX="752.0" layoutY="51.0" prefHeight="17.0" prefWidth="104.0" text="www.carhabty.tn" />
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutX="622.0" layoutY="172.0" prefHeight="340.0" prefWidth="223.0" style="-fx-background-color: #1abc9c;" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutY="1.0" prefHeight="87.0" prefWidth="740.0">
-         <children>
-            <ImageView fitHeight="141.0" fitWidth="216.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../Image/karhabty-logo.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="594.0" layoutY="8.0" prefHeight="33.0" prefWidth="104.0" text="+216 25 532 465" />
-            <Label layoutX="594.0" layoutY="45.0" prefHeight="17.0" prefWidth="104.0" text="www.carhabty.tn" />
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="489.0" layoutY="128.0" prefHeight="340.0" prefWidth="223.0" style="-fx-background-color: #1abc9c;" />
    </children>
-</AnchorPane>
+</StackPane>
