@@ -95,30 +95,16 @@ public class PaymentController implements Initializable {
                         coupon.add(c);
                         
                         id_account = payment.getCardPayment().getIdAccount().getId();
-                        prix = CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100);
-                        
-                        
-                        
-                        System.out.println("id : "+id_account + "prix :" +prix);
+                        prix = CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100); 
                         payment.Withdraw(prix, id_account);
-                       // System.out.println(payment.Withdraw(prix, id_account));
+                      
                         
                         
-                        
-                      //  System.out.println(id_account);
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                 
-                // withdraw price from account
-                //make history paiement
-                //after he attempt 3 try => blockage du compte + fermture du l'application + sms + email
-                //      pane.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/GenerateCoupon.fxml")));   
+                       
+                        //make history paiement
+                       //after he attempt 3 try => blockage du compte + fermture du l'application + sms + email
+                       
+                      //      pane.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/GenerateCoupon.fxml")));   
                   
                   
                   }else{
