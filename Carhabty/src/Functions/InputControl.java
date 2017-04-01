@@ -5,9 +5,7 @@
  */
 package Functions;
 
-import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXDialog;
-import com.jfoenix.controls.JFXDialogLayout;
+
 
 /**
  *
@@ -25,7 +23,9 @@ public class InputControl {
     
             if(card.trim().length()  == 18  && !card.isEmpty() 
               && cvc.trim().length() == 3 && !cvc.isEmpty() 
-              && cvc.matches("[0-9]+")    && card.matches("[0-9]+")){
+              && cvc.matches("[0-9]+")    && card.matches("[0-9]+")
+                   
+                    ){
            
                 return true;
                 

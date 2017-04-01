@@ -31,16 +31,16 @@
                         <Image url="@../../Image/visa.png" />
                      </image>
                   </ImageView>
-                  <JFXTextField fx:id="card" layoutX="99.0" layoutY="88.0" prefHeight="33.0" prefWidth="223.0" />
-                  <JFXTextField fx:id="cvc" layoutX="100.0" layoutY="234.0" prefHeight="33.0" prefWidth="223.0" />
-                  <JFXComboBox fx:id="year" layoutX="247.0" layoutY="171.0" prefHeight="25.0" prefWidth="74.0" />
-                  <JFXComboBox fx:id="month" layoutX="98.0" layoutY="171.0" prefHeight="25.0" prefWidth="95.0" />
+                  <JFXTextField fx:id="card" layoutX="99.0" layoutY="88.0" prefHeight="33.0" prefWidth="223.0" promptText="•••• •••• •••• ••••" />
+                  <JFXTextField fx:id="cvc" layoutX="100.0" layoutY="234.0" prefHeight="33.0" prefWidth="223.0" promptText="•••" />
+                  <JFXComboBox fx:id="year" layoutX="247.0" layoutY="171.0" prefHeight="25.0" prefWidth="74.0" promptText="AA" />
+                  <JFXComboBox fx:id="month" layoutX="98.0" layoutY="171.0" prefHeight="25.0" prefWidth="95.0" promptText="MM" />
                   <Label layoutX="219.0" layoutY="184.0" text="/" />
                </children>
             </AnchorPane>
             <AnchorPane layoutY="1.0" prefHeight="87.0" prefWidth="876.0">
                <children>
-                  <ImageView fitHeight="141.0" fitWidth="216.0" layoutX="128.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="81.0" fitWidth="249.0" layoutX="128.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Image/karhabty-logo.png" />
                      </image>

@@ -5,15 +5,17 @@
  */
 package Views.controllers;
 
+import Entities.Coupon;
 import Functions.InputControl;
+import Services.CouponServices;
 import Services.PaymentServices;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
-import java.awt.im.InputContext;
 import java.net.URL;
+import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +23,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
+import static tray.notification.NotificationType.SUCCESS;
+import tray.notification.TrayNotification;
 
 /**
  * FXML Controller class
@@ -44,53 +48,98 @@ public class PaymentController implements Initializable {
     @FXML
     private StackPane pane;
 
-    private String mergeMonthYear, Cvc, Card;
+    private String mergeMonthYear, Cvc, Card,Month,Year,Ref;
 
     @FXML
     void pay(ActionEvent event) {
 
         Card = card.getText();
         Cvc = cvc.getText();
-
+       
+        
         JFXDialogLayout dl = new JFXDialogLayout();
         JFXDialog dialog = new JFXDialog(pane, dl, JFXDialog.DialogTransition.CENTER);
         JFXButton button = new JFXButton("ok");
 
       
-       // System.out.println(mergeMonthYear);
+      
 
         PaymentServices payment = new PaymentServices();
         InputControl Inc = new InputControl();
+                  
+           if (Inc.InputControlPayment(Card,Cvc)) {
+                  Object m = month.getValue();
+                  Object y = year.getValue();
+                  Month = m.toString();
+                  Year = y.toString();
+                  mergeMonthYear = Month.concat(Year);
+                  
+                  if(payment.VerifyCredentialsPayment(Card, Cvc, mergeMonthYear)){
+                  
+                       
+                        TrayNotification tray = new TrayNotification("Félicitation", "Votre Paiment a été  avec succées",SUCCESS);
+                        tray.showAndWait();
+                        CouponServices coupon = new CouponServices();
+                        Coupon c = new Coupon();
+                        Random rn = new Random();
+                        int r = rn.nextInt(700 - 400) + 1;
+                        Ref = "RFCC"+r;
+                        c.setReference(Ref);
+                        coupon.add(c);
+                        
+                        
+                        
+                        //ajout d'un coupon dans la base
+                // withdraw price from account
+                //make history paiement
+                //after he attempt 3 try => blockage du compte + fermture du l'application + sms + email
+                        
+                  
+                  
+                  }else{
+                  
+                   dl.setHeading(new Text("Erreur"));
+                   dl.setBody(new Text("les informations que vous avez mis sembles incorrectes. Réessayer"));
 
-        if (Inc.InputControlPayment(Card, Cvc) && !month.getValue().toString().concat(year.getValue().toString()).isEmpty()) {
+                   button.setOnAction(new EventHandler<ActionEvent>() {
+                   @Override
+                   public void handle(ActionEvent event1) {
+                       dialog.close();
+                    }
+                     });
+                     dl.setActions(button);
 
-            mergeMonthYear = month.getValue().toString().concat(year.getValue().toString());
-            
-            if (payment.VerifyCredentialsPayment(Card, Cvc, mergeMonthYear)) {
+                     dialog.show();
+                  
+                  
+                  }
+               
+               
+               
+           
+           
+           }
+           else{
+           
+           
+               dl.setHeading(new Text("Erreur"));
+                   dl.setBody(new Text("Les champs sont vide ou non numérique . Réessayer"));
 
-                
-                System.out.println("mriguil");
-                
-            }
+                   button.setOnAction(new EventHandler<ActionEvent>() {
+                   @Override
+                   public void handle(ActionEvent event1) {
+                       dialog.close();
+                    }
+                     });
+                     dl.setActions(button);
 
-        } else {
+                     dialog.show();
+           
+           
+           }
+      
 
-            dl.setHeading(new Text("Erreur"));
-            dl.setBody(new Text("les informations que vous avez mis sembles incorrectes. Réessayer"));
-
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event1) {
-                    dialog.close();
-                }
-            });
-            dl.setActions(button);
-
-            dialog.show();
-
-        }
-
-        //    System.out.println(Inc.InputControlPayment(Card, Cvc));
+        
     }
 
     @Override

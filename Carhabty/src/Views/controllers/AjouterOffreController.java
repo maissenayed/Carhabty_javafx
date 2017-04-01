@@ -97,8 +97,8 @@ public class AjouterOffreController {
             outStream.close();
            
             
-              TrayNotification tray = new TrayNotification("Félicitation", "Votre Image a été ajouter avec succées",SUCCESS);
-              tray.showAndWait();
+                TrayNotification tray = new TrayNotification("Félicitation", "Votre Image a été ajouter avec succées",SUCCESS);
+                tray.showAndWait();
 
            
 
