@@ -8,48 +8,66 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<StackPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="587.0" prefWidth="876.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.PaymentController">
+<StackPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="1399.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.PaymentController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="505.0" prefWidth="728.0">
+      <AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="1367.0" style="-fx-background-color: #446CB3;">
          <children>
-            <AnchorPane layoutX="178.0" layoutY="171.0" prefHeight="340.0" prefWidth="407.0" style="-fx-background-color: #ecf0f1;">
+            <AnchorPane layoutX="201.0" layoutY="168.0" prefHeight="363.0" prefWidth="564.0" style="-fx-background-color: #ecf0f1;">
                <children>
-                  <JFXButton layoutX="124.0" layoutY="288.0" onAction="#pay" prefHeight="45.0" prefWidth="174.0" text="soumettre le paiement" />
-                  <ImageView fitHeight="33.0" fitWidth="54.0" layoutX="258.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <JFXButton buttonType="RAISED" layoutX="202.0" layoutY="288.0" onAction="#pay" prefHeight="52.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Payer" textFill="WHITE" /> 
+                  <ImageView fitHeight="33.0" fitWidth="54.0" layoutX="341.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Image/amex.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="306.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="389.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Image/American.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="348.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="33.0" fitWidth="47.0" layoutX="431.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Image/visa.png" />
                      </image>
                   </ImageView>
-                  <JFXTextField fx:id="card" layoutX="99.0" layoutY="88.0" prefHeight="33.0" prefWidth="223.0" promptText="•••• •••• •••• ••••" />
-                  <JFXTextField fx:id="cvc" layoutX="100.0" layoutY="234.0" prefHeight="33.0" prefWidth="223.0" promptText="•••" />
-                  <JFXComboBox fx:id="year" layoutX="247.0" layoutY="171.0" prefHeight="25.0" prefWidth="74.0" promptText="AA" />
-                  <JFXComboBox fx:id="month" layoutX="98.0" layoutY="171.0" prefHeight="25.0" prefWidth="95.0" promptText="MM" />
-                  <Label layoutX="219.0" layoutY="184.0" text="/" />
+                  <JFXTextField fx:id="card" layoutX="150.0" layoutY="75.0" prefHeight="45.0" prefWidth="255.0" promptText="•••• •••• •••• ••••" />
+                  <JFXTextField fx:id="cvc" layoutX="151.0" layoutY="221.0" prefHeight="45.0" prefWidth="255.0" promptText="•••" />
+                  <JFXComboBox fx:id="year" layoutX="310.0" layoutY="162.0" prefHeight="33.0" prefWidth="94.0" promptText="AA" />
+                  <JFXComboBox fx:id="month" layoutX="148.0" layoutY="162.0" prefHeight="33.0" prefWidth="112.0" promptText="MM" />
+                  <Label layoutX="289.0" layoutY="173.0" text="/">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutY="1.0" prefHeight="87.0" prefWidth="876.0">
+            <AnchorPane layoutY="1.0" prefHeight="87.0" prefWidth="1399.0" style="-fx-background-color: #ecf0f1;">
                <children>
-                  <ImageView fitHeight="81.0" fitWidth="249.0" layoutX="128.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="81.0" fitWidth="249.0" layoutX="7.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Image/karhabty-logo.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="752.0" layoutY="14.0" prefHeight="33.0" prefWidth="104.0" text="+216 25 532 465" />
-                  <Label layoutX="752.0" layoutY="51.0" prefHeight="17.0" prefWidth="104.0" text="www.carhabty.tn" />
+                  <Label layoutX="1257.0" layoutY="14.0" prefHeight="33.0" prefWidth="104.0" text="+216 25 532 465">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label layoutX="1257.0" layoutY="43.0" prefHeight="33.0" prefWidth="128.0" text="www.carhabty.tn">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="622.0" layoutY="172.0" prefHeight="340.0" prefWidth="223.0" style="-fx-background-color: #1abc9c;" />
+            <AnchorPane layoutX="786.0" layoutY="168.0" prefHeight="363.0" prefWidth="392.0" style="-fx-background-color: #ecf0f1;">
+               <children>
+                  <Label layoutX="91.0" layoutY="14.0" text="Détails de Paiement" underline="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
          </children>
       </AnchorPane>
    </children>
