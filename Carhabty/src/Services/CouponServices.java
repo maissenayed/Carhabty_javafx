@@ -12,12 +12,12 @@ import Entities.Offre;
 import Entities.User;
 import Functions.CurrentOffre;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.ZoneId;
+
+
 
 /**
  *
@@ -119,5 +119,23 @@ public class CouponServices {
         return c;
 
     }
+    
+    
+        
+         public ResultSet MyListCoupon() throws SQLException {
+        
+         PreparedStatement ps = conn.prepareStatement("SELECT * FROM coupon WHERE idUser = ? ");
+         ps.setInt(1, Session.getActualUser().getId());
+         return ps.executeQuery();
+        
+    }
+        
+        
+        
+        
+    
+    
+    
+    
 
 }

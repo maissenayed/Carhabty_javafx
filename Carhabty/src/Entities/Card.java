@@ -20,12 +20,20 @@ public class Card {
     
     
     
-    
+    public Card(){}
     
     public Card(String numCard, String cvc, String expDate) {
         this.numCard = numCard;
         this.cvc = cvc;
         this.expDate = expDate;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     
@@ -69,7 +77,7 @@ public class Card {
   
      @Override
     public String toString() {
-        return "Card{" + "id=" + id + ", numCard=" + numCard + ", cvc=" + cvc + ", expDate=" + expDate + ", idAccount=" + idAccount + '}';
+        return "Card{" + "id=" + id + ", numCard=" + numCard + ", cvc=" + cvc + ", expDate=" + expDate + ", idAccount=" + idAccount.getId() + '}';
     }
     
     

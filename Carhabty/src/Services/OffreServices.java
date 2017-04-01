@@ -5,8 +5,6 @@ import DataBase.Session;
 import Entities.Offre;
 import Entities.User;
 import Interfaces.IService;
-import java.io.IOException;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -200,9 +198,9 @@ public class OffreServices implements IService<Offre> {
    
     public ResultSet List() throws SQLException {
         
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM offre WHERE idUser = ? ");
+         PreparedStatement ps = conn.prepareStatement("SELECT * FROM offre WHERE idUser = ? ");
          ps.setInt(1, Session.getActualUser().getId());
-        return ps.executeQuery();
+         return ps.executeQuery();
         
     }
 

@@ -6,6 +6,7 @@
 package Views.controllers;
 
 import Entities.Coupon;
+import Functions.CurrentOffre;
 import Functions.InputControl;
 import Services.CouponServices;
 import Services.PaymentServices;
@@ -14,12 +15,14 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.Random;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
@@ -50,8 +53,12 @@ public class PaymentController implements Initializable {
 
     private String mergeMonthYear, Cvc, Card,Month,Year,Ref;
 
+    private  int id_account;
+    
+    private float prix ;
+    
     @FXML
-    void pay(ActionEvent event) {
+    void pay(ActionEvent event) throws IOException {
 
         Card = card.getText();
         Cvc = cvc.getText();
@@ -87,13 +94,31 @@ public class PaymentController implements Initializable {
                         c.setReference(Ref);
                         coupon.add(c);
                         
+                        id_account = payment.getCardPayment().getIdAccount().getId();
+                        prix = CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100);
                         
                         
-                        //ajout d'un coupon dans la base
+                        
+                        System.out.println("id : "+id_account + "prix :" +prix);
+                        payment.Withdraw(prix, id_account);
+                       // System.out.println(payment.Withdraw(prix, id_account));
+                        
+                        
+                        
+                      //  System.out.println(id_account);
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                 
                 // withdraw price from account
                 //make history paiement
                 //after he attempt 3 try => blockage du compte + fermture du l'application + sms + email
-                        
+                //      pane.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/GenerateCoupon.fxml")));   
                   
                   
                   }else{
