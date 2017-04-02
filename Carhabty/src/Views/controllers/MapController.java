@@ -45,7 +45,7 @@ import tray.notification.TrayNotification;
  *
  * @author GARCII
  */
-@FXMLController(value = "/Views/fxml/Map.fxml", title = "")
+@FXMLController(value = "/Views/fxml/Map.fxml")
 public class MapController implements Initializable, MapComponentInitializedListener,DirectionsServiceCallback {
     
     @FXML
@@ -90,10 +90,12 @@ public class MapController implements Initializable, MapComponentInitializedList
     
         
         
-        valider.setOnAction(e -> handleOptions(lavage,autoecole,vendeur,mecanicien));
+      lavage.selectedProperty().addListener((obs, oldVal, newVal) -> {
+       
+        System.out.println(lavage.isSelected());
                
         
-        
+      });
     
         
         
@@ -207,23 +209,13 @@ public class MapController implements Initializable, MapComponentInitializedList
        
     }
 
-    private void handleOptions(CheckBox lavage, JFXCheckBox autoecole1, JFXCheckBox vendeur1, JFXCheckBox mecanicien1) {
+    
         
-            
-     
-        
-        if(lavage.isSelected()){
             
             
             
-        }
-        else if(autoecole.isSelected())
-            System.out.println("autoecole");
-        else if(vendeur.isSelected())
-            System.out.println("vendeur");
-        else if(mecanicien.isSelected())
-            System.out.println("mecan");
         
+      
         
-    }
+    
 }

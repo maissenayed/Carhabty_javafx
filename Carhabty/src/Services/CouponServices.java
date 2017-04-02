@@ -92,7 +92,7 @@ public class CouponServices {
 
         Coupon c = new Coupon();
 
-        String req = "SELECT * FROM coupon ORDER BY date DESC LIMIT 1 ";
+        String req = "SELECT * FROM coupon ORDER BY id DESC LIMIT 1 ";
         try {
             PreparedStatement ps = conn.prepareStatement(req);
             ResultSet resultat = ps.executeQuery();

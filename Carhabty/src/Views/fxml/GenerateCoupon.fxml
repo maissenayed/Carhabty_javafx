@@ -1,11 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.GenerateCouponController">
-    
-</AnchorPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.GenerateCouponController">
+   <children>
+      <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="752.0">
+         <children>
+            <AnchorPane layoutX="65.0" layoutY="102.0" prefHeight="311.0" prefWidth="644.0">
+               <children>
+                  <JFXButton buttonType="RAISED" layoutX="190.0" layoutY="262.0" onAction="#GenerateCouponPDF" prefHeight="35.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Générer votre coupon" textFill="WHITE" />
+                  <Label layoutX="26.0" layoutY="21.0" text="Merci pour votre fidélité">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font></Label>
+                  <Label fx:id="desc" layoutX="28.0" layoutY="53.0" prefHeight="192.0" prefWidth="602.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

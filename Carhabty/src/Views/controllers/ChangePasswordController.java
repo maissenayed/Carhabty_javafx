@@ -6,6 +6,10 @@ import Functions.PasswordGenerator;
 import Functions.getSalt;
 import Services.UserServices;
 import com.jfoenix.controls.*;
+import io.datafx.controller.flow.FlowException;
+import io.datafx.controller.flow.context.ActionHandler;
+import io.datafx.controller.flow.context.FlowActionHandler;
+import io.datafx.controller.util.VetoException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -32,6 +36,10 @@ public class ChangePasswordController implements Initializable {
     @FXML
     private JFXPasswordField rnpc;
 
+    
+     @ActionHandler
+    protected FlowActionHandler actionHandler;
+    
     @FXML
     void ChangePassword(ActionEvent event) throws IOException {
 
@@ -142,6 +150,10 @@ public class ChangePasswordController implements Initializable {
         //UserServices userService = new UserServices();
         //userService.update(u);
      */
+    
+    
+    
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="526.0" prefWidth="888.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXTextField fx:id="username" layoutX="250.0" layoutY="66.0" prefHeight="25.0" prefWidth="216.0" promptText="Nom d'utilisateur" />
+      <JFXTextField fx:id="nom" layoutX="250.0" layoutY="116.0" prefHeight="25.0" prefWidth="216.0" promptText="Nom" />
+      <JFXTextField fx:id="prenom" layoutX="250.0" layoutY="171.0" prefHeight="25.0" prefWidth="216.0" promptText="Prenom" />
+      <JFXTextField fx:id="email" layoutX="250.0" layoutY="221.0" prefHeight="25.0" prefWidth="216.0" promptText="Email" />
+      <JFXPasswordField fx:id="password" layoutX="250.0" layoutY="274.0" prefHeight="25.0" prefWidth="216.0" promptText="Mot de passe" />
+      <JFXPasswordField fx:id="rpassword" layoutX="250.0" layoutY="325.0" prefHeight="25.0" prefWidth="216.0" promptText="Répéter Mot de passe" />
+      <JFXTextField fx:id="adresse" layoutX="250.0" layoutY="377.0" prefHeight="25.0" prefWidth="216.0" promptText="Adresse" />
+      <JFXTextField fx:id="telephone" layoutX="250.0" layoutY="426.0" prefHeight="25.0" prefWidth="216.0" promptText="Téléphone" />
+      <JFXToggleButton fx:id="role" layoutX="450.0" layoutY="461.0" prefHeight="65.0" prefWidth="141.0" text="Partenaire" />
+      <JFXTextField fx:id="nomsociete" layoutX="634.0" layoutY="129.0" prefHeight="25.0" prefWidth="216.0" promptText="Nom de Societé" />
+      <JFXTextField fx:id="SIRET" layoutX="634.0" layoutY="234.0" prefHeight="25.0" prefWidth="216.0" promptText="SIRET" />
+      <JFXComboBox fx:id="activite" layoutX="634.0" layoutY="181.0" prefHeight="25.0" prefWidth="216.0" promptText="Activite" />
+      <JFXButton buttonType="RAISED" layoutX="271.0" layoutY="476.0" onAction="#register" prefHeight="35.0" prefWidth="147.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="S'inscrire" textFill="WHITE" />
+      <Label layoutX="117.0" layoutY="14.0" text="Inscription">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="lab" layoutX="634.0" layoutY="83.0" text="Réservé pour les Sociétés" />
+      <JFXButton layoutX="742.0" layoutY="426.0" onAction="#back" text="back" />
+   </children>
+</AnchorPane>

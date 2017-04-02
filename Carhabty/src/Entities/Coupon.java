@@ -1,6 +1,7 @@
 package Entities;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * Created by GARCII on 3/12/2017.
@@ -8,7 +9,7 @@ import java.time.LocalDate;
 public class Coupon {
 
     private int id;
-    private LocalDate date;
+    private LocalDateTime date;
     private String reference;
     private User acheteur;
     private Offre offreAchete;
@@ -17,7 +18,7 @@ public class Coupon {
     
     public Coupon(){}
     
-    public Coupon(LocalDate date, String reference, User acheteur, Offre offreAchete) {
+    public Coupon(LocalDateTime date, String reference, User acheteur, Offre offreAchete) {
         this.date = date;
         this.reference = reference;
         this.acheteur = acheteur;
@@ -33,11 +34,11 @@ public class Coupon {
     }
 
     
-    public LocalDate getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

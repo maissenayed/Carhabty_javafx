@@ -14,9 +14,9 @@
    <children>
       <AnchorPane id="AnchorPane" prefHeight="595.0" prefWidth="1367.0" style="-fx-background-color: #446CB3;">
          <children>
-            <AnchorPane layoutX="201.0" layoutY="168.0" prefHeight="363.0" prefWidth="564.0" style="-fx-background-color: #ecf0f1;">
+            <AnchorPane layoutX="201.0" layoutY="168.0" prefHeight="363.0" prefWidth="581.0" style="-fx-background-color: #ecf0f1;">
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="202.0" layoutY="288.0" onAction="#pay" prefHeight="52.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Payer" textFill="WHITE" /> 
+                  <JFXButton buttonType="RAISED" layoutX="192.0" layoutY="299.0" onAction="#pay" prefHeight="35.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Payer" textFill="WHITE" /> 
                   <ImageView fitHeight="33.0" fitWidth="54.0" layoutX="341.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Image/amex.png" />
@@ -60,7 +60,7 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="786.0" layoutY="168.0" prefHeight="363.0" prefWidth="392.0" style="-fx-background-color: #ecf0f1;">
+            <AnchorPane layoutX="813.0" layoutY="168.0" prefHeight="363.0" prefWidth="392.0" style="-fx-background-color: #ecf0f1;">
                <children>
                   <Label layoutX="91.0" layoutY="14.0" text="Détails de Paiement" underline="true">
                      <font>

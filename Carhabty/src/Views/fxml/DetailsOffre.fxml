@@ -6,7 +6,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="566.0" prefWidth="1244.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.DetailsOffreController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="566.0" 
+            prefWidth="1244.0" xmlns="http://javafx.com/javafx/8.0.111" 
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.DetailsOffreController">
    <children>
       <ImageView fx:id="image" fitHeight="229.0" fitWidth="387.0" layoutX="128.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
       <JFXButton layoutX="1009.0" layoutY="504.0" onAction="#Paiement" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #8e44ad;" text="Acheter" textFill="WHITE" />

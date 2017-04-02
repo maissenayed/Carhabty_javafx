@@ -5,11 +5,13 @@
  */
 package Views.controllers;
 
+import DataBase.Session;
 import Entities.Coupon;
 import Functions.CurrentOffre;
 import Functions.InputControl;
 import Services.CouponServices;
 import Services.PaymentServices;
+import Services.SMSServices;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDialog;
@@ -100,11 +102,12 @@ public class PaymentController implements Initializable {
                       
                         
                         
+                       //  SMSServices sms = new SMSServices();
+                      // sms.sendSMS("25532465", "test");
+                     //make history paiement
+                    //after he attempt 3 try => blockage du compte + fermture du l'application + sms + email
                        
-                        //make history paiement
-                       //after he attempt 3 try => blockage du compte + fermture du l'application + sms + email
-                       
-                      //      pane.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/GenerateCoupon.fxml")));   
+                       pane.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/GenerateCoupon.fxml")));   
                   
                   
                   }else{
