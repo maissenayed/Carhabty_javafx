@@ -131,7 +131,15 @@ public class CouponServices {
     }
         
         
+        public ResultSet StatistiqueVente() throws SQLException {
+       
+         PreparedStatement ps = conn.prepareStatement("SELECT count(*),date FROM coupon GROUP BY date");
         
+          return ps.executeQuery();
+         
+        
+        
+    }
         
     
     

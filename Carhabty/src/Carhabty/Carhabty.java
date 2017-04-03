@@ -6,26 +6,30 @@
 package Carhabty;
 
 import Services.CouponServices;
+import java.sql.SQLException;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author GARCII
  */
 public class Carhabty {
+    
     /*
+    public static void main(String[] args){
     
-    public static void main(String args[]){
-    
-        String User; 
-
-Properties info = System.getProperties (); 
-User = info.getProperty ("user.name"); 
-        System.out.println(User);
+   
 
          CouponServices coupon = new CouponServices();
-     //  System.out.println(coupon.NombreCoupon());
-       //  System.out.println(coupon.getLastCoupon());
+        try {
+            coupon.StatistiqueVente();
+            //  System.out.println(coupon.NombreCoupon());
+            //  System.out.println(coupon.getLastCoupon());
+        } catch (SQLException ex) {
+            Logger.getLogger(Carhabty.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
        
     }

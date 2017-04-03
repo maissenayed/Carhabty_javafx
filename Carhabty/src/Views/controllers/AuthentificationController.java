@@ -45,25 +45,16 @@ public class AuthentificationController implements Initializable {
     @FXML
     private JFXPasswordField password;
      
-    @FXML 
-    private JFXButton login;
-
-    @FXML 
-    private JFXButton inscription;
-    
-  
-    
-  
-  
-    
-      @ActionHandler
+   
+    @ActionHandler
     protected FlowActionHandler actionHandler;
 
     @FXML
     void Inscription(ActionEvent event) throws IOException, VetoException, FlowException {
 
+        
         actionHandler.navigate(InscriptionController.class);
-        // pane.getChildren().setAll( (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/AjouterUser.fxml")));
+       
         
     }
 

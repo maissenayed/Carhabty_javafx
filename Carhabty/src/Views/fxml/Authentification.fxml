@@ -7,22 +7,25 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="548.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="602.0" prefWidth="758.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <JFXTextField fx:id="username" layoutX="397.0" layoutY="204.0" prefHeight="34.0" prefWidth="247.0" promptText="Nom d'utilisateur" />
-      <JFXPasswordField fx:id="password" layoutX="397.0" layoutY="287.0" prefHeight="34.0" prefWidth="247.0" promptText="Mot de passe" />
-      <JFXButton fx:id="login" layoutX="314.0" layoutY="361.0" onAction="#Login" prefHeight="34.0" prefWidth="165.0" text="Connexion" />
-      <JFXButton fx:id="inscription" layoutX="546.0" layoutY="361.0" onAction="#Inscription" prefHeight="34.0" prefWidth="165.0" text="Inscription" />
-      <JFXButton layoutX="452.0" layoutY="418.0" onAction="#Quitter" prefHeight="34.0" prefWidth="165.0" text="Quitter" />
-      <Label layoutX="389.0" layoutY="119.0" prefHeight="17.0" prefWidth="247.0" text="Connectez-vous pour accéder à votre espace" />
-      <ImageView fx:id="logo" fitHeight="111.0" fitWidth="158.0" layoutX="236.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
-          
-          <image>
-              <Image url="Image/karhabty-logo.png" />
-  </image>
-          
-      </ImageView>
-      
+      <AnchorPane id="AnchorPane" fx:id="pane" prefHeight="602.0" prefWidth="758.0">
+         <children>
+            <JFXTextField fx:id="username" layoutX="231.0" layoutY="219.0" prefHeight="34.0" prefWidth="247.0" promptText="Nom d'utilisateur" />
+            <JFXPasswordField fx:id="password" layoutX="231.0" layoutY="301.0" prefHeight="34.0" prefWidth="247.0" promptText="Mot de passe" />
+            <Label layoutX="259.0" layoutY="135.0" prefHeight="17.0" prefWidth="247.0" text="Connectez-vous pour accéder à votre espace" />
+            <ImageView fx:id="logo" fitHeight="161.0" fitWidth="178.0" layoutX="292.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="Image/karhabty-logo.png" />
+               </image>
+            </ImageView>
+            <JFXButton buttonType="RAISED" layoutX="293.0" layoutY="385.0" onAction="#Login" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Connexion" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="293.0" layoutY="518.0" onAction="#Quitter" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Quitter" textFill="WHITE" />
+            <JFXButton buttonType="RAISED" layoutX="293.0" layoutY="453.0" onAction="#Inscription" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Inscription" textFill="WHITE" />
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>
