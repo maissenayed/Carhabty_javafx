@@ -6,9 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="566.0" 
-            prefWidth="1244.0" xmlns="http://javafx.com/javafx/8.0.111" 
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.DetailsOffreController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="566.0" prefWidth="1244.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.DetailsOffreController">
    <children>
       <ImageView fx:id="image" fitHeight="229.0" fitWidth="387.0" layoutX="128.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true" />
       <JFXButton layoutX="1009.0" layoutY="504.0" onAction="#Paiement" prefHeight="48.0" prefWidth="198.0" style="-fx-background-color: #8e44ad;" text="Acheter" textFill="WHITE" />
@@ -19,10 +17,10 @@
       </Label>
       <AnchorPane layoutX="558.0" layoutY="72.0" prefHeight="422.0" prefWidth="649.0" style="-fx-background-color: #ecf0f1;">
          <children>
-            <Label fx:id="solde" layoutX="65.0" layoutY="254.0" text="Label" />
-            <Label fx:id="desc" layoutX="65.0" layoutY="139.0" text="Label" />
+            <Label fx:id="solde" layoutX="65.0" layoutY="276.0" prefHeight="107.0" prefWidth="483.0" text="Label" />
+            <Label fx:id="desc" layoutX="65.0" layoutY="139.0" prefHeight="68.0" prefWidth="449.0" text="Label" />
             <Label fx:id="nomoffre" layoutX="65.0" layoutY="43.0" text="Label" />
-            <Label fx:id="countdown" layoutX="65.0" layoutY="359.0" text="Label" />
+            <Label fx:id="countdown" layoutX="37.0" layoutY="383.0" text="Label" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="130.0" layoutY="342.0" prefHeight="150.0" prefWidth="387.0" style="-fx-background-color: #ecf0f1;">

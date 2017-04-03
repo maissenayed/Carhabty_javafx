@@ -12,7 +12,7 @@ import Functions.PasswordGenerator;
 import Functions.SaltGenerator;
 import Interfaces.IService;
 
-import java.io.IOException;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

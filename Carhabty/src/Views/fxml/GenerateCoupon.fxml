@@ -2,22 +2,43 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.GenerateCouponController">
+<StackPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="1399.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.GenerateCouponController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="752.0">
+      <AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="752.0">
          <children>
-            <AnchorPane layoutX="65.0" layoutY="102.0" prefHeight="311.0" prefWidth="644.0">
+            <AnchorPane layoutX="298.0" layoutY="161.0" prefHeight="329.0" prefWidth="841.0" style="-fx-background-color: #2574A9;">
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="190.0" layoutY="262.0" onAction="#GenerateCouponPDF" prefHeight="35.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Générer votre coupon" textFill="WHITE" />
-                  <Label layoutX="26.0" layoutY="21.0" text="Merci pour votre fidélité">
+                  <JFXButton buttonType="RAISED" layoutX="605.0" layoutY="280.0" onAction="#GenerateCouponPDF" prefHeight="35.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Générer votre coupon" textFill="WHITE" />
+                  <Label fx:id="merci" layoutX="26.0" layoutY="21.0" text="Merci pour votre fidélité" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font></Label>
-                  <Label fx:id="desc" layoutX="28.0" layoutY="53.0" prefHeight="192.0" prefWidth="602.0" />
+                  <Label fx:id="desc" layoutX="28.0" layoutY="64.0" prefHeight="181.0" prefWidth="747.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="79.0" prefWidth="1399.0">
+               <children>
+                  <ImageView fitHeight="81.0" fitWidth="236.0" layoutX="14.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../Image/karhabty-logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="num" layoutX="1240.0" layoutY="14.0" prefHeight="33.0" prefWidth="128.0" text="Tele : +216 25 532 465">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="site" layoutX="1239.0" layoutY="38.0" prefHeight="33.0" prefWidth="153.0" text="site : www.carhabty.tn">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
