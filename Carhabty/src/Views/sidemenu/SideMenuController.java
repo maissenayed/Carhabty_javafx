@@ -38,7 +38,9 @@ public class SideMenuController {
 	private Label localisation;
         
 
+        
 	
+        
 	@FXML
 	private JFXListView<Label> sideList;
 

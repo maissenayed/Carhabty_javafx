@@ -58,6 +58,13 @@ public class ProfileController implements Initializable {
     private JFXButton changePassword;
     
     
+    
+    @FXML
+    private Label lab1;
+    
+      @FXML
+    private Label lab;
+    
     InputStream inStream = null;
     OutputStream outStream = null;
 
@@ -101,6 +108,25 @@ public class ProfileController implements Initializable {
         }
         bienvenu.setText("Bienvenue " + Session.actualUser.getNom());
 
+        
+        lab.setText("Username : "+Session.actualUser.getUsername()+"\n\n\n"+
+                "Nom : "+Session.actualUser.getNom()+"\n\n\n"+
+                "Prenom : "+Session.actualUser.getPrenom()+"\n\n\n"+
+                "Email : "+Session.actualUser.getEmail()+"\n\n\n"+
+                "Adresse : "+Session.actualUser.getAdresse()+"\n\n\n"+           
+                "Téléphone : "+Session.actualUser.getTel()+"\n\n\n");
+        
+        lab.setStyle("-fx-font: bold 13 System;");
+        lab1.setText("Infomations Générales"+"\n");
+        lab1.setStyle("-fx-font: bold 16 System;-fx-text-fill: #00B16A;");
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     @FXML
@@ -138,8 +164,13 @@ public class ProfileController implements Initializable {
             u.setImage(fileName);
             Session.setActualUser(u);
             userSerivce.updatePhoto(u);
-             photo.setImage(new Image ("Image/"+Session.getActualUser().getImage()));
+            photo.setImage(new Image ("Image/"+Session.getActualUser().getImage()));
           
+            
+            
+            
+            
+            
             
         } catch (IOException e) {
             e.printStackTrace();

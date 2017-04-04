@@ -179,7 +179,7 @@ public class UserServices implements IService<User>{
         
         try {
 
-            String req = "SELECT `username`,`email`,`roles`, `nom`, `prenom`, `telephone`, `adresse`, `nomsociete`, `activite`, `siret` FROM `utilisateur` WHERE id = ? ";
+            String req = "SELECT `username`,`email`,`roles`, `nom`, `prenom`, `telephone`, `adresse`, `nomsociete`, `activite`, `siret`,`last_login` FROM `utilisateur` WHERE id = ? ";
             
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, id);

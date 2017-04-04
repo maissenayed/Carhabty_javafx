@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 
 
 
@@ -20,7 +21,9 @@ import javafx.scene.control.ButtonType;
 public class ChangeCredentialsController implements Initializable {
 
     
-    
+      @FXML
+    private Label lab;
+
     
     @FXML
     private JFXTextField username;
@@ -68,14 +71,8 @@ public class ChangeCredentialsController implements Initializable {
        
        if(UseService.update(u)){
        
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Fenetre de confirmation");
-        alert.setHeaderText("Suppression d'un trajet");
-        alert.setContentText("Etes vous sures de vouloir supprimer ce trajet?");
-        ButtonType buttonTypeOne = new ButtonType("Oui");
-        ButtonType buttonTypeTwo = new ButtonType("Non");
-        alert.getButtonTypes().setAll(buttonTypeOne, buttonTypeTwo);
-        alert.showAndWait();
+      
+      
         username.setText("");
         email.setText("");
         nom.setText("");
@@ -106,11 +103,14 @@ public class ChangeCredentialsController implements Initializable {
      
         
         
+      lab.setStyle("-fx-font: bold 16 System;-fx-text-fill: #00B16A;");
+        
         username.setText(Session.actualUser.getUsername());
         email.setText(Session.actualUser.getEmail());
         nom.setText(Session.actualUser.getNom());
         prenom.setText(Session.actualUser.getPrenom());
         adresse.setText(Session.actualUser.getAdresse());
+        System.out.println(Session.actualUser.getAdresse());
         telephone.setText(Session.actualUser.getTel());
        
     }

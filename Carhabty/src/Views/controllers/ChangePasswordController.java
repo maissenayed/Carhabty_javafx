@@ -17,6 +17,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 
@@ -35,6 +36,10 @@ public class ChangePasswordController implements Initializable {
 
     @FXML
     private JFXPasswordField rnpc;
+
+    
+    @FXML
+    private Label lab;
 
     
      @ActionHandler
@@ -111,10 +116,13 @@ public class ChangePasswordController implements Initializable {
             u.setTel(Session.actualUser.getTel());
 
             UserServices UserService = new UserServices();
+            
+            if(npl.equals(rnpl)){
+            
             UserService.update(u);
             
             
-             dl.setHeading(new Text("Information"));
+            dl.setHeading(new Text("Information"));
             dl.setBody(new Text("Votre mot de passe a été change avec succés"));
             button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
@@ -128,7 +136,23 @@ public class ChangePasswordController implements Initializable {
             acc.setText("");
             npc.setText("");
             rnpc.setText("");
+            }else{
             
+               
+            dl.setHeading(new Text("Erreur"));
+            dl.setBody(new Text("Les deux mot de passe ne sont pas identiques"));
+            button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event1) {
+                    dialog.close();
+                }
+            });
+            dl.setActions(button);
+            dialog.show();
+            
+            
+            
+            }
             
             
             
@@ -157,6 +181,12 @@ public class ChangePasswordController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        
+        
+        lab.setStyle("-fx-font: bold 16 System;-fx-text-fill: #00B16A;");
+        
+        
+        
     }
 
 }
