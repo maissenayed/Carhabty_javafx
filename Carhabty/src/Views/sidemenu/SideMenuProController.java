@@ -70,7 +70,7 @@ public class SideMenuProController {
                   bindNodeToController(dashboard, DashboardOffreController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(newoffre, AjouterOffreController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(stat, StatistiqueController.class, contentFlow, contentFlowHandler);
-                  bindNodeToController(deconnexion, AuthentificationController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
 
 	}
 

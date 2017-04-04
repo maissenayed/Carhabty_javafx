@@ -37,7 +37,9 @@ public class SideMenuController {
 	@ActionTrigger("localisation")
 	private Label localisation;
         
-
+          @FXML
+	@ActionTrigger("deconnexion")
+	private Label deconnexion;
         
 	
         
@@ -63,6 +65,8 @@ public class SideMenuController {
                   bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(offres, AfficherOffreController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(localisation, MapController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
+
 
 	}
 

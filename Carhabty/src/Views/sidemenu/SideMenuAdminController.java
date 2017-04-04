@@ -60,7 +60,7 @@ public class SideMenuAdminController {
 		
                   bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(dashboard, DashboardAdminController.class, contentFlow, contentFlowHandler);                
-                  bindNodeToController(deconnexion, AuthentificationController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
 
 	}
 

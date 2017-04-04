@@ -3,6 +3,7 @@ package Views;
 import Views.controllers.AuthentificationController;
 import com.jfoenix.controls.JFXDecorator;
 import com.jfoenix.svg.SVGGlyphLoader;
+import io.datafx.controller.context.ApplicationContext;
 import io.datafx.controller.flow.Flow;
 import io.datafx.controller.flow.container.DefaultFlowContainer;
 import io.datafx.controller.flow.context.FXMLViewFlowContext;
@@ -37,6 +38,11 @@ public class Authentification extends Application {
         flowContext.register("Stage", stage);
         flow.createHandler(flowContext).start(container);
 
+        
+        ApplicationContext myApplicationContext=ApplicationContext.getInstance();
+      
+                myApplicationContext.register("flowContext", flowContext);
+        
         JFXDecorator decorator = new JFXDecorator(stage, container.getView());
         decorator.setCustomMaximize(true);
         Scene scene = new Scene(decorator, 1020, 700);
