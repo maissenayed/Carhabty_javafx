@@ -60,13 +60,19 @@
                   </Label>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="813.0" layoutY="168.0" prefHeight="363.0" prefWidth="392.0" style="-fx-background-color: #ecf0f1;">
+            <AnchorPane layoutX="813.0" layoutY="168.0" prefHeight="363.0" prefWidth="411.0" style="-fx-background-color: #ecf0f1;">
                <children>
-                  <Label layoutX="91.0" layoutY="14.0" text="Détails de Paiement" underline="true">
+                  <Label layoutX="70.0" layoutY="14.0" text="Formulaire de Paiement" textFill="#34495e">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <Label fx:id="sos" layoutX="43.0" layoutY="262.0" prefHeight="70.0" prefWidth="329.0" text="Label" />
+                  <AnchorPane layoutX="28.0" layoutY="62.0" prefHeight="158.0" prefWidth="361.0" style="-fx-background-color: #ffffff;">
+                     <children>
+                        <Label fx:id="info" layoutX="7.0" layoutY="14.0" prefHeight="131.0" prefWidth="345.0" />
+                     </children>
+                  </AnchorPane>
                </children></AnchorPane>
          </children>
       </AnchorPane>

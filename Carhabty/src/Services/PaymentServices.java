@@ -102,7 +102,7 @@ public class PaymentServices {
 
         
         
-         float solde = 0;
+        float solde = 0;
         
         String req1 = "SELECT * FROM account WHERE id = ? ";
          try {
@@ -127,6 +127,9 @@ public class PaymentServices {
         String req = "UPDATE account SET solde = ? WHERE id = ? ";
 
         
+        
+            if(solde >= price){
+                
              solde = solde - price ;
            
         try {
@@ -145,9 +148,13 @@ public class PaymentServices {
             ex.printStackTrace();
 
         }
-
-        return false;
-
+            }else{
+            
+                System.out.println("votre solde est insuffisant");
+                return false;
+            }
+        
+  return false;
     }
 
     public List<History> CheckHistroy() {
