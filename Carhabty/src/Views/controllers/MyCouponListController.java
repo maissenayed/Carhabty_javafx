@@ -63,7 +63,7 @@ public class MyCouponListController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        
+         lab.setStyle("-fx-font: bold 25 System;-fx-text-fill: #00B16A;");
         
         
          try {

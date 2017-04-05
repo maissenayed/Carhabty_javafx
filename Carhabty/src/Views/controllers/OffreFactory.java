@@ -31,7 +31,6 @@ public class OffreFactory extends ListCell<Offre> {
     private final GridPane gridPane = new GridPane(); 
    
     private final Label DescriptionOffre = new Label(); 
-    private final Label NomOffre = new Label(); 
     private final Label solde = new Label(); 
     private final Label Adresse = new Label();
     private final Label dateExpiration = new Label();
@@ -42,33 +41,28 @@ public class OffreFactory extends ListCell<Offre> {
     public OffreFactory() { 
         
         
-        IconOffre.setFitWidth(180);
-         IconOffre.setFitHeight(180);
+         IconOffre.setFitWidth(380);
+         IconOffre.setFitHeight(380);
         
         IconOffre.setPreserveRatio(true); 
-        GridPane.setConstraints(IconOffre, 0, 0, 1, 3); 
+        GridPane.setConstraints(IconOffre, 0, 0, 1, 4); 
         GridPane.setValignment(IconOffre, VPos.TOP); 
-        // 
-        
-           
-        DescriptionOffre.setStyle("-fx-font-size: 1.7em; -fx-font-style: italic;-fx-text-fill: #2c3e50;"); 
+      
+                
+        DescriptionOffre.setStyle("-fx-font-size: 1.7em;-fx-text-fill: #2c3e50;"); 
         GridPane.setConstraints(DescriptionOffre, 1, 0); 
         
         
         dateExpiration.setStyle("-fx-text-fill: #3498db;-fx-font-size: 1.6em;"); 
-        GridPane.setConstraints(dateExpiration, 2, 2);
+        GridPane.setConstraints(dateExpiration, 1, 2);
         
         Adresse.setStyle("-fx-text-fill: #16a085;-fx-font-size: 1.6em;"); 
-        GridPane.setConstraints(Adresse, 2, 0);
-        //
-        
-        NomOffre.setStyle("-fx-font-size: 1em;"); 
-        GridPane.setConstraints(NomOffre, 1, 1); 
+        GridPane.setConstraints(Adresse, 1, 3);
+       
       
-        solde.setStyle("-fx-text-fill: #e74c3c;-fx-font-size: 1.7em;");      
-        GridPane.setConstraints(solde, 2, 1); 
-        //GridPane.setColumnSpan(solde, Integer.MAX_VALUE); 
-        //         
+        solde.setStyle("-fx-font: bold 16 System;-fx-text-fill: #c0392b;-fx-font-size: 1.7em;");      
+        GridPane.setConstraints(solde, 1, 1); 
+              
         gridPane.getColumnConstraints().add(new ColumnConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.NEVER, HPos.LEFT, true)); 
         gridPane.getColumnConstraints().add(new ColumnConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.ALWAYS, HPos.LEFT, true)); 
         gridPane.getColumnConstraints().add(new ColumnConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.NEVER, HPos.LEFT, true)); 
@@ -78,7 +72,7 @@ public class OffreFactory extends ListCell<Offre> {
         gridPane.getRowConstraints().add(new RowConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.ALWAYS, VPos.CENTER, true)); 
         gridPane.setHgap(6); 
         gridPane.setVgap(6); 
-        gridPane.getChildren().setAll(IconOffre, DescriptionOffre,Adresse,dateExpiration,NomOffre, solde); 
+        gridPane.getChildren().setAll(IconOffre, DescriptionOffre,Adresse,dateExpiration, solde); 
         AnchorPane.setTopAnchor(gridPane, 0d); 
         AnchorPane.setLeftAnchor(gridPane, 0d); 
         AnchorPane.setBottomAnchor(gridPane, 0d); 
@@ -107,10 +101,10 @@ public class OffreFactory extends ListCell<Offre> {
         
       
             
-            NomOffre.setText(item.getDescriptionOffre()); 
+       
             DescriptionOffre.setText(item.getNomOffre());           
             IconOffre.setImage(new Image("Image/"+item.getImage())); 
-            solde.setText(PrixFinal+" DT\n"+"Valeur : "+item.getPrix()+" DT\nRemise : "+item.getReduction()+" %\nEconomie :"+economie+" DT"); 
+            solde.setText("Prix :"+PrixFinal+" DT\n"+"Valeur : "+item.getPrix()+" DT\nRemise : "+item.getReduction()+" %\nEconomie :"+economie+" DT"); 
             
             
             int idUser = item.getUser().getId();
