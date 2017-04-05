@@ -18,7 +18,9 @@ public class Session {
         
         public static User actualUser;
         
-        public Session(){}
+        public Session(){
+        
+        }
 
         public static User getActualUser() {
         

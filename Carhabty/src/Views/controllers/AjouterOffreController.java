@@ -61,7 +61,7 @@ public class AjouterOffreController {
     @FXML
     private DatePicker date;
 
-     String fileName;
+    String fileName;
     
     
     

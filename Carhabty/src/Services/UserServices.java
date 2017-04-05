@@ -44,14 +44,14 @@ public class UserServices implements IService<User>{
        
         
         String req = "INSERT INTO utilisateur (username,username_canonical,email,email_canonical,enabled,salt,password,roles,nom,prenom,telephone,adresse,nomsociete,activite,siret) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-               
+         /*      
         StringBuffer y = new StringBuffer();
         y.append("a:1:{i:0;s:15:");
         y.append('"');
         y.append("ROLE_PATICULIER");
         y.append('"');
         y.append(";}");
-       
+       */
         try {
              
             PreparedStatement ps = conn.prepareStatement(req);
@@ -62,7 +62,7 @@ public class UserServices implements IService<User>{
             ps.setInt(5, 1);
             ps.setString(6,salt);
             ps.setString(7, PasswordGenerator.MergePasswordSalt(t.getPassword(), salt));          
-            ps.setString(8, y.toString());
+            ps.setString(8, t.getRole());
             ps.setString(9, t.getNom());
             ps.setString(10, t.getPrenom());
             ps.setString(11, t.getTel());

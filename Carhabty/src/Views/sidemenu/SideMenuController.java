@@ -65,7 +65,7 @@ public class SideMenuController {
                   bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(offres, AfficherOffreController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(localisation, MapController.class, contentFlow, contentFlowHandler);
-                  bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
+                 // bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
 
 
 	}

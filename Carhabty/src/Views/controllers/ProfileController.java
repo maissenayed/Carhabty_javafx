@@ -10,6 +10,8 @@ import Entities.User;
 import Services.UserServices;
 
 import com.jfoenix.controls.JFXButton;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
 import io.datafx.controller.FXMLController;
 import java.io.File;
 import java.io.FileInputStream;
@@ -57,7 +59,7 @@ public class ProfileController implements Initializable {
     @FXML
     private JFXButton changePassword;
     
-    
+     private static final String VOICENAME= "garci";
     
     @FXML
     private Label lab1;
@@ -96,7 +98,26 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-      //  System.out.println(Session.actualUser.getImage());
+      
+        /*
+        Voice voice;
+        VoiceManager vm =  VoiceManager.getInstance();
+        voice = vm.getVoice(VOICENAME);    
+        voice.allocate();
+        
+        try{
+        
+        voice.speak("Hello "+Session.actualUser.getUsername()+" this is carhabty robot have a nice day");
+        
+        }catch(Exception e)
+        {e.printStackTrace();}
+            
+        */
+        
+        
+        
+        
+        
        
         if(Session.actualUser.getImage() == null){
           photo.setImage(new Image("Image/avatar.jpg"));
@@ -138,9 +159,7 @@ public class ProfileController implements Initializable {
         String filePath = image.getPath();
         String fileName = image.getName();
 
-      
-
-        try {
+            try {
 
             
         //    System.out.println(fileName);
@@ -148,7 +167,7 @@ public class ProfileController implements Initializable {
                 
             inStream = new FileInputStream(filePath);
             outStream = new FileOutputStream(ImageUplaoded);
-            byte[] buffer = new byte[1024];
+            byte[] buffer = new byte[10240];
             int length;
           
             while ((length = inStream.read(buffer)) > 0) {
@@ -161,10 +180,13 @@ public class ProfileController implements Initializable {
             
             UserServices userSerivce = new UserServices();
             User u = new User();
+                System.out.println(fileName);
             u.setImage(fileName);
             Session.setActualUser(u);
-            userSerivce.updatePhoto(u);
-            photo.setImage(new Image ("Image/"+Session.getActualUser().getImage()));
+             userSerivce.updatePhoto(u);
+                System.out.println(Session.actualUser.getImage());
+                System.out.println(fileName);
+       //     photo.setImage(new Image ("Image/"+Session.actualUser.getImage()));
           
             
             

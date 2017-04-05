@@ -5,6 +5,7 @@
  */
 package Views.controllers;
 
+import Interfaces.IService;
 import Services.AuthentificationServices;
 import Views.main.MainController;
 import com.jfoenix.controls.*;
@@ -48,16 +49,6 @@ public class AuthentificationController implements Initializable {
     private JFXPasswordField password;
 
     
-    @FXML
-    private JFXButton login;
-
-    @FXML
-    private JFXButton quitter;
-
-    @FXML
-    private JFXButton inscription;
-    
-    
     @ActionHandler
     protected FlowActionHandler actionHandler;
 
@@ -85,7 +76,12 @@ public class AuthentificationController implements Initializable {
 
         String nomUser = username.getText();
         String password = this.password.getText();
+        
+        
         AuthentificationServices as = new AuthentificationServices();
+        
+        
+        
 
         if (as.Authentification(nomUser, password)) {
 
