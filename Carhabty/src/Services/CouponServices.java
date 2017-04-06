@@ -142,7 +142,29 @@ public class CouponServices {
     }
         
     
+    public int NumberOfBuyer(int id){
+        
+        int nb = 0;
+       
+         
+        try { 
+           PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM coupon WHERE idOffre = ? ");
+           ps.setInt(1,id);
+           ResultSet resultat = ps.executeQuery();
+            while (resultat.next()) {
+
+                nb = resultat.getInt(1);
+
+            }
+        
+           
     
+    
+     } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    
+   return nb;}
     
     
 

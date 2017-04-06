@@ -242,7 +242,7 @@ public class PaymentController implements Initializable {
         UserServices users = new UserServices();
         String societe = users.findById(CurrentOffre.Currento.getUser().getId()).getNomSociete();
 
-        sos.setText("Société : " + societe + "\nPrix à Payer : " + CurrentOffre.Currento.getPrix() + "DT");
+        sos.setText("Société : " + societe + "\nPrix à Payer : " +  (CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100)) + "DT");
         info.setText("-Entrez les informations relatives à votre carte Bancaire\n"
                 + "afin de terminer le processuce de paiement\n"
                 + "-Devise TND");

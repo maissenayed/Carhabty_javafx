@@ -6,6 +6,7 @@
 package Views.controllers;
 
 import Functions.CurrentOffre;
+import Services.CouponServices;
 import Services.UserServices;
 import java.io.IOException;
 import java.net.URL;
@@ -53,11 +54,10 @@ public class DetailsOffreController implements Initializable {
 
     @FXML
     private Label countdown;
-    
+
     @FXML
-    private Label lab1,lab;
-    
-    
+    private Label lab1, lab, labbuyer;
+
     @FXML
     private AnchorPane pane;
 
@@ -66,10 +66,8 @@ public class DetailsOffreController implements Initializable {
     @FXML
     void Paiement(ActionEvent event) throws IOException {
 
-        
         pane.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/Payment.fxml")));
-        
-        
+
     }
 
     @Override
@@ -83,35 +81,34 @@ public class DetailsOffreController implements Initializable {
         String Activite = user.findById(idUser).getActivite();
         String tele = user.findById(idUser).getTel();
         String nomS = user.findById(idUser).getNomSociete();
-        adresse.setText("Adresse : "+Adresse);
-        telephone.setText("Téléphne : "+tele);
-        activite.setText("Activité : "+Activite);
-        nomSociete.setText("Nom de Societé : "+nomS);
-        desc.setText("Description offre : "+CurrentOffre.Currento.getDescriptionOffre());
-        nomoffre.setText(" Nom offre : "+CurrentOffre.Currento.getNomOffre());
+        adresse.setText("Adresse : " + Adresse);
+        telephone.setText("Téléphne : " + tele);
+        activite.setText("Activité : " + Activite);
+        nomSociete.setText("Nom de Societé : " + nomS);
+        desc.setText("Description offre : " + CurrentOffre.Currento.getDescriptionOffre());
+        nomoffre.setText(" Nom offre : " + CurrentOffre.Currento.getNomOffre());
 
         PrixFinal = CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100);
         economie = (CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100;
 
-        solde.setText("Prix : "+PrixFinal + " DT\n\n\n" + "Valeur : " + CurrentOffre.Currento.getPrix() + " DT\n\n\nRemise : " + CurrentOffre.Currento.getReduction() + " %\n\n\nEconomie :" + economie + " DT");
+        solde.setText("Prix : " + PrixFinal + " DT\n\n\n" + "Valeur : " + CurrentOffre.Currento.getPrix() + " DT\n\n\nRemise : " + CurrentOffre.Currento.getReduction() + " %\n\n\nEconomie :" + economie + " DT");
 
-    
-         adresse.setStyle("-fx-font:  14 System;-fx-text-fill: #2c3e50;");
-         telephone.setStyle("-fx-font:  14 System;-fx-text-fill: #2c3e50;");
-         activite.setStyle("-fx-font:  14 System;-fx-text-fill: #2c3e50;");
-         nomSociete.setStyle("-fx-font:  14 System;-fx-text-fill: #2c3e50;");
-         lab.setStyle("-fx-font: bold 17 System;-fx-text-fill: #00B16A;");
-         lab1.setStyle("-fx-font: bold 18 System;-fx-text-fill: #00B16A;");
-         
-         
-         nomoffre.setStyle("-fx-font:  14 System;");
-                desc.setStyle("-fx-font:  14 System;");
-                 solde.setStyle("-fx-font: bold 15 System;");
-         
-         
-         
-         
-         
+        adresse.setStyle("-fx-font:  14 System;-fx-text-fill: #2c3e50;");
+        telephone.setStyle("-fx-font:  14 System;-fx-text-fill: #2c3e50;");
+        activite.setStyle("-fx-font:  14 System;-fx-text-fill: #2c3e50;");
+        nomSociete.setStyle("-fx-font:  14 System;-fx-text-fill: #2c3e50;");
+        lab.setStyle("-fx-font: bold 17 System;-fx-text-fill: #00B16A;");
+        lab1.setStyle("-fx-font: bold 18 System;-fx-text-fill: #00B16A;");
+
+        nomoffre.setStyle("-fx-font:  14 System;");
+        desc.setStyle("-fx-font:  14 System;");
+        solde.setStyle("-fx-font: bold 15 System;");
+
+        CouponServices c = new CouponServices();
+        int nb = c.NumberOfBuyer(CurrentOffre.Currento.getId());
+        labbuyer.setText(nb + " Achteur(s)");
+        labbuyer.setStyle("-fx-font: bold 15 System;-fx-text-fill: #e67e22;");
+
     }
 
 }

@@ -6,6 +6,7 @@
 package Views.controllers;
 
 import Entities.Offre;
+import Services.CouponServices;
 import Services.UserServices;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -98,8 +99,8 @@ public class OffreFactory extends ListCell<Offre> {
             
             PrixFinal = item.getPrix() - ((item.getPrix() * item.getReduction())/100);
             economie = (item.getPrix() * item.getReduction())/100;
-        
-      
+            
+          
             
        
             DescriptionOffre.setText(item.getNomOffre());           
@@ -110,7 +111,7 @@ public class OffreFactory extends ListCell<Offre> {
             int idUser = item.getUser().getId();
             UserServices user = new UserServices();
             String adresse =  user.findById(idUser).getAdresse();
-            String Activite = user.findById(idUser).getActivite();
+            
             
            
             
