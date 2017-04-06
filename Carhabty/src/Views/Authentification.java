@@ -40,8 +40,7 @@ public class Authentification extends Application {
 
         
         ApplicationContext myApplicationContext=ApplicationContext.getInstance();
-      
-                myApplicationContext.register("flowContext", flowContext);
+        myApplicationContext.register("flowContext", flowContext);
         
         JFXDecorator decorator = new JFXDecorator(stage, container.getView());
         decorator.setCustomMaximize(true);

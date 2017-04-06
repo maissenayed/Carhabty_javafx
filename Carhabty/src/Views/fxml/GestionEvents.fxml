@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+    <stylesheets>
+        <URL value="@gestionevents.css" />
+    </stylesheets>
+   <children>
+      <JFXListView fx:id="ListEvent" layoutX="11.0" layoutY="56.0" prefHeight="195.0" prefWidth="582.0" />
+      <JFXButton fx:id="BtnSupp" defaultButton="true" layoutX="177.0" layoutY="9.0" prefHeight="38.0" prefWidth="74.0" text="Supprimer">
+         <effect>
+            <DropShadow />
+         </effect>
+      </JFXButton>
+      <JFXButton fx:id="BtnInv" defaultButton="true" layoutX="262.0" layoutY="10.0" prefHeight="38.0" prefWidth="52.0" text="Inviter">
+         <effect>
+            <DropShadow />
+         </effect>
+      </JFXButton>
+      <JFXTextField fx:id="TxtRech" layoutX="341.0" layoutY="16.0" onKeyTyped="#OnFiltrer" prefHeight="25.0" prefWidth="227.0" promptText="Mot clé " />
+      <JFXTextField fx:id="TxtTitre" layoutX="14.0" layoutY="263.0" promptText="Titre de l'évenement" />
+      <JFXTextField fx:id="TxtAdrs" layoutX="29.0" layoutY="340.0" promptText="Adresse" />
+      <JFXTextArea fx:id="TxtDescription" layoutX="387.0" layoutY="266.0" prefHeight="107.0" prefWidth="161.0" promptText="Description ..." />
+      <JFXButton fx:id="BtnAjouter" buttonType="RAISED" defaultButton="true" layoutX="14.0" layoutY="16.0" prefHeight="25.0" prefWidth="74.0" text="Ajouter">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </JFXButton>
+      <JFXButton fx:id="BtnModifier" defaultButton="true" layoutX="90.0" layoutY="16.0" prefHeight="25.0" prefWidth="74.0" text="Modifier">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </JFXButton>
+      <DatePicker fx:id="TxtDate" layoutX="191.0" layoutY="276.0" />
+   </children>
+</AnchorPane>

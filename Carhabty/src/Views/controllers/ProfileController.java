@@ -6,12 +6,9 @@
 package Views.controllers;
 
 import DataBase.Session;
-import Entities.User;
 import Services.UserServices;
 
 import com.jfoenix.controls.JFXButton;
-import com.sun.speech.freetts.Voice;
-import com.sun.speech.freetts.VoiceManager;
 import io.datafx.controller.FXMLController;
 import java.io.File;
 import java.io.FileInputStream;
@@ -23,6 +20,8 @@ import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
@@ -58,15 +57,15 @@ public class ProfileController implements Initializable {
 
     @FXML
     private JFXButton changePassword;
-    
-     private static final String VOICENAME= "garci";
-    
+
+    private static final String VOICENAME = "garci";
+
     @FXML
     private Label lab1;
-    
-      @FXML
+
+    @FXML
     private Label lab;
-    
+
     InputStream inStream = null;
     OutputStream outStream = null;
 
@@ -98,7 +97,6 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-      
         /*
         Voice voice;
         VoiceManager vm =  VoiceManager.getInstance();
@@ -112,42 +110,27 @@ public class ProfileController implements Initializable {
         }catch(Exception e)
         {e.printStackTrace();}
             
-        */
-        
-        
-        
-        
-        
-       
-        if(Session.actualUser.getImage() == null){
-          photo.setImage(new Image("Image/avatar.jpg"));
-        }
-        else{
-        
-//         photo.setImage(new Image ("Image/"+Session.actualUser.getImage()));
-        
+         */
+        if (Session.actualUser.getImage() == null) {
+            photo.setImage(new Image("Image/avatar.jpg"));
+        } else {
+            System.out.println(Session.actualUser.getImage());
+            photo.setImage(new Image("Image/" + Session.actualUser.getImage()));
+
         }
         bienvenu.setText("Bienvenue " + Session.actualUser.getNom());
 
-        
-        lab.setText("Username : "+Session.actualUser.getUsername()+"\n\n\n"+
-                "Nom : "+Session.actualUser.getNom()+"\n\n\n"+
-                "Prenom : "+Session.actualUser.getPrenom()+"\n\n\n"+
-                "Email : "+Session.actualUser.getEmail()+"\n\n\n"+
-                "Adresse : "+Session.actualUser.getAdresse()+"\n\n\n"+           
-                "Téléphone : "+Session.actualUser.getTel()+"\n\n\n");
-        
+        lab.setText("Username : " + Session.actualUser.getUsername() + "\n\n\n"
+                + "Nom : " + Session.actualUser.getNom() + "\n\n\n"
+                + "Prenom : " + Session.actualUser.getPrenom() + "\n\n\n"
+                + "Email : " + Session.actualUser.getEmail() + "\n\n\n"
+                + "Adresse : " + Session.actualUser.getAdresse() + "\n\n\n"
+                + "Téléphone : " + Session.actualUser.getTel() + "\n\n\n");
+
         lab.setStyle("-fx-font: bold 13 System;");
-        lab1.setText("Infomations Générales"+"\n");
+        lab1.setText("Infomations Générales" + "\n");
         lab1.setStyle("-fx-font: bold 16 System;-fx-text-fill: #00B16A;");
-        
-        
-        
-        
-        
-        
-        
-        
+
     }
 
     @FXML
@@ -159,41 +142,45 @@ public class ProfileController implements Initializable {
         String filePath = image.getPath();
         String fileName = image.getName();
 
-            try {
+        try {
 
-            
-        //    System.out.println(fileName);
-            File ImageUplaoded = new File("src/Image/"+fileName);
-                
+            //    System.out.println(fileName);
+            File ImageUplaoded = new File("src/Image/" + fileName);
+
             inStream = new FileInputStream(filePath);
             outStream = new FileOutputStream(ImageUplaoded);
             byte[] buffer = new byte[10240];
             int length;
-          
+
             while ((length = inStream.read(buffer)) > 0) {
-               outStream.write(buffer, 0, length);
+                outStream.write(buffer, 0, length);
             }
             inStream.close();
             outStream.close();
             System.out.println("File is copied successful!");
 
-            
             UserServices userSerivce = new UserServices();
-            User u = new User();
-                System.out.println(fileName);
-            u.setImage(fileName);
-            Session.setActualUser(u);
-             userSerivce.updatePhoto(u);
-                System.out.println(Session.actualUser.getImage());
-                System.out.println(fileName);
-       //     photo.setImage(new Image ("Image/"+Session.actualUser.getImage()));
+
+            //  System.out.println(fileName);
+           //   System.out.println(Session.actualUser.getImage());
+          //    System.out.println(fileName);
+           
+
+                 userSerivce.updatePhoto(Session.actualUser);
+            
+                 Session.actualUser.setImage(fileName);
+                 
+                 Timer timer = new Timer();
+                 timer.schedule(new TimerTask() {
+                 @Override
+                 public void run() {
+     photo.setImage(new Image("Image/" + Session.actualUser.getImage()));
+                 }
+                 }, 2500);
+                 
+                 
           
-            
-            
-            
-            
-            
-            
+
         } catch (IOException e) {
             e.printStackTrace();
         }

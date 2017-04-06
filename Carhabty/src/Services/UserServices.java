@@ -161,6 +161,7 @@ public class UserServices implements IService<User>{
                 u.setActivite(resultat.getString("activite"));
                 u.setActivite(resultat.getString("nomsociete"));       
                 u.setSiret(resultat.getString("siret"));
+                u.setImage(resultat.getString("photo"));
                 ListeUtilisateur.add(u);
                 
             }

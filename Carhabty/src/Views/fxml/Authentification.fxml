@@ -21,9 +21,9 @@
                   <Image url="Image/karhabty-logo.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="login" buttonType="RAISED" layoutX="293.0" layoutY="385.0" onAction="#Login" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Connexion" textFill="WHITE" />
-            <JFXButton fx:id="quitter" buttonType="RAISED" layoutX="293.0" layoutY="518.0" onAction="#Quitter" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Quitter" textFill="WHITE" />
-            <JFXButton fx:id="inscription" buttonType="RAISED" layoutX="293.0" layoutY="453.0" onAction="#Inscription" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Inscription" textFill="WHITE" />
+            <JFXButton fx:id="login" buttonType="RAISED" layoutX="293.0" layoutY="385.0" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Connexion" textFill="WHITE" />
+            <JFXButton fx:id="quitter" buttonType="RAISED" layoutX="293.0" layoutY="518.0" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Quitter" textFill="WHITE" />
+            <JFXButton fx:id="inscription" buttonType="RAISED" layoutX="293.0" layoutY="453.0" prefHeight="45.0" prefWidth="178.0" style="-fx-background-color: #1abc9c;" text="Inscription" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>
