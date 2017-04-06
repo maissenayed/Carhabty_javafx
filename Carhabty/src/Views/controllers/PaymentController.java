@@ -61,6 +61,9 @@ public class PaymentController implements Initializable {
 
     private float prix;
 
+    
+    private int compteur = 0;
+    
     @FXML
     private Label info, sos;
 
@@ -86,6 +89,9 @@ public class PaymentController implements Initializable {
 
             if (payment.VerifyCredentialsPayment(Card, Cvc, mergeMonthYear)) {
 
+                if(payment.getCardPayment().getEnabled() == 1){
+                
+                
                 id_account = payment.getCardPayment().getIdAccount().getId();
                 prix = CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100);
                 if (payment.Withdraw(prix, id_account)) {
@@ -118,11 +124,10 @@ public class PaymentController implements Initializable {
                     dialog.show();
 
                 }
-
-            } else {
-
-                dl.setHeading(new Text("Erreur"));
-                dl.setBody(new Text("les informations que vous avez mis sembles incorrectes. Réessayer"));
+                } else{
+                
+                      dl.setHeading(new Text("Compte Bloqué"));
+                dl.setBody(new Text("Votre compte est bloqué contacter votre Banque"));
 
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
@@ -133,7 +138,52 @@ public class PaymentController implements Initializable {
                 dl.setActions(button);
 
                 dialog.show();
+                }
+            } else {
 
+              
+              
+                compteur++; 
+                System.out.println(compteur);
+                if(payment.BlockAccount(compteur) == 1){
+                
+                dl.setHeading(new Text("Erreur"));
+                dl.setBody(new Text("les informations que vous avez mis sembles incorrectes. Réessayer"));
+
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event1) {
+                        dialog.close();
+                    }
+                });
+                dl.setActions(button);
+                dialog.show();
+                
+                
+                
+                }else{
+                
+                 
+                  
+                    payment.setEnabled(payment.getIdCard(Card).getId());
+                    
+                 dl.setHeading(new Text("Compte Bloqué"));
+                 dl.setBody(new Text("On vous informe que votre compte bancaire a été bloquer"));
+
+                 button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event1) {
+                        dialog.close();
+                    }
+                });
+                dl.setActions(button);
+
+                dialog.show();
+                compteur = 0;
+                
+              
+                }
+                
             }
 
         } else {
