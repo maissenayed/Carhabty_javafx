@@ -8,8 +8,10 @@ package Views.controllers;
 import Functions.CurrentOffre;
 import Services.CouponServices;
 import Services.UserServices;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -63,6 +65,11 @@ public class DetailsOffreController implements Initializable {
 
     private float PrixFinal, economie;
 
+    
+    @FXML
+    private JFXButton p;
+    
+    
     @FXML
     void Paiement(ActionEvent event) throws IOException {
 
@@ -73,6 +80,23 @@ public class DetailsOffreController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        
+          Date date = (Date) CurrentOffre.Currento.getDateExp();
+        System.out.println(date);
+        System.out.println("");
+        
+        Date t = new Date();
+        Date now =   new java.sql.Date(t.getTime());
+        if(now.compareTo(date) > 0){
+        
+        p.setDisable(true);
+        
+        }
+        
+        
+        
+        
+        
         image.setImage(new Image("Image/" + CurrentOffre.Currento.getImage()));
 
         int idUser = CurrentOffre.Currento.getUser().getId();

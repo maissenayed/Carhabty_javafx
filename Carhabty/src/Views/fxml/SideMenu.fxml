@@ -8,9 +8,16 @@
 	<styleClass>	
 		<String fx:value="side-menu" />
 	</styleClass>
-	<JFXListView  fx:id="sideList">
+	<JFXListView  fx:id="sideList"  styleClass="custom-jfx-list-view">
 		<Label fx:id="profile"> Profile </Label>
-		<Label fx:id="offres"> offres </Label>
+                <JFXListView fx:id="subsideList" styleClass="sublist">
+				<groupnode>
+					<Label styleClass="sub-label"> offres </Label>
+				</groupnode>
+				<Label fx:id="offres"> Nos Offres </Label>
+				<Label fx:id="oldoffres"> Offres Expirées </Label>
+			</JFXListView>
+		
 		<Label fx:id="localisation"> Localisation </Label>
 		<Label fx:id="annonce"> Annonces </Label>
 		<Label fx:id="astuce"> Astuce </Label>

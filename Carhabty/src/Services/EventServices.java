@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import DataBase.DataSource;
+import DataBase.Session;
 import java.sql.Connection;
 /**
  *
@@ -33,7 +34,7 @@ public class EventServices {
     {
          try {
             
-            String req = "INSERT into event (description,title,address,event_date) VALUES (?,?,?,?)";
+            String req = "INSERT into event (description,title,address,event_date,user_id) VALUES (?,?,?,?,?)";
            
             st = conn.prepareStatement(req);
             
@@ -41,6 +42,7 @@ public class EventServices {
             st.setString(2, e.getTitle()); 
             st.setString(3, e.getAdresse());
             st.setString(4, e.getEventDate()); 
+            st.setInt(5, Session.actualUser.getId());
             
             st.executeUpdate();
             
@@ -55,7 +57,7 @@ public class EventServices {
         ObservableList<Event> lst = FXCollections.observableArrayList();
         try {
              
-            String req = "SELECT * FROM `event`  " ;
+            String req = "SELECT * FROM `event`" ;
             
              st = conn.prepareStatement(req);
              ResultSet rs = st.executeQuery();

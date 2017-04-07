@@ -27,8 +27,8 @@ import javafx.util.Callback;
  *
  * @author GARCII
  */
-@FXMLController(value = "/Views/fxml/AfficheOffre.fxml", title = "Afficher offre - Carhabty")
-public class AfficherOffreController implements Initializable {
+@FXMLController(value = "/Views/fxml/AfficheOffreExpiree.fxml", title = "Afficher offre - Carhabty")
+public class AfficherOffreExpireeController implements Initializable {
 
     @FXML
     private ListView Liste;
@@ -39,9 +39,7 @@ public class AfficherOffreController implements Initializable {
      @FXML
     private Label lab;
 
-    
-    
-    
+   
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -51,7 +49,7 @@ public class AfficherOffreController implements Initializable {
         
         OffreServices offreService = new OffreServices();
 
-        Liste.getItems().setAll(offreService.findALL());
+        Liste.getItems().setAll(offreService.findALLOld());
 
         Liste.setCellFactory(new Callback<ListView<Offre>, ListCell<Offre>>() {
 

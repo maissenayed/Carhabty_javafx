@@ -10,18 +10,25 @@ package Entities;
  * @author ASUS
  */
 public class Event {
-    int id ; 
-    int userId; 
-    String description ; 
-    String title ; 
-    String access ; 
-    String adresse ; 
-    String eventDate ; 
-    String CreatedDate ; 
-    String UpdatedDate ; 
-    String photo ; 
 
-    
+    int id;
+    String description;
+    String title;
+    String access;
+    String adresse;
+    String eventDate;
+    String CreatedDate;
+    String UpdatedDate;
+    String photo;
+    User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;
@@ -31,13 +38,7 @@ public class Event {
         this.id = id;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+   
 
     public String getDescription() {
         return description;
@@ -105,11 +106,11 @@ public class Event {
 
     @Override
     public String toString() {
-        return  "Titre :" + title + ", Description :" + description + ", adresse :" + adresse + ", Date de l'evenement :" + eventDate;
+        return "Titre :" + title + ", Description :" + description + ", adresse :" + adresse + ", Date de l'evenement :" + eventDate;
     }
 
-    public Event(int userId, String description, String title, String access, String adresse, String eventDate, String CreatedDate, String UpdatedDate, String photo) {
-        this.userId = userId;
+    public Event(String description, String title, String access, String adresse, String eventDate, String CreatedDate, String UpdatedDate, String photo) {
+       
         this.description = description;
         this.title = title;
         this.access = access;
@@ -126,15 +127,13 @@ public class Event {
         this.adresse = adresse;
         this.eventDate = eventDate;
     }
-    public Event(int id ,String description, String title, String adresse, String eventDate) {
-        this.id=id;
+
+    public Event(int id, String description, String title, String adresse, String eventDate) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.adresse = adresse;
         this.eventDate = eventDate;
     }
-    
-    
-    
-    
+
 }

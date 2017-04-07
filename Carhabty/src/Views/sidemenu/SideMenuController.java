@@ -32,6 +32,13 @@ public class SideMenuController {
 	@ActionTrigger("offres")
 	private Label offres;
         
+        
+         @FXML
+	@ActionTrigger("oldoffres")
+	private Label oldoffres;
+        
+        
+        
          @FXML
 	@ActionTrigger("event")
 	private Label event;
@@ -44,6 +51,11 @@ public class SideMenuController {
 	@ActionTrigger("deconnexion")
 	private Label deconnexion;
         
+          
+          
+          
+        @FXML
+	private JFXListView<Label> subsideList;
 	
         
 	@FXML
@@ -52,7 +64,26 @@ public class SideMenuController {
 	@PostConstruct
 	public void init() throws FlowException, VetoException {
 		FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
-		sideList.propagateMouseEventsToParent();
+		
+                
+                subsideList.propagateMouseEventsToParent();
+                        subsideList.getSelectionModel().selectedItemProperty().addListener((o,oldVal,newVal)->{
+			if(newVal!=null){
+				try {
+					contentFlowHandler.handle(newVal.getId());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}			
+			}
+		});
+                
+                
+                
+                
+                
+                
+                
+                sideList.propagateMouseEventsToParent();
 		sideList.getSelectionModel().selectedItemProperty().addListener((o,oldVal,newVal)->{
 			if(newVal!=null){
 				try {
@@ -69,7 +100,8 @@ public class SideMenuController {
                   bindNodeToController(offres, AfficherOffreController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(localisation, MapController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
-                   bindNodeToController(event, GestionEventsController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(event, GestionEventsController.class, contentFlow, contentFlowHandler);
+                  bindNodeToController(oldoffres, AfficherOffreExpireeController.class, contentFlow, contentFlowHandler);
 
 
 	}
