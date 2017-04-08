@@ -66,16 +66,7 @@ public class AuthentificationController {
     @PostConstruct
     public void init() {
 
-        RequiredFieldValidator validator = new RequiredFieldValidator();
-        validator.setMessage("Input Required");
-        validator.setIcon(new Icon(AwesomeIcon.WARNING, "1em", ";", "error"));
-        username.getValidators().add(validator);
-        username.focusedProperty().addListener((o, oldVal, newVal) -> {
-            if (!newVal) {
-                username.validate();
-            }
-        });
-
+      
         inscription.setOnAction(e -> {
             try {
                 actionHandler.navigate(InscriptionController.class);

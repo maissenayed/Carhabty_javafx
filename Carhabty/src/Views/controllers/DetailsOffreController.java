@@ -81,9 +81,9 @@ public class DetailsOffreController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         
-          Date date = (Date) CurrentOffre.Currento.getDateExp();
+        Date date = (Date) CurrentOffre.Currento.getDateExp();
         System.out.println(date);
-        System.out.println("");
+     
         
         Date t = new Date();
         Date now =   new java.sql.Date(t.getTime());

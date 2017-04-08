@@ -80,18 +80,21 @@ public class EventServices {
         }
       return lst ; 
     }
-       public void Modifier(int id , String title,String description,String adress , String event_date)
+      
+      
+       public void Modifier(Event e)
      {
          try {
              
-            String req = "UPDATE event SET   description= ? ,title=? , address=? ,event_date=? where id="+id ;
+            String req = "UPDATE  event SET   description = ? ,title = ? , address = ? ,event_date = ? where id= ?";
            
              st = conn.prepareStatement(req);
              
-            st.setString(1, description);
-            st.setString(2, title);
-            st.setString(3, adress);
-            st.setString(4, event_date);
+            st.setString(1, e.getDescription());
+            st.setString(2, e.getTitle());
+            st.setString(3, e.getAdresse());
+            st.setString(4, e.getEventDate());
+            st.setInt(5, e.getId());
             
             
             

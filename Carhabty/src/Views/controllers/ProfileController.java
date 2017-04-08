@@ -115,7 +115,7 @@ public class ProfileController implements Initializable {
             photo.setImage(new Image("Image/avatar.jpg"));
         } else {
             System.out.println(Session.actualUser.getImage());
-            photo.setImage(new Image("Image/" + Session.actualUser.getImage()));
+            photo.setImage(new Image("Image/"+ Session.actualUser.getImage()));
 
         }
         bienvenu.setText("Bienvenue " + Session.actualUser.getNom());
@@ -167,16 +167,18 @@ public class ProfileController implements Initializable {
            
 
                  userSerivce.updatePhoto(Session.actualUser);
-            
-                 Session.actualUser.setImage(fileName);
                  
+                 Session.actualUser.setImage(fileName);
+              //   userSerivce.findById(Session.actualUser.getId()).getImage()
                  Timer timer = new Timer();
                  timer.schedule(new TimerTask() {
                  @Override
                  public void run() {
-     photo.setImage(new Image("Image/" + Session.actualUser.getImage()));
+                //     System.out.println(userSerivce.findById(Session.actualUser.getId()).getImage());
+                     System.out.println("Image/"+Session.actualUser.getImage());
+                  photo.setImage(new Image("Image/"+Session.actualUser.getImage()));
                  }
-                 }, 2500);
+                 }, 3000);
                  
                  
           

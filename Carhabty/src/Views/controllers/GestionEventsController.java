@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXListView;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import Entities.Event;
+import Entities.Offre;
+import Functions.CurrentOffre;
 import java.awt.event.KeyEvent;
 import Functions.SendMail;
 import java.net.URL;
@@ -31,8 +33,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javax.mail.MessagingException;
 import Services.EventServices;
 import io.datafx.controller.FXMLController;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
+import javafx.util.Callback;
 import javax.annotation.PostConstruct;
 import tray.animations.AnimationType;
 import tray.notification.NotificationType;
@@ -51,11 +59,7 @@ public class GestionEventsController {
     @FXML
     private JFXListView<Event> ListEvent;
 
-    @FXML
-    private JFXButton BtnAjout;
-
-    @FXML
-    private JFXButton BtnModif;
+  
 
     @FXML
     private JFXButton BtnSupp;
@@ -84,31 +88,9 @@ public class GestionEventsController {
     @FXML
     private JFXButton BtnModifier;
 
-    /*
-    @FXML
-    void OnSupp(ActionEvent event) {
-        
-        EventServices ES = new EventServices();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Confirmation");
-            alert.setHeaderText("Cet Evenement sera supprimé ! ");
-            
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
-            ES.Supprimer(ListEvent.getSelectionModel().getSelectedItem().getId());
-        ObservableList<Event> data = FXCollections.observableArrayList();
-        data = ES.RecupererEvent();
-        ListEvent.setItems(data);
-        tray.notification.TrayNotification tr = new tray.notification.TrayNotification();
-                tr.setTitle("Carhabty");
-                tr.setMessage("Evenement Supprimé avec Succés " );
-                tr.setNotificationType(NotificationType.SUCCESS);
-                tr.setAnimationType(AnimationType.SLIDE);
-                tr.showAndDismiss(javafx.util.Duration.seconds(5));
-                
-        }
-        
-    }*/
+    private int id;
+    
+    
     @FXML
     public void OnFiltrer() {
         ObservableList<Event> entries = FXCollections.observableArrayList();
@@ -148,10 +130,14 @@ public class GestionEventsController {
         BtnAjouter.setOnAction(c -> {
 
             EventServices ES = new EventServices();
+            
+            
             if (TxtDate.getValue().isAfter(LocalDate.now())) {
-                Event e = new Event(TxtDescription.getText(), TxtTitre.getText(),
-                        TxtAdrs.getText(),
-                        TxtDate.getValue().toString());
+                
+                
+           Event e = new Event(TxtDescription.getText(), TxtTitre.getText(),  TxtAdrs.getText(), TxtDate.getValue().toString());
+               
+                
                 ES.AjouterEvent(e);
 
                 TxtTitre.setText(null);
@@ -181,29 +167,23 @@ public class GestionEventsController {
 
         BtnModifier.setOnAction(e -> {
 
-            TxtTitre.setText(ListEvent.getSelectionModel().getSelectedItem().getTitle());
-
-            TxtAdrs.setText(ListEvent.getSelectionModel().getSelectedItem().getAdresse());
-
-            TxtDate.setValue(LocalDate.now());
-
-            TxtDescription.setText(ListEvent.getSelectionModel().getSelectedItem().getDescription());
-
+         
             
             
             
             EventServices ES = new EventServices();
 
-            ES.Modifier(ListEvent.getSelectionModel().getSelectedItem().getId(),
-                    TxtDescription.getText(),
-                    TxtTitre.getText(),
-                    TxtAdrs.getText(),
-                    TxtDate.getValue().toString());
+                Event ev = new Event();
+                ev.setId(id);
+                System.out.println(id);
+                ev.setDescription(TxtDescription.getText());
+                ev.setAdresse(TxtAdrs.getText());
+                ev.setTitle(TxtTitre.getText());
+                ev.setEventDate(TxtDate.getValue().toString());
+           
+              
 
-            ObservableList<Event> data = FXCollections.observableArrayList();
-            data = ES.RecupererEvent();
-            ListEvent.setItems(data);
-
+            ES.Modifier(ev);
             tray.notification.TrayNotification tr = new tray.notification.TrayNotification();
             tr.setTitle("Carhabty");
             tr.setMessage("Evenement Modifié avec Succés ");
@@ -211,16 +191,20 @@ public class GestionEventsController {
             tr.setAnimationType(AnimationType.SLIDE);
             tr.showAndDismiss(javafx.util.Duration.seconds(5));
             
+             EventServices Es = new EventServices();
+        
+        ListEvent.getItems().setAll(Es.RecupererEvent());
+        
+         ListEvent.setCellFactory(new Callback<ListView<Event>, ListCell<Event>>() {
+            @Override
+            public ListCell<Event> call(ListView<Event> param) {
+               return new EventFactory(); }
+
+            
+        });
             
             
-            
-            
-            
-            
-            
-            
-            
-            
+                   
         });
 
         BtnSupp.setOnAction(e -> {
@@ -269,12 +253,40 @@ public class GestionEventsController {
 
         
      
+        
+        
         EventServices Es = new EventServices();
+        
+        ListEvent.getItems().setAll(Es.RecupererEvent());
+        
+         ListEvent.setCellFactory(new Callback<ListView<Event>, ListCell<Event>>() {
+            @Override
+            public ListCell<Event> call(ListView<Event> param) {
+               return new EventFactory(); }
 
-        ObservableList<Event> data = FXCollections.observableArrayList();
-        data = Es.RecupererEvent();
+            
+        });
+        
+         
+         
+         
+         
+          ListEvent.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Event>() {
+            @Override
+            public void changed(ObservableValue<? extends Event> observable, Event oldValue, Event newValue) {
+                
+              Event event =   ListEvent.getSelectionModel().selectedItemProperty().get();
+              
+              
+              id = event.getId();
+              TxtAdrs.setText(event.getAdresse());
+              TxtTitre.setText(event.getTitle());
+          //    TxtDate.setValue(event.getEventDate());
+              TxtDescription.setText(event.getDescription());         
+                
+            }
 
-        ListEvent.getItems().addAll(data);
+        });
 
     }
 

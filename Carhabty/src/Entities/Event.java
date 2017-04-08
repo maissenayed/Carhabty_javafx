@@ -22,6 +22,10 @@ public class Event {
     String photo;
     User user;
 
+    public Event() {
+      
+    }
+
     public User getUser() {
         return user;
     }

@@ -5,15 +5,12 @@
  */
 package Views.controllers;
 
-import Entities.Offre;
-import Services.CouponServices;
-import Services.UserServices;
+import Entities.Event;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -27,7 +24,7 @@ import javafx.scene.layout.RowConstraints;
  *
  * @author GARCII
  */
-public class EventFactory extends ListCell<Offre> { 
+public class EventFactory extends ListCell<Event> { 
   
     private final GridPane gridPane = new GridPane(); 
    
@@ -37,13 +34,12 @@ public class EventFactory extends ListCell<Offre> {
     private final Label dateExpiration = new Label();
     private final ImageView IconOffre = new ImageView(); 
     private final AnchorPane content = new AnchorPane(); 
-    private float economie,PrixFinal;
-  
+   
     public EventFactory() { 
         
         
-         IconOffre.setFitWidth(380);
-         IconOffre.setFitHeight(380);
+         IconOffre.setFitWidth(100);
+         IconOffre.setFitHeight(100);
         
         IconOffre.setPreserveRatio(true); 
         GridPane.setConstraints(IconOffre, 0, 0, 1, 4); 
@@ -85,7 +81,7 @@ public class EventFactory extends ListCell<Offre> {
     
     
     @Override 
-    protected void updateItem(Offre item, boolean empty) { 
+    protected void updateItem(Event item, boolean empty) { 
         super.updateItem(item, empty); 
         setGraphic(null); 
         setText(null); 
@@ -96,30 +92,12 @@ public class EventFactory extends ListCell<Offre> {
         if (!empty && item != null) { 
             
             
-            
-            PrixFinal = item.getPrix() - ((item.getPrix() * item.getReduction())/100);
-            economie = (item.getPrix() * item.getReduction())/100;
-            
-          
-            
-       
-            DescriptionOffre.setText(item.getNomOffre());           
-            IconOffre.setImage(new Image("Image/"+item.getImage())); 
-            solde.setText("Prix :"+PrixFinal+" DT\n"+"Valeur : "+item.getPrix()+" DT\nRemise : "+item.getReduction()+" %\nEconomie :"+economie+" DT"); 
-            
-            
-            int idUser = item.getUser().getId();
-            UserServices user = new UserServices();
-            String adresse =  user.findById(idUser).getAdresse();
-            
-            
-           
-            
-            
-            
-            Adresse.setText("Adresse : "+adresse);
-                    
-            dateExpiration.setText("Expire le : "+item.getDateExp());
+        
+            DescriptionOffre.setText(item.getTitle());           
+            //IconOffre.setImage(new Image("Image/"+item.getPhoto())); 
+            solde.setText("\nDescription :"+item.getDescription());          
+            Adresse.setText("Adresse : "+item.getAdresse());                  
+            dateExpiration.setText("date de l'evenément : "+item.getEventDate());
         
             setText(null); 
             setGraphic(content); 

@@ -180,7 +180,7 @@ public class UserServices implements IService<User>{
         
         try {
 
-            String req = "SELECT `username`,`email`,`roles`, `nom`, `prenom`, `telephone`, `adresse`, `nomsociete`, `activite`, `siret`,`last_login` FROM `utilisateur` WHERE id = ? ";
+            String req = "SELECT `username`,`email`,`roles`, `nom`, `prenom`, `telephone`, `adresse`, `nomsociete`, `activite`, `siret`,`photo` FROM `utilisateur` WHERE id = ? ";
             
             PreparedStatement ps = conn.prepareStatement(req);
             ps.setInt(1, id);
@@ -199,6 +199,8 @@ public class UserServices implements IService<User>{
                 u.setNomSociete(resultat.getString("nomsociete"));   
                 u.setActivite(resultat.getString("activite"));                   
                 u.setSiret(resultat.getString("siret"));
+                u.setImage(resultat.getString("photo"));
+                     
                      
             }
        } catch (SQLException ex) {
