@@ -5,6 +5,7 @@
  */
 package Views.controllers;
 
+import BackBone.ClientToServer.ImageSender;
 import Entities.Offre;
 import Services.OffreServices;
 import com.jfoenix.controls.JFXTextArea;
@@ -53,23 +54,24 @@ public class AjouterOffreController {
     @FXML
     private DatePicker date;
 
-    String fileName, filePath;
+    File image;
 
     @FXML
     void uploadPhoto(ActionEvent event) {
 
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
-        File image = chooser.showOpenDialog(new Stage());
-        filePath = image.getPath();
-        fileName = image.getName();
+         image = chooser.showOpenDialog(new Stage());
+        
+        
+        
 
     }
 
     @FXML
     void AjouterOffre(ActionEvent event) throws FlowException, VetoException, IOException {
 
-        try {
+      /*  try {
 
             InputStream inStream = null;
             OutputStream outStream = null;
@@ -92,16 +94,25 @@ public class AjouterOffreController {
 
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
+         ImageSender is=new ImageSender();
+         is.executeMultiPartRequest("http://localhost/Carhabtyy/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
+         //Session.actualUser.setImage(image.getName());
+       //  OffreServices offreService = new OffreServices();
+        
+      
+      
+      
         Offre o = new Offre();
         o.setNomOffre(nom.getText());
         o.setDescriptionOffre(desc.getText());
         o.setPrix(Float.parseFloat(prix.getText()));
         o.setReduction(Integer.parseInt(reduc.getText()));
         o.setDateExp(java.sql.Date.valueOf(date.getValue()));
-        System.out.println(fileName);
-        o.setImage(fileName);
+        o.setImage(image.getName());
+     //   System.out.println(fileName);
+       // o.setImage(fileName);
 
         OffreServices OffreService = new OffreServices();
 

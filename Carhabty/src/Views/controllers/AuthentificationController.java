@@ -32,7 +32,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javax.annotation.PostConstruct;
-import static sun.security.jgss.GSSUtil.login;
+//import static sun.security.jgss.GSSUtil.login;
 
 /**
  * FXML Controller class

@@ -104,7 +104,7 @@ public class OffreFactory extends ListCell<Offre> {
             
        
             DescriptionOffre.setText(item.getNomOffre());           
-            IconOffre.setImage(new Image("Image/"+item.getImage())); 
+            IconOffre.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/"+item.getImage())); 
             solde.setText("Prix :"+PrixFinal+" DT\n"+"Valeur : "+item.getPrix()+" DT\nRemise : "+item.getReduction()+" %\nEconomie :"+economie+" DT"); 
             
             

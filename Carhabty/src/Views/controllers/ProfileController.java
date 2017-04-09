@@ -5,6 +5,7 @@
  */
 package Views.controllers;
 
+import BackBone.ClientToServer.ImageSender;
 import DataBase.Session;
 import Services.UserServices;
 
@@ -112,10 +113,10 @@ public class ProfileController implements Initializable {
             
          */
         if (Session.actualUser.getImage() == null) {
-            photo.setImage(new Image("Image/avatar.jpg"));
+            photo.setImage(new Image("/Image/avatar.jpg"));
         } else {
             System.out.println(Session.actualUser.getImage());
-            photo.setImage(new Image("Image/"+ Session.actualUser.getImage()));
+            photo.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + Session.actualUser.getImage()));
 
         }
         bienvenu.setText("Bienvenue " + Session.actualUser.getNom());
@@ -139,7 +140,18 @@ public class ProfileController implements Initializable {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
         File image = chooser.showOpenDialog(new Stage());
-        String filePath = image.getPath();
+        ImageSender is=new ImageSender();
+        is.executeMultiPartRequest("http://localhost/Carhabtyy/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
+         Session.actualUser.setImage(image.getName());
+         UserServices userSerivce = new UserServices();
+         userSerivce.updatePhoto(Session.actualUser);
+         photo.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + Session.actualUser.getImage()));
+        
+        
+        
+        
+        
+     /*   String filePath = image.getPath();
         String fileName = image.getName();
 
         try {
@@ -162,31 +174,31 @@ public class ProfileController implements Initializable {
             UserServices userSerivce = new UserServices();
 
             //  System.out.println(fileName);
-           //   System.out.println(Session.actualUser.getImage());
-          //    System.out.println(fileName);
-           
+            //   System.out.println(Session.actualUser.getImage());
+            //    System.out.println(fileName);
+            Session.actualUser.setImage(fileName);
+            userSerivce.updatePhoto(Session.actualUser);
+            photo.setImage(new Image("/Image/" + Session.actualUser.getImage()));
 
-                 userSerivce.updatePhoto(Session.actualUser);
-                 
-                 Session.actualUser.setImage(fileName);
-              //   userSerivce.findById(Session.actualUser.getId()).getImage()
-                 Timer timer = new Timer();
-                 timer.schedule(new TimerTask() {
-                 @Override
-                 public void run() {
-                //     System.out.println(userSerivce.findById(Session.actualUser.getId()).getImage());
-                     System.out.println("Image/"+Session.actualUser.getImage());
-                  photo.setImage(new Image("Image/"+Session.actualUser.getImage()));
-                 }
-                 }, 3000);
-                 
-                 
-          
+            //   userSerivce.findById(Session.actualUser.getId()).getImage()
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    //     System.out.println(userSerivce.findById(Session.actualUser.getId()).getImage());
+                    System.out.println("Image/" + Session.actualUser.getImage());
+                   // photo.setImage(new Image("/Image/" + Session.actualUser.getImage()));
+                }
+            }, 3000);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
     }
+*/
+}
+
+
 
 }

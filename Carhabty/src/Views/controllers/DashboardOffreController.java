@@ -5,6 +5,7 @@
  */
 package Views.controllers;
 
+import BackBone.ClientToServer.ImageSender;
 import DataBase.Session;
 import Entities.Offre;
 import Entities.User;
@@ -141,7 +142,7 @@ public class DashboardOffreController implements Initializable {
 
         });
 
-        OffreTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            OffreTable.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
             o = OffreTable.getSelectionModel().getSelectedItem();
             id_offre = o.getId();
             nom.setText(o.getNomOffre() + "");
@@ -152,7 +153,11 @@ public class DashboardOffreController implements Initializable {
             // System.out.println(id_offre);
             // OffreService.findById(id_offre).getImage();
             // System.out.println(OffreService.findById(id_offre).getImage());
-            image.setImage(new Image("Image/" + OffreService.findById(id_offre).getImage()));
+            System.out.println("Image/"+OffreService.findById(id_offre).getImage());
+           
+            
+               image.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + OffreService.findById(id_offre).getImage()));
+            //image.setImage(new Image("Image/"+OffreService.findById(id_offre).getImage()));
 
         });
 
@@ -208,6 +213,21 @@ public class DashboardOffreController implements Initializable {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
         File image = chooser.showOpenDialog(new Stage());
+    
+        
+         ImageSender is=new ImageSender();
+         is.executeMultiPartRequest("http://localhost/Carhabtyy/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
+         //Session.actualUser.setImage(image.getName());
+         OffreServices offreService = new OffreServices();
+         Offre o = new Offre();
+         o.setImage(image.getName());
+         o.setId(id_offre);
+         offreService.updatePhoto(o);
+        // this.image.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + o.getImage()));
+        
+        
+        
+        /*
         String filePath = image.getPath();
         String fileName = image.getName();
 
@@ -241,7 +261,7 @@ public class DashboardOffreController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
     }
 
     @FXML

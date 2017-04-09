@@ -28,6 +28,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import static tray.notification.NotificationType.SUCCESS;
@@ -252,4 +253,18 @@ public class PaymentController implements Initializable {
 
     }
 
+    
+    
+     @FXML
+    void retour(ActionEvent event) throws IOException {
+
+        pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/DetailsOffre.fxml")));
+
+        
+        
+    }
+    
+    
+    
+    
 }

@@ -16,7 +16,7 @@
          <children>
             <AnchorPane layoutX="201.0" layoutY="168.0" prefHeight="363.0" prefWidth="581.0" style="-fx-background-color: #ecf0f1;">
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="192.0" layoutY="299.0" onAction="#pay" prefHeight="35.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Payer" textFill="WHITE" /> 
+                  <JFXButton buttonType="RAISED" layoutX="344.0" layoutY="299.0" onAction="#pay" prefHeight="35.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Payer" textFill="WHITE" /> 
                   <ImageView fitHeight="33.0" fitWidth="54.0" layoutX="341.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../Image/amex.png" />
@@ -40,6 +40,7 @@
                      <font>
                         <Font size="14.0" />
                      </font></Label>
+                  <JFXButton buttonType="RAISED" layoutX="51.0" layoutY="299.0" onAction="#retour" prefHeight="35.0" prefWidth="174.0" style="-fx-background-color: #3FC380;" styleClass="custom-jfx-button-raised" text="Retour" textFill="WHITE" />
                </children>
             </AnchorPane>
             <AnchorPane layoutY="1.0" prefHeight="87.0" prefWidth="1399.0" style="-fx-background-color: #ecf0f1;">
