@@ -16,6 +16,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 
 
@@ -99,7 +101,7 @@ public class CouponServices {
             while (resultat.next()) {
 
                 c.setId(resultat.getInt("id"));
-                //c.setDate(java.sql.Date.valueOf(resultat.getString("date")));
+             
                 c.setReference(resultat.getString("reference"));
 
                 Offre o = new Offre();
@@ -130,12 +132,27 @@ public class CouponServices {
         
     }
         
-        
-        public ResultSet StatistiqueVente() throws SQLException {
+     
+        public Map<Integer,Integer> StatistiqueVente() throws SQLException {
        
-         PreparedStatement ps = conn.prepareStatement("SELECT count(*),date FROM coupon GROUP BY date");
+         PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) AS NbCoupon, MONTH(coupon.date) AS Mois "
+                 + "FROM `coupon` INNER JOIN offre ON offre.id=coupon.idOffre WHERE"
+                 + " offre.idUser="+Session.actualUser.getId()+" GROUP BY MONTH(coupon.date)");
         
-          return ps.executeQuery();
+         ResultSet result = ps.executeQuery();
+         
+          Map<Integer,Integer> map = new HashMap<>();
+         
+         
+         while(result.next()){
+         
+             map.put(result.getInt("Mois"),result.getInt("NbCoupon"));
+         
+         }
+        
+        
+         
+          return map;
          
         
         

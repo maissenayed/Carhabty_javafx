@@ -10,6 +10,7 @@ import Entities.Offre;
 import Services.CouponServices;
 import Services.OffreServices;
 import Services.UserServices;
+import io.datafx.controller.FXMLController;
 import java.net.URL;
 import java.sql.Date;
 import java.sql.ResultSet;
@@ -26,13 +27,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.annotation.PostConstruct;
 
 /**
  * FXML Controller class
  *
  * @author GARCII
  */
-public class MyCouponListController implements Initializable {
+@FXMLController(value = "/Views/fxml/MyCouponList.fxml", title = "Afficher offre - Carhabty")
+public class MyCouponListController{
 
     
     
@@ -60,8 +63,8 @@ public class MyCouponListController implements Initializable {
      String adresse,nomoffre,nomsociete;
     
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @PostConstruct
+    public void init() {
         
          lab.setStyle("-fx-font: bold 25 System;-fx-text-fill: #00B16A;");
         

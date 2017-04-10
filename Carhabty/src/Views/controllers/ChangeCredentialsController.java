@@ -11,9 +11,9 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
 
 
 
@@ -58,7 +58,7 @@ public class ChangeCredentialsController implements Initializable {
         */
                
        User u = new User();
-       
+      
        u.setUsername(username.getText());
        u.setEmail(email.getText()); 
        u.setNom(nom.getText()); 
@@ -69,26 +69,46 @@ public class ChangeCredentialsController implements Initializable {
          
        UserServices UseService = new UserServices();
        
-       if(UseService.update(u)){
+       if(UseService.updateCredentials(u)){
+       
+     /* User u1 = new User();
+      
+       u1.setUsername(username.getText());
+       u1.setEmail(email.getText()); 
+       u1.setNom(nom.getText()); 
+       u1.setPrenom(prenom.getText()); 
+       u1.setAdresse(adresse.getText()); 
+       u1.setTel(telephone.getText()); 
+      */
+      
+       Session.actualUser.setEmail(email.getText());
+       Session.actualUser.setPrenom(prenom.getText());
+       Session.actualUser.setNom(nom.getText());
+       Session.actualUser.setUsername(username.getText());
+       Session.actualUser.setTel(telephone.getText());
+       Session.actualUser.setAdresse(adresse.getText());
        
       
-      
-        username.setText("");
-        email.setText("");
-        nom.setText("");
-        prenom.setText("");
-        adresse.setText("");
-        telephone.setText("");
        
         
-         //dialog
+            tray.notification.TrayNotification tr = new tray.notification.TrayNotification();
+            tr.setTitle("Carhabty");
+            tr.setMessage("Modifié avec Succés ");
+            tr.setNotificationType(NotificationType.SUCCESS);
+            tr.setAnimationType(AnimationType.SLIDE);
+            tr.showAndDismiss(javafx.util.Duration.seconds(5));
        }
        
        
        else{
        
        
-        //Dialog 
+            tray.notification.TrayNotification tr = new tray.notification.TrayNotification();
+            tr.setTitle("Carhabty");
+            tr.setMessage("Erreur de Modification");
+            tr.setNotificationType(NotificationType.ERROR);
+            tr.setAnimationType(AnimationType.SLIDE);
+            tr.showAndDismiss(javafx.util.Duration.seconds(5));
        
        }
     

@@ -5,10 +5,10 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="1399.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.MyCouponListController">
+<AnchorPane id="AnchorPane" prefHeight="635.0" prefWidth="1399.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="lab" layoutX="607.0" layoutY="52.0" prefHeight="48.0" prefWidth="259.0" text="Mes coupons" />
-      <TableView fx:id="table" layoutX="87.0" layoutY="142.0" prefHeight="446.0" prefWidth="1187.0" style="-fx-background-color: ;">
+      <TableView fx:id="table" layoutX="87.0" layoutY="142.0" prefHeight="446.0" prefWidth="1187.0">
         <columns>
           <TableColumn fx:id="offreColumn" prefWidth="508.00001525878906" text="Offre" />
           <TableColumn fx:id="partenaireColumn" prefWidth="136.0" text="Partenaire" />

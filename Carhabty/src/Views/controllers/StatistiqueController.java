@@ -5,9 +5,12 @@
  */
 package Views.controllers;
 
+import Services.CouponServices;
 import io.datafx.controller.FXMLController;
+import java.sql.SQLException;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Map.Entry;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +18,8 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javax.annotation.PostConstruct;
 
 /**
@@ -24,29 +29,66 @@ import javax.annotation.PostConstruct;
 @FXMLController(value = "/Views/fxml/StatistiqueOffre.fxml", title = "Statistique des offres - Carhabty")
 public class StatistiqueController {
 
+    
+    
     @FXML
-    private LineChart LineChart;
-
-    @FXML
-    private CategoryAxis x;
-
-    @FXML
-    private NumberAxis y;
-
+    private AnchorPane anchorPane;
+    
     @PostConstruct
-    public void init() {
+    public void init() throws SQLException {
 
-        XYChart.Series serie = new XYChart.Series();
+        final NumberAxis xAxis = new NumberAxis();
+        final NumberAxis yAxis = new NumberAxis();
 
-        java.util.Date t = new java.util.Date();
-        java.util.Date now = new java.sql.Date(t.getTime());
+        final LineChart<Number, Number> lineChart = new LineChart<Number, Number>(xAxis, yAxis);
 
-        serie.getData().add(new XYChart.Data("gg", now));
-        LineChart.getData().addAll(serie);
+        xAxis.setLabel("Mois");
+        xAxis.setUpperBound(12);
+        xAxis.setLowerBound(1);
+        xAxis.setTickUnit(1);
+        
+        yAxis.setLabel("Nombre de Coupons");
+        yAxis.setTickUnit(1);
+        yAxis.setUpperBound(30);
+        xAxis.setAutoRanging(false);
+        yAxis.setAutoRanging(false);
+        lineChart.setTitle("Statistiques des Ventes");
+
+        XYChart.Series series = new XYChart.Series();
+
+        CouponServices cs = new CouponServices();
+        //System.out.println(cs.StatistiqueVente());
 
         
         
-     
+        
+        for (Entry<Integer, Integer> entry : cs.StatistiqueVente().entrySet()) {
+            System.out.println("nbcoupon " + entry.getValue());
+            System.out.println("mois " + entry.getKey());
+
+            
+             series.getData().add(new XYChart.Data(entry.getKey(),entry.getValue()));
+            
+            
+        }
+       lineChart.getData().addAll(series);
+
+        Pane pnLine=new Pane();
+        lineChart.setPrefWidth(1000);
+        lineChart.setPrefHeight(500);
+        pnLine.getChildren().add(lineChart);
+        pnLine.getStyleClass().add("space1");
+        pnLine.setLayoutX(180);
+        pnLine.setLayoutY(70);
+        
+      
+        
+
+        anchorPane.getChildren().add(pnLine);
+        
+        
+        
+        
     }
 
 }

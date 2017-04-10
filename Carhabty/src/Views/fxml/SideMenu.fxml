@@ -16,6 +16,7 @@
 				</groupnode>
 				<Label fx:id="offres"> Nos Offres </Label>
 				<Label fx:id="oldoffres"> Offres Expirées </Label>
+                                <Label fx:id="mescoupon"> Mes Coupons </Label>
 			</JFXListView>
 		
 		<Label fx:id="localisation"> Localisation </Label>

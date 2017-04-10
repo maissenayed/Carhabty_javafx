@@ -111,6 +111,51 @@ public class UserServices implements IService<User> {
 
     }
 
+    public boolean updateCredentials(User t) {
+
+        String req = "UPDATE utilisateur SET username = ? , username_canonical = ? , email = ?, email_canonical = ? , nom = ? , prenom = ? , telephone = ? , adresse = ? WHERE id = ?";
+
+        try {
+
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setString(1, t.getUsername());
+            ps.setString(2, t.getUsername());
+            ps.setString(3, t.getEmail());
+            ps.setString(4, t.getEmail());
+            ps.setString(5, t.getNom());
+            ps.setString(6, t.getPrenom());
+            ps.setString(7, t.getTel());
+            ps.setString(8, t.getAdresse());
+            ps.setInt(9, t.getId());
+
+            ps.executeUpdate();
+            System.out.println("Modification terminé");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Problème de Modification");
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     @Override
     public boolean remove(User t) {
 

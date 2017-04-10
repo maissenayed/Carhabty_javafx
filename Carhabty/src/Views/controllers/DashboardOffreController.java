@@ -53,6 +53,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.annotation.PostConstruct;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
 
 /**
  *
@@ -223,7 +225,7 @@ public class DashboardOffreController implements Initializable {
          o.setImage(image.getName());
          o.setId(id_offre);
          offreService.updatePhoto(o);
-        // this.image.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + o.getImage()));
+         this.image.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + o.getImage()));
         
         
         
@@ -301,6 +303,15 @@ public class DashboardOffreController implements Initializable {
 
         Offre o = new Offre();
 
+              if(reduction.getText().matches("[0-9]+") &&
+                !nom.getText().isEmpty() && 
+                !prix.getText().isEmpty() && 
+                 prix.getText().matches("[0-9]+") && 
+                !description.getText().isEmpty()&&
+                !prix.getText().isEmpty() &&
+                !reduction.getText().isEmpty()){
+            
+            
         o.setNomOffre(nom.getText());
         o.setDescriptionOffre(description.getText());
         o.setPrix(Float.parseFloat(prix.getText()));
@@ -310,6 +321,16 @@ public class DashboardOffreController implements Initializable {
         OffreServices offreService = new OffreServices();
         offreService.update(o);
         FillTable();
-    }
+    }else{
 
+            tray.notification.TrayNotification tr = new tray.notification.TrayNotification();
+            tr.setTitle("Carhabty");
+            tr.setMessage("Erreur de lors du Modification");
+            tr.setNotificationType(NotificationType.ERROR);
+            tr.setAnimationType(AnimationType.SLIDE);
+            tr.showAndDismiss(javafx.util.Duration.seconds(5));
+  
+}
+
+}
 }

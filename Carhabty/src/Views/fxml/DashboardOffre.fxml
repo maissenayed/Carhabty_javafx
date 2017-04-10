@@ -67,7 +67,7 @@
                               <Font size="19.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="image" fitHeight="163.0" fitWidth="186.0" layoutX="208.0" layoutY="262.0" onMouseClicked="#changePhoto" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="image" fitHeight="163.0" fitWidth="186.0" layoutX="201.0" layoutY="303.0" onMouseClicked="#changePhoto" pickOnBounds="true" preserveRatio="true" />
                         <Label layoutX="22.0" layoutY="253.0" text="Prix" textFill="#4b40dd">
                            <font>
                               <Font name="System Bold" size="12.0" />

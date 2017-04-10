@@ -98,6 +98,10 @@ public class ProfileController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        
+        photo.setFitHeight(245);
+        photo.setFitWidth(352);
+        
         /*
         Voice voice;
         VoiceManager vm =  VoiceManager.getInstance();
