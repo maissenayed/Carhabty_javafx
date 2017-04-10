@@ -10,6 +10,7 @@ import io.datafx.controller.FXMLController;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Map.Entry;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -29,11 +30,9 @@ import javax.annotation.PostConstruct;
 @FXMLController(value = "/Views/fxml/StatistiqueOffre.fxml", title = "Statistique des offres - Carhabty")
 public class StatistiqueController {
 
-    
-    
     @FXML
     private AnchorPane anchorPane;
-    
+
     @PostConstruct
     public void init() throws SQLException {
 
@@ -46,12 +45,15 @@ public class StatistiqueController {
         xAxis.setUpperBound(12);
         xAxis.setLowerBound(1);
         xAxis.setTickUnit(1);
-        
+
         yAxis.setLabel("Nombre de Coupons");
         yAxis.setTickUnit(1);
-        yAxis.setUpperBound(30);
+        yAxis.setMinorTickLength(1.0);
+        yAxis.setMinorTickVisible(false);
+        //       yAxis.setUpperBound(30);
         xAxis.setAutoRanging(false);
         yAxis.setAutoRanging(false);
+
         lineChart.setTitle("Statistiques des Ventes");
 
         XYChart.Series series = new XYChart.Series();
@@ -59,36 +61,27 @@ public class StatistiqueController {
         CouponServices cs = new CouponServices();
         //System.out.println(cs.StatistiqueVente());
 
-        
-        
-        
         for (Entry<Integer, Integer> entry : cs.StatistiqueVente().entrySet()) {
             System.out.println("nbcoupon " + entry.getValue());
             System.out.println("mois " + entry.getKey());
 
-            
-             series.getData().add(new XYChart.Data(entry.getKey(),entry.getValue()));
-            
-            
-        }
-       lineChart.getData().addAll(series);
+            series.getData().add(new XYChart.Data(entry.getKey(), entry.getValue()));
 
-        Pane pnLine=new Pane();
+        }
+        lineChart.getData().addAll(series);
+        ((List) series.getData()).stream().forEach(e -> System.out.println(((XYChart.Data< Integer, Integer>) e).getYValue()));
+        double i = ((XYChart.Data< Integer, Integer>) ((List) series.getData()).stream().max((e, f) -> ((XYChart.Data< Integer, Integer>) e).getYValue() - ((XYChart.Data< Integer, Integer>) f).getYValue()).get()).getYValue();
+        yAxis.setUpperBound(i + 1);
+        Pane pnLine = new Pane();
         lineChart.setPrefWidth(1000);
         lineChart.setPrefHeight(500);
         pnLine.getChildren().add(lineChart);
         pnLine.getStyleClass().add("space1");
         pnLine.setLayoutX(180);
         pnLine.setLayoutY(70);
-        
-      
-        
 
         anchorPane.getChildren().add(pnLine);
-        
-        
-        
-        
+
     }
 
 }
