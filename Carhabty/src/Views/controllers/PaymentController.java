@@ -9,6 +9,8 @@ import DataBase.Session;
 import Entities.Coupon;
 import Functions.CurrentOffre;
 import Functions.InputControl;
+import Functions.sendSmsToUser;
+import static Functions.sendSmsToUser.sendSmsToUser;
 import Services.CouponServices;
 import Services.PaymentServices;
 import Services.SMSServices;
@@ -68,7 +70,7 @@ public class PaymentController implements Initializable {
     private Label info, sos;
 
     @FXML
-    void pay(ActionEvent event) throws IOException {
+    void pay(ActionEvent event) throws IOException, Exception {
 
         Card = card.getText();
         Cvc = cvc.getText();
@@ -161,8 +163,8 @@ public class PaymentController implements Initializable {
                     payment.setEnabled(payment.getIdCard(Card).getId());
 
                     dl.setHeading(new Text("Compte Bloqué"));
-                    dl.setBody(new Text("On vous informe que votre compte bancaire a été bloquer"));
-
+                    dl.setBody(new Text("On vous informe que votre compte bancaire a été bloqué"));
+                   sendSmsToUser.sendSmsToUser("+21625532465","");
                     button.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event1) {
