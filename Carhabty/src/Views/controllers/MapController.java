@@ -5,7 +5,6 @@
  */
 package Views.controllers;
 
-import Services.UserServices;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.lynden.gmapsfx.GoogleMapView;
@@ -30,25 +29,16 @@ import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 import io.datafx.controller.FXMLController;
-import java.net.URL;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javax.annotation.PostConstruct;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
 
 /**
  *
@@ -88,6 +78,11 @@ public class MapController implements MapComponentInitializedListener, Direction
     @FXML
     private JFXCheckBox mecanicien;
 
+    
+    @FXML
+    private Label lab;
+    
+    
     @FXML
     private JFXButton valider;
 
@@ -143,7 +138,7 @@ public class MapController implements MapComponentInitializedListener, Direction
 
         toTextField.setVisible(false);
         fromTextField.setVisible(false);
-        // UserServices userService = new UserServices();
+         lab.setStyle("-fx-font: bold 18 System;-fx-text-fill: #34495e;");
 
         lavage.selectedProperty().addListener((obs, oldVal, newVal) -> {
 

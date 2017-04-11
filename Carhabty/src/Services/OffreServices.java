@@ -272,6 +272,35 @@ public class OffreServices implements IService<Offre> {
     }
     
     
+     
+     public int NombreOffre() {
+        int nb = 0;
+        String req = "SELECT COUNT(*) FROM offre";
+        try {
+            PreparedStatement ps = conn.prepareStatement(req);
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next()) {
+
+                nb = resultat.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Problème de comptage");
+            ex.printStackTrace();
+
+        }
+
+        return nb;
+
+    }
+     
+     
+     
+     
+     
+     
+     
     
 
 }

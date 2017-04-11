@@ -6,7 +6,7 @@
 package Views.controllers;
 
 
-import Views.Authentification;
+import Carhabty.Carhabty;
 import com.jfoenix.controls.JFXDrawer;
 import io.datafx.controller.FXMLController;
 import io.datafx.controller.context.ApplicationContext;
@@ -48,7 +48,7 @@ public class DeconnexionController {
         flowContext = (ViewFlowContext) myApplicationContext.getRegisteredObject("flowContext");
         Stage stage = (Stage) flowContext.getRegisteredObject("Stage");
         stage.close();
-        Authentification a=new Authentification();
+        Carhabty a=new Carhabty();
         a.start(new Stage());
     }
 

@@ -20,9 +20,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 /**
  *
  * @author skin
@@ -313,4 +310,33 @@ public class UserServices implements IService<User> {
 
     }
 
+    
+    
+    
+     public int NombreUser() {
+        int nb = 0;
+        String req = "SELECT COUNT(*) FROM utilisateur";
+        try {
+            PreparedStatement ps = conn.prepareStatement(req);
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next()) {
+
+                nb = resultat.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Problème de comptage");
+            ex.printStackTrace();
+
+        }
+
+        return nb;
+
+            }
+    
+    
+    
+    
+    
 }

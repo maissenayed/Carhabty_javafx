@@ -123,8 +123,8 @@ public class ChangeCredentialsController implements Initializable {
      
         
         
-      lab.setStyle("-fx-font: bold 16 System;-fx-text-fill: #00B16A;");
-        
+        lab.setStyle("-fx-font: bold 16 System;-fx-text-fill: #00B16A;");
+         
         username.setText(Session.actualUser.getUsername());
         email.setText(Session.actualUser.getEmail());
         nom.setText(Session.actualUser.getNom());

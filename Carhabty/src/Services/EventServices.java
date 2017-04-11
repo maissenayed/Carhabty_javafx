@@ -16,113 +16,120 @@ import javafx.collections.ObservableList;
 import DataBase.DataSource;
 import DataBase.Session;
 import java.sql.Connection;
+
 /**
  *
  * @author ASUS
  */
 public class EventServices {
-    
-      private Connection conn;
-     PreparedStatement st ; 
-  
-    
+
+    private Connection conn;
+    PreparedStatement st;
+
     public EventServices() {
-       this.conn = DataSource.getInstance().getConnection();
-       
+        this.conn = DataSource.getInstance().getConnection();
+
     }
-     public void AjouterEvent(Event e)
-    {
-         try {
-            
+
+    public void AjouterEvent(Event e) {
+        try {
+
             String req = "INSERT into event (description,title,address,event_date,user_id) VALUES (?,?,?,?,?)";
-           
+
             st = conn.prepareStatement(req);
-            
-            st.setString(1, e.getDescription()); 
-            st.setString(2, e.getTitle()); 
+
+            st.setString(1, e.getDescription());
+            st.setString(2, e.getTitle());
             st.setString(3, e.getAdresse());
-            st.setString(4, e.getEventDate()); 
+            st.setString(4, e.getEventDate());
             st.setInt(5, Session.actualUser.getId());
-            
+
             st.executeUpdate();
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(EventServices.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-      public ObservableList<Event> RecupererEvent()
-    {
-       
+
+    public ObservableList<Event> RecupererEvent() {
+
         ObservableList<Event> lst = FXCollections.observableArrayList();
         try {
-             
-            String req = "SELECT * FROM `event`" ;
-            
-             st = conn.prepareStatement(req);
-             ResultSet rs = st.executeQuery();
-            while(rs.next())
-            {
-               Event e = new Event(rs.getInt("id"),
-                       rs.getString("description"),
-                       rs.getString("title"),
-                       rs.getString("address"),
-               rs.getString("event_date"));
-               
-               
-               lst.add(e); 
+
+            String req = "SELECT * FROM `event`";
+
+            st = conn.prepareStatement(req);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+                Event e = new Event(rs.getInt("id"),
+                        rs.getString("description"),
+                        rs.getString("title"),
+                        rs.getString("address"),
+                        rs.getString("event_date"));
+
+                lst.add(e);
             }
-            
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(EventServices.class.getName()).log(Level.SEVERE, null, ex);
         }
-      return lst ; 
+        return lst;
     }
-      
-      
-       public void Modifier(Event e)
-     {
-         try {
-             
+
+    public void Modifier(Event e) {
+        try {
+
             String req = "UPDATE  event SET   description = ? ,title = ? , address = ? ,event_date = ? where id= ?";
-           
-             st = conn.prepareStatement(req);
-             
+
+            st = conn.prepareStatement(req);
+
             st.setString(1, e.getDescription());
             st.setString(2, e.getTitle());
             st.setString(3, e.getAdresse());
             st.setString(4, e.getEventDate());
             st.setInt(5, e.getId());
-            
-            
-            
+
             st.executeUpdate();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(EventServices.class.getName()).log(Level.SEVERE, null, ex);
         }
-     }
-       public void Supprimer(int id)
-     {
-     try {
-            
-            String req ="DELETE FROM `event` WHERE id="+id;
-           
+    }
+
+    public void Supprimer(int id) {
+        try {
+
+            String req = "DELETE FROM `event` WHERE id=" + id;
+
             st = conn.prepareStatement(req);
-            
-             
+
             st.executeUpdate();
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(EventServices.class.getName()).log(Level.SEVERE, null, ex);
-        }}
-       
-       
+        }
+    }
 
-    
-      
-    
+    public int NombreEvent() {
+        int nb = 0;
+        String req = "SELECT COUNT(*) FROM event";
+        try {
+            PreparedStatement ps = conn.prepareStatement(req);
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next()) {
+
+                nb = resultat.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Problème de comptage");
+            ex.printStackTrace();
+
+        }
+
+        return nb;
+
+    }
+
 }

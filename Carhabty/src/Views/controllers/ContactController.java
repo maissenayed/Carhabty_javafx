@@ -27,11 +27,10 @@ import tray.notification.NotificationType;
  * @author GARCII
  */
 @FXMLController(value = "/Views/fxml/Contact.fxml", title = "Afficher offre - Carhabty")
-public class ContactController  {
-    
+public class ContactController {
+
     @FXMLApplicationContext
     private ApplicationContext myApplicationContext;
-    
 
     @FXML
     private JFXTextField sujet;
@@ -42,44 +41,33 @@ public class ContactController  {
     @FXML
     private JFXButton envoie;
 
-    
-     @FXML
+    @FXML
     private Label lab;
 
-  
-    
     @PostConstruct
     public void init() {
-        
-          lab.setStyle("-fx-font: bold 25 System;-fx-text-fill: #00B16A;");
-        
-       myApplicationContext = ApplicationContext.getInstance();
+
+        lab.setStyle("-fx-font: bold 25 System;-fx-text-fill: #00B16A;");
+
+        myApplicationContext = ApplicationContext.getInstance();
 
         envoie.setOnAction(e -> {
 
-           myApplicationContext.register("sujet", sujet.getText());
-           myApplicationContext.register("message", message.getText());
+            myApplicationContext.register("sujet", sujet.getText());
+            myApplicationContext.register("message", message.getText());
             Thread mythread = new EmailThread();
-            
+
             mythread.start();
-            
-               tray.notification.TrayNotification tr = new tray.notification.TrayNotification();
+
+            tray.notification.TrayNotification tr = new tray.notification.TrayNotification();
             tr.setTitle("Carhabty");
             tr.setMessage("Votre Message est envoyé avec Succés ");
             tr.setNotificationType(NotificationType.SUCCESS);
             tr.setAnimationType(AnimationType.SLIDE);
             tr.showAndDismiss(javafx.util.Duration.seconds(5));
-            
-            
-            
-            
+
         });
 
     }
-
-    
-       
-
-    
 
 }

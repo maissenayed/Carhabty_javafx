@@ -10,14 +10,14 @@
    <children>
       <JFXButton fx:id="changePassword" layoutX="570.0" layoutY="301.0" onAction="#changePassword" prefHeight="51.0" prefWidth="241.0" style="-fx-background-color: #34495e;" text="change le mot de passe" textFill="WHITE" AnchorPane.rightAnchor="25.0" />
       <JFXButton fx:id="parametreCompte" layoutX="570.0" layoutY="363.0" onAction="#parametreCompte" prefHeight="51.0" prefWidth="241.0" style="-fx-background-color: #34495e;" text="Paramétre du compte" textFill="WHITE" AnchorPane.rightAnchor="25.0" />
-      <Label fx:id="bienvenu" layoutX="112.0" layoutY="39.0" prefHeight="39.0" prefWidth="220.0" textFill="#336e7b">
+      <Label fx:id="bienvenu" layoutX="112.0" layoutY="39.0" prefHeight="39.0" prefWidth="319.0" textFill="#336e7b">
          <font>
             <Font name="System Bold" size="24.0" />
          </font></Label>
       <ImageView fx:id="photo" fitHeight="245.0" fitWidth="352.0" layoutX="449.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="25.0" />
       <JFXButton layoutX="571.0" layoutY="424.0" onAction="#upalod" prefHeight="51.0" prefWidth="241.0" style="-fx-background-color: #34495e;" text="Modifier votre photo" textFill="WHITE" AnchorPane.rightAnchor="25.0" />
       <Label fx:id="lab" layoutX="112.0" layoutY="169.0" text="Label" />
-      <Label fx:id="lab1" layoutX="112.0" layoutY="126.0" text="Label" />
+      <Label fx:id="lab1" layoutX="112.0" layoutY="126.0" prefHeight="17.0" prefWidth="262.0" text="Label" />
       
    </children>
 </AnchorPane>

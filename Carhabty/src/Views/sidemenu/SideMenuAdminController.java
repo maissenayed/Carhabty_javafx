@@ -28,20 +28,40 @@ public class SideMenuAdminController {
 	private Label profile;
 	
         @FXML
-	@ActionTrigger("dashboard")
-	private Label dashboard;
+	@ActionTrigger("count")
+	private Label count;
+            
+          
+        @FXML
+	@ActionTrigger("ListUser")
+	private Label ListUser;
         
-    
+        @FXML
+	@ActionTrigger("ListOffre")
+	private Label ListOffre;
+        
+        @FXML
+	@ActionTrigger("ListEvent")
+	private Label ListEvent;
+        
+        
+        @FXML
+	@ActionTrigger("ListCoupon")
+	private Label ListCoupon;
+        
+       	
+	@FXML
+	private JFXListView<Label> sideList;
+
+        
+        @FXML
+	private JFXListView<Label> subsideList;
+        
         
         @FXML
 	@ActionTrigger("deconnexion")
 	private Label deconnexion;
         
-	
-	
-	@FXML
-	private JFXListView<Label> sideList;
-
 	@PostConstruct
 	public void init() throws FlowException, VetoException {
 		FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
@@ -55,12 +75,37 @@ public class SideMenuAdminController {
 				}			
 			}
 		});
+                
+                subsideList.propagateMouseEventsToParent();
+		subsideList.getSelectionModel().selectedItemProperty().addListener((o,oldVal,newVal)->{
+			if(newVal!=null){
+				try {
+					contentFlowHandler.handle(newVal.getId());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}			
+			}
+		});
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
 		  Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
 
 		
                   bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
-                  bindNodeToController(dashboard, DashboardAdminController.class, contentFlow, contentFlowHandler);                
+                  bindNodeToController(count, DashboardAdminController.class, contentFlow, contentFlowHandler);                
                   bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
+                    bindNodeToController(ListUser, DeconnexionController.class, contentFlow, contentFlowHandler);
+                      bindNodeToController(ListEvent, DeconnexionController.class, contentFlow, contentFlowHandler);
+                        bindNodeToController(ListOffre, DeconnexionController.class, contentFlow, contentFlowHandler);
+                          bindNodeToController(ListUser, DeconnexionController.class, contentFlow, contentFlowHandler);
 
 	}
 

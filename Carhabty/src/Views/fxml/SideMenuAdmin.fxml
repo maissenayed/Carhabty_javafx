@@ -10,8 +10,21 @@
 	</styleClass>
 	<JFXListView  fx:id="sideList">
 		
-                <Label fx:id="profile"> Profile </Label>		
-		<Label fx:id="dashboard"> Tableau de board</Label>
+                <Label fx:id="profile"> Profile </Label>
+                
+                                <JFXListView fx:id="subsideList" styleClass="sublist">
+				<groupnode>
+					<Label styleClass="sub-label">Tableau de board</Label>
+				</groupnode>
+				<Label fx:id="count"> Statistiques Générales</Label>
+				<Label fx:id="ListUser"> Liste des utilisateurs </Label>
+                                <Label fx:id="ListOffre"> Liste des Offres </Label>
+                                <Label fx:id="ListEvent"> Liste des Evénements </Label>
+                                <Label fx:id="ListCoupon"> Liste des Coupons </Label>
+                               
+			</JFXListView>
+                        		
+		
 		<Label fx:id="deconnexion"> Déconnexion </Label>
 		
 	</JFXListView>

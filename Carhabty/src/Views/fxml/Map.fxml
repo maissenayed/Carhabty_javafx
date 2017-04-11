@@ -11,7 +11,7 @@
 <AnchorPane id="AnchorPane" prefHeight="500" prefWidth="750" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <GoogleMapView fx:id="mapView" prefHeight="500.0" prefWidth="400.0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="0.0" />
-      <Label layoutX="23.0" layoutY="14.0" prefHeight="25.0" prefWidth="248.0" text="Localisation des Partenaires" textFill="#336cb2">
+      <Label fx:id="lab" layoutX="23.0" layoutY="14.0" prefHeight="25.0" prefWidth="248.0" text="Localisation des Partenaires" textFill="#336cb2">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
