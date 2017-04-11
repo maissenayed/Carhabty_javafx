@@ -62,9 +62,8 @@ public class PaymentController implements Initializable {
 
     private float prix;
 
-    
     private int compteur = 0;
-    
+
     @FXML
     private Label info, sos;
 
@@ -90,29 +89,44 @@ public class PaymentController implements Initializable {
 
             if (payment.VerifyCredentialsPayment(Card, Cvc, mergeMonthYear)) {
 
-                if(payment.getCardPayment().getEnabled() == 1){
-                
-                
-                id_account = payment.getCardPayment().getIdAccount().getId();
-                prix = CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100);
-                if (payment.Withdraw(prix, id_account)) {
-                    TrayNotification tray = new TrayNotification("Félicitation", "Votre Paiment a été  avec succées", SUCCESS);
-                    tray.showAndWait();
+                if (payment.getCardPayment().getEnabled() == 1) {
 
-                    CouponServices coupon = new CouponServices();
-                    Coupon c = new Coupon();
-                    Random rn = new Random();
-                    int r = rn.nextInt(700 - 400) + 1;
-                    Ref = "RFCC" + r;
-                    c.setReference(Ref);
-                    System.out.println(Ref);
-                    coupon.add(c);
+                    id_account = payment.getCardPayment().getIdAccount().getId();
+                    prix = CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100);
+                    if (payment.Withdraw(prix, id_account)) {
+                        TrayNotification tray = new TrayNotification("Félicitation", "Votre Paiment a été  avec succées", SUCCESS);
+                        tray.showAndWait();
 
-                    pane.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/GenerateCoupon.fxml")));
+                        CouponServices coupon = new CouponServices();
+                        Coupon c = new Coupon();
+                        Random rn = new Random();
+                        int r = rn.nextInt(700 - 400) + 1;
+                        Ref = "RFCC" + r;
+                        c.setReference(Ref);
+                        System.out.println(Ref);
+                        coupon.add(c);
 
+                        pane.getChildren().setAll((StackPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/GenerateCoupon.fxml")));
+
+                    } else {
+                        dl.setHeading(new Text("Erreur"));
+                        dl.setBody(new Text("Votre solde est insuffisant ! Merci de recharger votre compte"));
+
+                        button.setOnAction(new EventHandler<ActionEvent>() {
+                            @Override
+                            public void handle(ActionEvent event1) {
+                                dialog.close();
+                            }
+                        });
+                        dl.setActions(button);
+
+                        dialog.show();
+
+                    }
                 } else {
-                    dl.setHeading(new Text("Erreur"));
-                    dl.setBody(new Text("Votre solde est insuffisant ! Merci de recharger votre compte"));
+
+                    dl.setHeading(new Text("Compte Bloqué"));
+                    dl.setBody(new Text("Votre compte est bloqué contacter votre Banque"));
 
                     button.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
@@ -123,68 +137,45 @@ public class PaymentController implements Initializable {
                     dl.setActions(button);
 
                     dialog.show();
-
-                }
-                } else{
-                
-                      dl.setHeading(new Text("Compte Bloqué"));
-                dl.setBody(new Text("Votre compte est bloqué contacter votre Banque"));
-
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event1) {
-                        dialog.close();
-                    }
-                });
-                dl.setActions(button);
-
-                dialog.show();
                 }
             } else {
 
-              
-              
-                compteur++; 
+                compteur++;
                 System.out.println(compteur);
-                if(payment.BlockAccount(compteur) == 1){
-                
-                dl.setHeading(new Text("Erreur"));
-                dl.setBody(new Text("les informations que vous avez mis sembles incorrectes. Réessayer"));
+                if (payment.BlockAccount(compteur) == 1) {
 
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event1) {
-                        dialog.close();
-                    }
-                });
-                dl.setActions(button);
-                dialog.show();
-                
-                
-                
-                }else{
-                
-                 
-                  
+                    dl.setHeading(new Text("Erreur"));
+                    dl.setBody(new Text("les informations que vous avez mis sembles incorrectes. Réessayer"));
+
+                    button.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event1) {
+                            dialog.close();
+                        }
+                    });
+                    dl.setActions(button);
+                    dialog.show();
+
+                } else {
+
                     payment.setEnabled(payment.getIdCard(Card).getId());
-                    
-                 dl.setHeading(new Text("Compte Bloqué"));
-                 dl.setBody(new Text("On vous informe que votre compte bancaire a été bloquer"));
 
-                 button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event1) {
-                        dialog.close();
-                    }
-                });
-                dl.setActions(button);
+                    dl.setHeading(new Text("Compte Bloqué"));
+                    dl.setBody(new Text("On vous informe que votre compte bancaire a été bloquer"));
 
-                dialog.show();
-                compteur = 0;
-                
-              
+                    button.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event1) {
+                            dialog.close();
+                        }
+                    });
+                    dl.setActions(button);
+
+                    dialog.show();
+                    compteur = 0;
+
                 }
-                
+
             }
 
         } else {
@@ -243,7 +234,7 @@ public class PaymentController implements Initializable {
         UserServices users = new UserServices();
         String societe = users.findById(CurrentOffre.Currento.getUser().getId()).getNomSociete();
 
-        sos.setText("Société : " + societe + "\nPrix à Payer : " +  (CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100)) + "DT");
+        sos.setText("Société : " + societe + "\nPrix à Payer : " + (CurrentOffre.Currento.getPrix() - ((CurrentOffre.Currento.getPrix() * CurrentOffre.Currento.getReduction()) / 100)) + "DT");
         info.setText("-Entrez les informations relatives à votre carte Bancaire\n"
                 + "afin de terminer le processuce de paiement\n"
                 + "-Devise TND");
@@ -253,18 +244,11 @@ public class PaymentController implements Initializable {
 
     }
 
-    
-    
-     @FXML
+    @FXML
     void retour(ActionEvent event) throws IOException {
 
         pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/DetailsOffre.fxml")));
 
-        
-        
     }
-    
-    
-    
-    
+
 }

@@ -194,7 +194,7 @@ public class CouponServices {
                 o.setId(resultSet.getInt("idOffre"));
                 c.setId(resultSet.getInt("id"));
                 
-                c.setDate(((Date)(resultSet.getDate("date"))).toLocalDate());
+                c.setDatee(((Date)(resultSet.getDate("date"))).toLocalDate());
                 
                 c.setReference(resultSet.getString("reference"));
                 c.setAcheteur(u);

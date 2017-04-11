@@ -11,65 +11,21 @@ public class Coupon {
     private int id;
     private LocalDate date;
     private String reference;
-
-    public String getFakeDate() {
-        return fakeDate;
-    }
-
-    public void setFakeDate(String fakeDate) {
-        this.fakeDate = fakeDate;
-    }
-
-    public String getAdresse() {
-        return adresse;
-    }
-
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-
-    public String getOffre() {
-        return offre;
-    }
-
-    public void setOffre(String offre) {
-        this.offre = offre;
-    }
-
-    public String getNomsociete() {
-        return nomsociete;
-    }
-
-    public void setNomsociete(String nomsociete) {
-        this.nomsociete = nomsociete;
-    }
     private User acheteur;
     private Offre offreAchete;
-    private String fakeDate,adresse,offre,nomsociete;
+   
+
+   
+
+    
 
     public Coupon(String reference,LocalDate date) {
         this.date = date;
         this.reference = reference;
     }
 
-    public Coupon(String reference,String fakeDate) {
-        this.fakeDate = fakeDate;
-        this.reference = reference;
-    }
-
-    public Coupon(String reference, String fakeDate, String adresse, String offre, String nomsociete) {
-        this.reference = reference;
-        this.fakeDate = fakeDate;
-        this.adresse = adresse;
-        this.offre = offre;
-        this.nomsociete = nomsociete;
-    }
-    
-    
-    
-    
    
-    
+
     public Coupon(){}
     
     public Coupon(LocalDate date, String reference, User acheteur, Offre offreAchete) {
@@ -92,7 +48,7 @@ public class Coupon {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDatee(LocalDate date) {
         this.date = date;
     }
 
