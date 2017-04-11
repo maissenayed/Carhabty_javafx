@@ -45,6 +45,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
+import javax.annotation.PostConstruct;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 
@@ -53,7 +55,7 @@ import tray.notification.TrayNotification;
  * @author GARCII
  */
 @FXMLController(value = "/Views/fxml/Map.fxml")
-public class MapController implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback {
+public class MapController implements MapComponentInitializedListener, DirectionsServiceCallback {
 
     @FXML
     private GoogleMapView mapView;
@@ -65,11 +67,14 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     private GeocodingService geocodingService;
 
-    private StringProperty address = new SimpleStringProperty();
+    protected StringProperty from = new SimpleStringProperty();
+    protected StringProperty to = new SimpleStringProperty();
 
-    private StringProperty from = new SimpleStringProperty();
+    @FXML
+    protected TextField fromTextField;
 
-    private StringProperty to = new SimpleStringProperty();
+    @FXML
+    protected TextField toTextField;
 
     @FXML
     private CheckBox lavage;
@@ -85,6 +90,8 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     @FXML
     private JFXButton valider;
+
+    private Marker marker;
 
     @Override
     public void mapInitialized() {
@@ -131,84 +138,124 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @PostConstruct
+    public void init() {
 
-        UserServices userService = new UserServices();
+        toTextField.setVisible(false);
+        fromTextField.setVisible(false);
+        // UserServices userService = new UserServices();
 
         lavage.selectedProperty().addListener((obs, oldVal, newVal) -> {
 
             if (lavage.isSelected()) {
-                try {
 
-                    ResultSet set = userService.getListePartenaire();
+                geocodingService.geocode("cité avicenne", (GeocodingResult[] results, GeocoderStatus status) -> {
 
-                    while (set.next()) {
+                    LatLong latLong = null;
 
-                     //   if(set.getString("activite").equals("Lavage"))
-                             set.getString("adresse");
-                       // System.out.println(set.getString("adresse"));
-                        
-                        //geocode
-                        
-           geocodingService.geocode(set.getString("adresse"), (GeocodingResult[] results, GeocoderStatus status) -> {
-            
-            LatLong latLong = null;
-            
-            if( status == GeocoderStatus.ZERO_RESULTS) {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
-                alert.show();
-                return;
-            } else if( results.length > 1 ) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                    if (status == GeocoderStatus.ZERO_RESULTS) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                        alert.show();
+                        return;
+                    } else if (results.length > 1) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                        alert.show();
+                        latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                    } else {
+                        latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                    }
+
+                    //marker
+                    MarkerOptions markerOptions = new MarkerOptions();
+
+                    markerOptions.position(
+                            latLong)
+                            .visible(Boolean.TRUE)
+                            .title("My Marker");
+
+                    marker = new Marker(markerOptions);
+                    List ma = new ArrayList();
+                    ma.add(marker);
+                    map.addMarkers(ma);
+
+                    InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                    infoWindowOptions.content("<h2>Yours car</h2>"
+                    );
+
+                    InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                    fredWilkeInfoWindow.open(map, marker);
+
+                    //  map.setCenter(latLong);
+                });
+
             } else {
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                map.removeMarker(marker);
             }
-            
-            
-            
-            //marker
-            
-             MarkerOptions markerOptions = new MarkerOptions();
-
-                        markerOptions.position(
-                                latLong)
-                                .visible(Boolean.TRUE)
-                                .title("My Marker");
-
-                        Marker marker = new Marker(markerOptions);
-                            List ma = new ArrayList();
-                            ma.add(marker);
-                        map.addMarkers(ma);
-
-                        InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-                        infoWindowOptions.content("<h2>Vous êtes ici</h2>"
-                        );
-
-                        InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
-                        fredWilkeInfoWindow.open(map, marker);
-            
-            
-            ////
-            
-          
-          //  map.setCenter(latLong);
 
         });
-                        
-               }
 
-                } catch (SQLException ex) {
+        autoecole.selectedProperty().addListener((obs, oldVal, newVal) -> {
 
-                }
+            if (autoecole.isSelected()) {
 
+                geocodingService.geocode("tunis", (GeocodingResult[] results, GeocoderStatus status) -> {
+
+                    LatLong latLong = null;
+
+                    if (status == GeocoderStatus.ZERO_RESULTS) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                        alert.show();
+                        return;
+                    } else if (results.length > 1) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                        alert.show();
+                        latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                    } else {
+                        latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                    }
+
+                    //marker
+                    MarkerOptions markerOptions = new MarkerOptions();
+
+                    markerOptions.position(
+                            latLong)
+                            .visible(Boolean.TRUE)
+                            .title("My Marker");
+
+                    marker = new Marker(markerOptions);
+                    List ma = new ArrayList();
+                    ma.add(marker);
+                    map.addMarkers(ma);
+
+                    InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                    infoWindowOptions.content("<h2>Lavage Totale</h2>"
+                    );
+
+                    InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                    fredWilkeInfoWindow.open(map, marker);
+
+                    //  map.setCenter(latLong);
+                });
+
+            } else {
+                map.removeMarker(marker);
             }
 
         });
 
         mapView.addMapInializedListener(this);
+        toTextField.setText("soussa");
+        fromTextField.setText("tunis");
+
+        to.bindBidirectional(toTextField.textProperty());
+        from.bindBidirectional(fromTextField.textProperty());
+
+        valider.setOnAction(e -> {
+
+            DirectionsRequest request = new DirectionsRequest(from.get(), to.get(), TravelModes.DRIVING);
+            directionsService.getRoute(request, this, new DirectionsRenderer(true, mapView.getMap(), directionsPane));
+
+        });
 
     }
 
