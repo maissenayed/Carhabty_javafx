@@ -4,28 +4,96 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.StackPane?>
 <?import java.lang.String?>
+<?import de.jensd.fx.fontawesome.Icon?>
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
-	<styleClass>	
-		<String fx:value="side-menu" />
-	</styleClass>
-	<JFXListView  fx:id="sideList">
+    <styleClass>	
+        <String fx:value="side-menu" />
+    </styleClass>
+    <JFXListView  fx:id="sideList">
 		
-                <Label fx:id="profile"> Profile </Label>
+        <Label fx:id="profile"> Profile 
+         <graphic>
+                        <Icon awesomeIcon="USER" size="1em" style=";"
+                              styleClass="option-jfx-list-view-icon" />
+                    </graphic>
+        
+        
+        
+        </Label>
                 
-                                <JFXListView fx:id="subsideList" styleClass="sublist">
-				<groupnode>
-					<Label styleClass="sub-label">Tableau de board</Label>
-				</groupnode>
-				<Label fx:id="count"> Statistiques Générales</Label>
-				<Label fx:id="ListUser"> Liste des utilisateurs </Label>
-                                <Label fx:id="ListOffre"> Liste des Offres </Label>
-                                <Label fx:id="ListEvent"> Liste des Evénements </Label>
-                                <Label fx:id="ListCoupon"> Liste des Coupons </Label>
+        <JFXListView fx:id="subsideList" styleClass="sublist">
+            <groupnode>
+                <Label styleClass="sub-label">Tableau de board
+                                        
+                    <graphic>
+                        <Icon awesomeIcon="COGS" size="1em" style=";"
+                              styleClass="option-jfx-list-view-icon" />
+                    </graphic>
+                                        
+                                        
+                </Label>
+            </groupnode>
+            <Label fx:id="count"> Statistiques Générales
+                    
+                <graphic>
+                        <Icon awesomeIcon="SIGNAL" size="1em" style=";"
+                              styleClass="option-jfx-list-view-icon" />
+                    </graphic>
+                
+                
+                
+                            
+                                
+            </Label>
+            <Label fx:id="ListUser"> Liste des utilisateurs 
+                       <graphic>
+                        <Icon awesomeIcon="LIST" size="1em" style=";"
+                              styleClass="option-jfx-list-view-icon" />
+                    </graphic>         
+                                
+                                
+                                
+            </Label>
+            <Label fx:id="ListOffre"> Liste des Offres 
+                                
+                             <graphic>
+                        <Icon awesomeIcon="LIST" size="1em" style=";"
+                              styleClass="option-jfx-list-view-icon" />
+                    </graphic>   
+                                
+            </Label>
+            <Label fx:id="ListEvent"> Liste des Evénements 
+                                
+                               <graphic>
+                        <Icon awesomeIcon="LIST" size="1em" style=";"
+                              styleClass="option-jfx-list-view-icon" />
+                    </graphic> 
+                                
+                                
+            </Label>
+            <Label fx:id="ListCoupon"> Liste des Coupons
+                                    
+                                    
+                              <graphic>
+                        <Icon awesomeIcon="LIST" size="1em" style=";"
+                              styleClass="option-jfx-list-view-icon" />
+                    </graphic>      
+                                    
+                                    
+            </Label>
                                
-			</JFXListView>
+        </JFXListView>
                         		
 		
-		<Label fx:id="deconnexion"> Déconnexion </Label>
+        <Label fx:id="deconnexion"> Déconnexion 
+        
+        
+         <graphic>
+                        <Icon awesomeIcon="REPLY" size="1em" style=";"
+                              styleClass="option-jfx-list-view-icon" />
+                    </graphic>
+        
+        </Label>
 		
-	</JFXListView>
+    </JFXListView>
 </StackPane>

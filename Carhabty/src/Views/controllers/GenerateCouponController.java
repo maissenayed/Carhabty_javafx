@@ -106,7 +106,7 @@ public class GenerateCouponController implements Initializable {
         TrayNotification tray = new TrayNotification("Félicitation", "Votre Coupon a été Générer avec succées\nvous trouvez votre coupn en version PDF dans votre bureau", SUCCESS);
         tray.showAndWait();
 
-        pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/MyCouponList.fxml")));
+        //pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/MyCouponList.fxml")));
     }
 
     @Override

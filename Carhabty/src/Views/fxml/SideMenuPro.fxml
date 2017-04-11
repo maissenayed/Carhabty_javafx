@@ -4,17 +4,64 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.StackPane?>
 <?import java.lang.String?>
+<?import de.jensd.fx.fontawesome.Icon?>
 <StackPane fx:id="root" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2">
 	<styleClass>	
 		<String fx:value="side-menu" />
 	</styleClass>
 	<JFXListView  fx:id="sideList">
 		
-                <Label fx:id="profile"> Profile </Label>		
-		<Label fx:id="dashboard"> Tableau de board offres </Label>
-		<Label fx:id="newoffre"> Ajouter une offre </Label>
-		<Label fx:id="stat"> statistique des ventes </Label>
-		<Label fx:id="deconnexion"> Déconnexion </Label>
+                <Label fx:id="profile"> Profile 
+                
+                 <graphic>
+			<Icon awesomeIcon="USER" size="1em" style=";"
+				styleClass="option-jfx-list-view-icon" />
+		</graphic>
+                
+                
+                
+                </Label>		
+		<Label fx:id="dashboard"> Tableau de board offres
+                    
+                      <graphic>
+			<Icon awesomeIcon="COGS" size="1em" style=";"
+				styleClass="option-jfx-list-view-icon" />
+		</graphic>
+                    
+                    
+                    
+                    
+                </Label>
+		<Label fx:id="newoffre"> Ajouter une offre 
+                
+                <graphic>
+			<Icon awesomeIcon="PLUS" size="1em" style=";"
+				styleClass="option-jfx-list-view-icon" />
+		</graphic>
+                    
+                
+                
+                </Label>
+		<Label fx:id="stat"> statistique des ventes
+                    
+                     <graphic>
+			<Icon awesomeIcon="SIGNAL" size="1em" style=";"
+				styleClass="option-jfx-list-view-icon" />
+		</graphic>
+                    
+                    
+                    
+                    
+                </Label>
+		<Label fx:id="deconnexion"> Déconnexion 
+                
+                <graphic>
+			<Icon awesomeIcon="REPLY" size="1em" style=";"
+				styleClass="option-jfx-list-view-icon" />
+		</graphic>
+                
+                
+                </Label>
 		
 	</JFXListView>
 </StackPane>

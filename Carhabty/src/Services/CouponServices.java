@@ -12,14 +12,15 @@ import Entities.Offre;
 import Entities.User;
 import Functions.CurrentOffre;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-
-
 
 /**
  *
@@ -101,7 +102,7 @@ public class CouponServices {
             while (resultat.next()) {
 
                 c.setId(resultat.getInt("id"));
-             
+
                 c.setReference(resultat.getString("reference"));
 
                 Offre o = new Offre();
@@ -121,68 +122,92 @@ public class CouponServices {
         return c;
 
     }
-    
-    
-        
-         public ResultSet MyListCoupon() throws SQLException {
-        
-         PreparedStatement ps = conn.prepareStatement("SELECT * FROM coupon WHERE idUser = ? ");
-         ps.setInt(1, Session.getActualUser().getId());
-         return ps.executeQuery();
-        
+
+    public ResultSet MyListCoupon() throws SQLException {
+
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM coupon WHERE idUser = ? ");
+        ps.setInt(1, Session.getActualUser().getId());
+        return ps.executeQuery();
+
     }
-        
-     
-        public Map<Integer,Integer> StatistiqueVente() throws SQLException {
-       
-         PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) AS NbCoupon, MONTH(coupon.date) AS Mois "
-                 + "FROM `coupon` INNER JOIN offre ON offre.id=coupon.idOffre WHERE"
-                 + " offre.idUser="+Session.actualUser.getId()+" GROUP BY MONTH(coupon.date)");
-        
-         ResultSet result = ps.executeQuery();
-         
-          Map<Integer,Integer> map = new HashMap<>();
-         
-         
-         while(result.next()){
-         
-             map.put(result.getInt("Mois"),result.getInt("NbCoupon"));
-         
-         }
-        
-        
-         
-          return map;
-         
-        
-        
+
+    public Map<Integer, Integer> StatistiqueVente() throws SQLException {
+
+        PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) AS NbCoupon, MONTH(coupon.date) AS Mois "
+                + "FROM `coupon` INNER JOIN offre ON offre.id=coupon.idOffre WHERE"
+                + " offre.idUser=" + Session.actualUser.getId() + " GROUP BY MONTH(coupon.date)");
+
+        ResultSet result = ps.executeQuery();
+
+        Map<Integer, Integer> map = new HashMap<>();
+
+        while (result.next()) {
+
+            map.put(result.getInt("Mois"), result.getInt("NbCoupon"));
+
+        }
+
+        return map;
+
     }
-        
-    
-    public int NumberOfBuyer(int id){
-        
+
+    public int NumberOfBuyer(int id) {
+
         int nb = 0;
-       
-         
-        try { 
-           PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM coupon WHERE idOffre = ? ");
-           ps.setInt(1,id);
-           ResultSet resultat = ps.executeQuery();
+
+        try {
+            PreparedStatement ps = conn.prepareStatement("SELECT COUNT(*) FROM coupon WHERE idOffre = ? ");
+            ps.setInt(1, id);
+            ResultSet resultat = ps.executeQuery();
             while (resultat.next()) {
 
                 nb = resultat.getInt(1);
 
             }
-        
-           
-    
-    
-     } catch (SQLException ex) {
+
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
-    
-   return nb;}
-    
-    
+
+        return nb;
+    }
+
+    public List<Coupon> FindALL() throws SQLException {
+
+        List<Coupon> allcoupn = new ArrayList<>();
+        Coupon c = null;
+        User u = null;
+        Offre o = null;
+
+        try {
+
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM coupon WHERE idUser = ? ");
+            ps.setInt(1, Session.getActualUser().getId());
+            ResultSet resultSet = ps.executeQuery();
+
+            while (resultSet.next()) {
+
+                u = new User();
+                o = new Offre();
+                c = new Coupon();
+                u.setId(resultSet.getInt("idUser"));
+                o.setId(resultSet.getInt("idOffre"));
+                c.setId(resultSet.getInt("id"));
+                
+                c.setDate(((Date)(resultSet.getDate("date"))).toLocalDate());
+                
+                c.setReference(resultSet.getString("reference"));
+                c.setAcheteur(u);
+                c.setOffreAchete(o);
+                allcoupn.add(c);
+             
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+
+        }
+
+    return allcoupn;}
 
 }

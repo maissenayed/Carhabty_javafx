@@ -6,27 +6,14 @@
 package Views.controllers;
 
 import Entities.Coupon;
-import Entities.Offre;
 import Services.CouponServices;
-import Services.OffreServices;
-import Services.UserServices;
 import io.datafx.controller.FXMLController;
-import java.net.URL;
-import java.sql.Date;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.util.Callback;
 import javax.annotation.PostConstruct;
 
 /**
@@ -35,116 +22,45 @@ import javax.annotation.PostConstruct;
  * @author GARCII
  */
 @FXMLController(value = "/Views/fxml/MyCouponList.fxml", title = "Afficher offre - Carhabty")
-public class MyCouponListController{
+public class MyCouponListController {
 
+    @FXML
+    private ListView Liste;
+    
     
     
      @FXML
     private Label lab;
-
-    @FXML
-    private TableView table;
-
-    @FXML
-    private TableColumn offreColumn;
-
-    @FXML
-    private TableColumn partenaireColumn;
-
-    @FXML
-    private TableColumn adresseColumn;
-
-    @FXML
-    private TableColumn dateColumn;
-
-    @FXML
-    private TableColumn refColumn;
     
-     String adresse,nomoffre,nomsociete;
     
     
     @PostConstruct
-    public void init() {
-        
-         lab.setStyle("-fx-font: bold 25 System;-fx-text-fill: #00B16A;");
-        
-        
-         try {
-             FillTable();
-         } catch (SQLException ex) {
-             Logger.getLogger(MyCouponListController.class.getName()).log(Level.SEVERE, null, ex);
-         }
-        
-        
-        
-        
-        
-    } 
+    public void init() throws SQLException{
     
-    
-    private void FillTable() throws SQLException {
-
-        CouponServices CoupnService = new CouponServices();
+       lab.setStyle("-fx-font: bold 24 System;-fx-text-fill: #34495e;");
         
         
-        ObservableList<Coupon> data = FXCollections.observableArrayList((Coupon) null);
-        ResultSet set;
-      
-        
-        set = CoupnService.MyListCoupon();
+         CouponServices coupon = new CouponServices();
 
-        while (set.next()) {
+        Liste.getItems().setAll(coupon.FindALL());
 
-              
-            
-            
-            int id_offre = set.getInt("idOffre");
+        Liste.setCellFactory(new Callback<ListView<Coupon>, ListCell<Coupon>>() {
+           @Override
+           public ListCell<Coupon> call(ListView<Coupon> param) {
+               return new CouponFactory();
+           }
+
            
-            OffreServices offreservice = new OffreServices();
-             nomoffre = offreservice.findById(id_offre).getNomOffre();
-            int id_user = offreservice.findById(id_offre).getUser().getId();
-           
-            UserServices userservice = new UserServices();
-             adresse = userservice.findById(id_user).getAdresse();
-             nomsociete = userservice.findById(id_user).getNomSociete();
-            System.out.println("ad"+adresse+"nom"+nomsociete+"nomof"+nomoffre);
-            Coupon c = new Coupon(set.getString("reference"),set.getDate("date").toString(),adresse,nomoffre, nomsociete);
-          
-             data.add(c);
-        }
 
       
-
-        offreColumn.setCellValueFactory(
-                new PropertyValueFactory<Coupon, String>("offre")
-        );
-        
-        partenaireColumn.setCellValueFactory(
-                new PropertyValueFactory<Coupon, String>("nomsociete")
-        );
-        
-        adresseColumn.setCellValueFactory(
-                new PropertyValueFactory<Coupon, String>("adresse")
-        );
-        
-        dateColumn.setCellValueFactory(
-                new PropertyValueFactory<Coupon, String>("fakeDate")
-        );
-        
-        refColumn.setCellValueFactory(
-                new PropertyValueFactory<Coupon, String>("reference")
-        );
-      
         
         
-        
-        
-
-        table.setItems(data);
-  
-    }
-    
-  
     
     
+    });
+    
+    
+    
+    
+}
 }
