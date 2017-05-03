@@ -5,7 +5,6 @@
  */
 package Views.controllers;
 
-import Services.UserServices;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.lynden.gmapsfx.GoogleMapView;
@@ -30,31 +29,27 @@ import com.lynden.gmapsfx.service.geocoding.GeocoderStatus;
 import com.lynden.gmapsfx.service.geocoding.GeocodingResult;
 import com.lynden.gmapsfx.service.geocoding.GeocodingService;
 import io.datafx.controller.FXMLController;
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.util.ArrayList;
+import java.util.List;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
-import tray.notification.NotificationType;
-import tray.notification.TrayNotification;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javax.annotation.PostConstruct;
 
 /**
  *
  * @author GARCII
  */
 @FXMLController(value = "/Views/fxml/Map.fxml")
-public class MapController implements Initializable, MapComponentInitializedListener, DirectionsServiceCallback {
+public class MapController implements MapComponentInitializedListener, DirectionsServiceCallback {
 
     @FXML
     private GoogleMapView mapView;
-    /*
-    @FXML
-    private TextField addressTextField;
-     */
+
     protected DirectionsService directionsService;
     protected DirectionsPane directionsPane;
 
@@ -62,11 +57,14 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     private GeocodingService geocodingService;
 
-    private StringProperty address = new SimpleStringProperty();
+    protected StringProperty from = new SimpleStringProperty();
+    protected StringProperty to = new SimpleStringProperty();
 
-    private StringProperty from = new SimpleStringProperty("Tunis");
+    @FXML
+    protected TextField fromTextField;
 
-    private StringProperty to = new SimpleStringProperty("Beja");
+    @FXML
+    protected TextField toTextField;
 
     @FXML
     private CheckBox lavage;
@@ -80,10 +78,15 @@ public class MapController implements Initializable, MapComponentInitializedList
     @FXML
     private JFXCheckBox mecanicien;
 
+    
+    @FXML
+    private Label lab;
+    
+    
     @FXML
     private JFXButton valider;
 
-    private String ad;
+    private Marker marker;
 
     @Override
     public void mapInitialized() {
@@ -108,7 +111,7 @@ public class MapController implements Initializable, MapComponentInitializedList
         MarkerOptions markerOptions = new MarkerOptions();
 
         markerOptions.position(
-                new LatLong(47.6, -122.3))
+                new LatLong(36.899489, 10.189467))
                 .visible(Boolean.TRUE)
                 .title("My Marker");
 
@@ -117,56 +120,12 @@ public class MapController implements Initializable, MapComponentInitializedList
         map.addMarker(marker);
 
         InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
-        infoWindowOptions.content("<h2>Nom Partenaire</h2>"
-                + "variable");
+        infoWindowOptions.content("<h2>Vous êtes ici</h2>"
+        );
 
         InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
         fredWilkeInfoWindow.open(map, marker);
 
-    }
-
-    @FXML
-    public void RechercheAdresse(ActionEvent event) {
-
-        DirectionsRequest request = new DirectionsRequest(from.get(), to.get(), TravelModes.DRIVING);
-        directionsService.getRoute(request, this, new DirectionsRenderer(true, mapView.getMap(), directionsPane));
-
-        if (directionsService != null) {
-            MapOptions options = new MapOptions();
-
-            options.center(new LatLong(47.606189, -122.335842))
-                    .zoomControl(true)
-                    .zoom(12)
-                    .overviewMapControl(false)
-                    .mapType(MapTypeIdEnum.ROADMAP);
-
-            GoogleMap map = mapView.createMap(options);
-            directionsService = new DirectionsService();
-            directionsPane = mapView.getDirec();
-            DirectionsRequest request1 = new DirectionsRequest(from.get(), to.get(), TravelModes.DRIVING);
-            directionsService.getRoute(request1, this, new DirectionsRenderer(true, mapView.getMap(), directionsPane));
-
-        }
-
-        geocodingService.geocode(address.get(), (GeocodingResult[] results, GeocoderStatus status) -> {
-
-            LatLong latLong = null;
-
-            if (status == GeocoderStatus.ZERO_RESULTS) {
-                TrayNotification tray = new TrayNotification("Warning", "Résultat introuvable", NotificationType.ERROR);
-                tray.showAndWait();
-                return;
-            } else if (results.length > 1) {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
-                alert.show();
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-            } else {
-                latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
-            }
-
-            map.setCenter(latLong);
-
-        });
     }
 
     @Override
@@ -174,26 +133,24 @@ public class MapController implements Initializable, MapComponentInitializedList
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    @PostConstruct
+    public void init() {
 
-        UserServices userService = new UserServices();
-         userService.getListePartenaire().forEach((t) -> {
-            ad = t.getAdresse();
-
-        });
+        toTextField.setVisible(false);
+        fromTextField.setVisible(false);
+         lab.setStyle("-fx-font: bold 18 System;-fx-text-fill: #34495e;");
 
         lavage.selectedProperty().addListener((obs, oldVal, newVal) -> {
 
             if (lavage.isSelected()) {
 
-                geocodingService.geocode(ad, (GeocodingResult[] results, GeocoderStatus status) -> {
+                geocodingService.geocode("cité avicenne", (GeocodingResult[] results, GeocoderStatus status) -> {
 
                     LatLong latLong = null;
 
                     if (status == GeocoderStatus.ZERO_RESULTS) {
-                        TrayNotification tray = new TrayNotification("Warning", "Résultat introuvable", NotificationType.ERROR);
-                        tray.showAndWait();
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                        alert.show();
                         return;
                     } else if (results.length > 1) {
                         Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
@@ -202,6 +159,8 @@ public class MapController implements Initializable, MapComponentInitializedList
                     } else {
                         latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
                     }
+
+                    //marker
                     MarkerOptions markerOptions = new MarkerOptions();
 
                     markerOptions.position(
@@ -209,46 +168,90 @@ public class MapController implements Initializable, MapComponentInitializedList
                             .visible(Boolean.TRUE)
                             .title("My Marker");
 
-                    Marker marker = new Marker(markerOptions);
+                    marker = new Marker(markerOptions);
+                    List ma = new ArrayList();
+                    ma.add(marker);
+                    map.addMarkers(ma);
 
-                    map.addMarker(marker);
-                    map.setCenter(latLong);
+                    InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                    infoWindowOptions.content("<h2>Yours car</h2>"
+                    );
 
+                    InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                    fredWilkeInfoWindow.open(map, marker);
+
+                    //  map.setCenter(latLong);
                 });
 
+            } else {
+                map.removeMarker(marker);
             }
 
         });
 
-        /*
+        autoecole.selectedProperty().addListener((obs, oldVal, newVal) -> {
+
+            if (autoecole.isSelected()) {
+
+                geocodingService.geocode("tunis", (GeocodingResult[] results, GeocoderStatus status) -> {
+
+                    LatLong latLong = null;
+
+                    if (status == GeocoderStatus.ZERO_RESULTS) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR, "No matching address found");
+                        alert.show();
+                        return;
+                    } else if (results.length > 1) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Multiple results found, showing the first one.");
+                        alert.show();
+                        latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                    } else {
+                        latLong = new LatLong(results[0].getGeometry().getLocation().getLatitude(), results[0].getGeometry().getLocation().getLongitude());
+                    }
+
+                    //marker
+                    MarkerOptions markerOptions = new MarkerOptions();
+
+                    markerOptions.position(
+                            latLong)
+                            .visible(Boolean.TRUE)
+                            .title("My Marker");
+
+                    marker = new Marker(markerOptions);
+                    List ma = new ArrayList();
+                    ma.add(marker);
+                    map.addMarkers(ma);
+
+                    InfoWindowOptions infoWindowOptions = new InfoWindowOptions();
+                    infoWindowOptions.content("<h2>Lavage Totale</h2>"
+                    );
+
+                    InfoWindow fredWilkeInfoWindow = new InfoWindow(infoWindowOptions);
+                    fredWilkeInfoWindow.open(map, marker);
+
+                    //  map.setCenter(latLong);
+                });
+
+            } else {
+                map.removeMarker(marker);
+            }
+
+        });
+
+        mapView.addMapInializedListener(this);
+        toTextField.setText("soussa");
+        fromTextField.setText("tunis");
+
         to.bindBidirectional(toTextField.textProperty());
         from.bindBidirectional(fromTextField.textProperty());
-         */
-        mapView.addMapInializedListener(this);
-        // address.bind(addressTextField.textProperty());
-    }
 
-    @FXML
-    void valider(ActionEvent event) {
-        DirectionsRequest request = new DirectionsRequest(to.get(),from.get(), TravelModes.DRIVING);
-        directionsService.getRoute(request, this, new DirectionsRenderer(true, mapView.getMap(), directionsPane));
+        valider.setOnAction(e -> {
 
-        if (directionsService != null) {
-            MapOptions options = new MapOptions();
+            DirectionsRequest request = new DirectionsRequest(from.get(), to.get(), TravelModes.DRIVING);
+            directionsService.getRoute(request, this, new DirectionsRenderer(true, mapView.getMap(), directionsPane));
 
-            options.center(new LatLong(47.606189, -122.335842))
-                    .zoomControl(true)
-                    .zoom(12)
-                    .overviewMapControl(false)
-                    .mapType(MapTypeIdEnum.ROADMAP);
+        });
 
-            GoogleMap map = mapView.createMap(options);
-            directionsService = new DirectionsService();
-            directionsPane = mapView.getDirec();
-            DirectionsRequest request1 = new DirectionsRequest(from.get(), to.get(), TravelModes.DRIVING);
-            directionsService.getRoute(request1, this, new DirectionsRenderer(true, mapView.getMap(), directionsPane));
-
-        }
     }
 
 }

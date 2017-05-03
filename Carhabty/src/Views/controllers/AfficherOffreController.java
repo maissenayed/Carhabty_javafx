@@ -12,17 +12,15 @@ import io.datafx.controller.FXMLController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 
 /**
@@ -37,6 +35,9 @@ public class AfficherOffreController implements Initializable {
     
     @FXML
     private AnchorPane pane;
+    
+     @FXML
+    private Label lab;
 
     
     
@@ -45,6 +46,9 @@ public class AfficherOffreController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        
+        lab.setStyle("-fx-font: bold 24 System;-fx-text-fill: #34495e;");
+        
         OffreServices offreService = new OffreServices();
 
         Liste.getItems().setAll(offreService.findALL());

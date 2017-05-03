@@ -5,30 +5,62 @@
  */
 package Views.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import Entities.Coupon;
+import Services.CouponServices;
+import io.datafx.controller.FXMLController;
+import java.sql.SQLException;
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.util.Callback;
+import javax.annotation.PostConstruct;
 
 /**
  * FXML Controller class
  *
  * @author GARCII
  */
-public class MyCouponListController implements Initializable {
+@FXMLController(value = "/Views/fxml/MyCouponList.fxml", title = "Afficher offre - Carhabty")
+public class MyCouponListController {
 
-    /**
-     * Initializes the controller class.
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-        
-        
-        
-        
-        
-        
-        
-    }    
+    @FXML
+    private ListView Liste;
     
+    
+    
+     @FXML
+    private Label lab;
+    
+    
+    
+    @PostConstruct
+    public void init() throws SQLException{
+    
+       lab.setStyle("-fx-font: bold 24 System;-fx-text-fill: #34495e;");
+        
+        
+         CouponServices coupon = new CouponServices();
+
+        Liste.getItems().setAll(coupon.FindALL());
+
+        Liste.setCellFactory(new Callback<ListView<Coupon>, ListCell<Coupon>>() {
+           @Override
+           public ListCell<Coupon> call(ListView<Coupon> param) {
+               return new CouponFactory();
+           }
+
+           
+
+      
+        
+        
+    
+    
+    });
+    
+    
+    
+    
+}
 }

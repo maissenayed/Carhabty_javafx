@@ -15,8 +15,11 @@ public class Card {
     private String numCard;
     private String cvc;
     private String expDate;
+    private int enabled;
     private Account idAccount;
 
+    
+    
     
     
     
@@ -28,6 +31,16 @@ public class Card {
         this.expDate = expDate;
     }
 
+    
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
+    
+    
     public int getId() {
         return id;
     }

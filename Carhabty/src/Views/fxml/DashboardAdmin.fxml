@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1">
-    
+<AnchorPane id="AnchorPane" prefHeight="535.0" prefWidth="1062.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="lab" layoutX="462.0" layoutY="58.0" prefHeight="45.0" prefWidth="379.0" text="Tableau de Board Administrateur" />
+      <Label fx:id="lab2" layoutX="413.0" layoutY="237.0" text="Nombre des offres" />
+      <Label fx:id="lab1" layoutX="178.0" layoutY="237.0" text="Nombre des coupons" />
+      <Label fx:id="lab3" layoutX="630.0" layoutY="237.0" text="Nombre des Evénements" />
+      <Label fx:id="lab4" layoutX="888.0" layoutY="237.0" text="Nombre des utilisateurs" />
+      <Label fx:id="lab5" layoutX="252.0" layoutY="304.0" text="Label" />
+      <Label fx:id="lab6" layoutX="476.0" layoutY="304.0" text="Label" />
+      <Label fx:id="lab7" layoutX="715.0" layoutY="304.0" text="Label" />
+      <Label fx:id="lab8" layoutX="966.0" layoutY="304.0" text="Label" />
+   </children>
 </AnchorPane>

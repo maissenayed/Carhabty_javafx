@@ -9,16 +9,26 @@ import java.time.LocalDateTime;
 public class Coupon {
 
     private int id;
-    private LocalDateTime date;
+    private LocalDate date;
     private String reference;
     private User acheteur;
     private Offre offreAchete;
+   
+
+   
 
     
-    
+
+    public Coupon(String reference,LocalDate date) {
+        this.date = date;
+        this.reference = reference;
+    }
+
+   
+
     public Coupon(){}
     
-    public Coupon(LocalDateTime date, String reference, User acheteur, Offre offreAchete) {
+    public Coupon(LocalDate date, String reference, User acheteur, Offre offreAchete) {
         this.date = date;
         this.reference = reference;
         this.acheteur = acheteur;
@@ -34,11 +44,11 @@ public class Coupon {
     }
 
     
-    public LocalDateTime getDate() {
+    public LocalDate getDatee() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDatee(LocalDate date) {
         this.date = date;
     }
 

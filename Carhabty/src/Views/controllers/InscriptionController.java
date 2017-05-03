@@ -66,7 +66,7 @@ public class InscriptionController implements Initializable {
     @FXML
     private Label lab;
 
-    
+     public String rolePartenaire="a:1:{i:0;s:15:\"ROLE_PARTENAIRE\";}";
      @ActionHandler
     protected FlowActionHandler actionHandler;
 
@@ -84,7 +84,12 @@ public class InscriptionController implements Initializable {
         u.setEmail(email.getText());
         u.setUsername(username.getText());
         u.setTel(telephone.getText());
-
+        u.setActivite((String)activite.getValue());
+        u.setNomSociete(nomsociete.getText());
+        u.setSiret(SIRET.getText());
+        u.setRole(rolePartenaire);
+        
+        
         UserServices userService = new UserServices();
         userService.add(u);
 
@@ -95,7 +100,7 @@ public class InscriptionController implements Initializable {
         void back(ActionEvent event) throws IOException, VetoException, FlowException {
 
         actionHandler.navigate(AuthentificationController.class);
-        // pane.getChildren().setAll( (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/AjouterUser.fxml")));
+     
         
     }
     

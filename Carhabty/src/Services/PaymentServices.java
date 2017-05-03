@@ -82,8 +82,10 @@ public class PaymentServices {
                 ac.setId(resultat.getInt("account_id"));
 
                 c = new Card();
+                
                 c.setIdAccount(ac);
                 c.setId(resultat.getInt("id"));
+                c.setEnabled(resultat.getInt("enabled"));
                 
             }
 
@@ -102,7 +104,7 @@ public class PaymentServices {
 
         
         
-         float solde = 0;
+        float solde = 0;
         
         String req1 = "SELECT * FROM account WHERE id = ? ";
          try {
@@ -127,6 +129,9 @@ public class PaymentServices {
         String req = "UPDATE account SET solde = ? WHERE id = ? ";
 
         
+        
+            if(solde >= price){
+                
              solde = solde - price ;
            
         try {
@@ -145,11 +150,97 @@ public class PaymentServices {
             ex.printStackTrace();
 
         }
-
-        return false;
-
+            }else{
+            
+                System.out.println("votre solde est insuffisant");
+                return false;
+            }
+        
+  return false;
     }
 
+    
+    
+   
+    public boolean setEnabled(int id){
+    
+      String req = "UPDATE card SET enabled = 0 WHERE id = ? ";
+    
+      try {
+
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setInt(1,id);
+            ps.executeUpdate();
+            System.out.println("enabled set 0");
+            return true;
+            
+            
+            
+        } catch (SQLException ex) {
+             System.out.println("enabled not working");
+            ex.printStackTrace();
+            return false;
+
+        }
+    }
+    
+    
+    public int BlockAccount(int compteur){
+  
+        if(compteur < 3){
+            
+            
+          
+            
+            return 1;
+           
+        
+        
+        
+        
+        
+        }return 0;}
+    
+    
+    
+    public Card getIdCard(String cardNumber){
+    
+      Card c = null;
+        String req = "SELECT id FROM card WHERE num_card = ? ";
+
+        try {
+
+            PreparedStatement ps = conn.prepareStatement(req);
+            ps.setString(1, cardNumber);
+
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next()) {
+
+              
+
+                c = new Card();
+                c.setId(resultat.getInt("id"));
+                
+                
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            System.out.println("pas de card");
+        }
+
+       
+
+        return c;
+
+    
+    
+    
+    
+    
+    }
+    
+    
     public List<History> CheckHistroy() {
 
         List<History> history = null;

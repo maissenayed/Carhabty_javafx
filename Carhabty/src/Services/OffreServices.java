@@ -107,7 +107,7 @@ public class OffreServices implements IService<Offre> {
         User u;
 
         try {
-            String req = "SELECT * FROM offre";
+            String req = "SELECT * FROM offre WHERE date_expiration_offre > CURRENT_DATE()";
 
             Statement stm = conn.createStatement();
             ResultSet ps = stm.executeQuery(req);
@@ -135,6 +135,46 @@ public class OffreServices implements IService<Offre> {
 
     }
 
+    
+    public List<Offre> findALLOld() {
+
+        ArrayList<Offre> offres = new ArrayList<>();
+        Offre o;
+        User u;
+
+        try {
+            String req = "SELECT * FROM offre WHERE date_expiration_offre < CURRENT_DATE()";
+
+            Statement stm = conn.createStatement();
+            ResultSet ps = stm.executeQuery(req);
+
+            while (ps.next()) {
+                u = new User();
+                o = new Offre();
+                o.setId(ps.getInt(1));
+                o.setNomOffre(ps.getString(2));
+                o.setDescriptionOffre(ps.getString(3));
+                o.setPrix(ps.getInt(4));
+                o.setReduction(ps.getInt(5));
+                o.setDateExp(ps.getDate(7));
+                o.setImage(ps.getString("image_name"));
+                
+                u.setId(ps.getInt("idUser"));
+                
+                o.setUser(u);
+                offres.add(o);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return offres;
+
+    }
+
+    
+    
+    
+    
     @Override
     public Offre findById(int id) {
 
@@ -233,6 +273,35 @@ public class OffreServices implements IService<Offre> {
 
   
     
+     
+     public int NombreOffre() {
+        int nb = 0;
+        String req = "SELECT COUNT(*) FROM offre";
+        try {
+            PreparedStatement ps = conn.prepareStatement(req);
+            ResultSet resultat = ps.executeQuery();
+            while (resultat.next()) {
+
+                nb = resultat.getInt(1);
+
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Problème de comptage");
+            ex.printStackTrace();
+
+        }
+
+        return nb;
+
+    }
+     
+     
+     
+     
+     
+     
+     
     
 
 }

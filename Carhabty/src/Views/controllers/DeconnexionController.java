@@ -5,7 +5,8 @@
  */
 package Views.controllers;
 
-import Views.Authentification;
+
+import Carhabty.Carhabty;
 import com.jfoenix.controls.JFXDrawer;
 import io.datafx.controller.FXMLController;
 import io.datafx.controller.context.ApplicationContext;
@@ -21,7 +22,7 @@ import javax.annotation.PostConstruct;
 
 /**
  *
- * @author GARCII
+ * @author Azgard
  */
 @FXMLController(value = "/Views/fxml/Authentification.fxml", title = "Authentification")
 public class DeconnexionController {
@@ -29,7 +30,14 @@ public class DeconnexionController {
     @FXMLApplicationContext
     private ApplicationContext myApplicationContext;
 
-   
+    @FXMLViewFlowContext
+    private ViewFlowContext context;
+
+    @FXML
+    private JFXDrawer drawer;
+    @FXML
+    private StackPane pn;
+
     @FXMLViewFlowContext
     private ViewFlowContext flowContext;
 
@@ -38,9 +46,9 @@ public class DeconnexionController {
 
         ApplicationContext myApplicationContext = ApplicationContext.getInstance();
         flowContext = (ViewFlowContext) myApplicationContext.getRegisteredObject("flowContext");
-        Stage stage = (Stage) flowContext.getRegisteredObject("Stage"); 
+        Stage stage = (Stage) flowContext.getRegisteredObject("Stage");
         stage.close();
-        Authentification a = new Authentification();
+        Carhabty a=new Carhabty();
         a.start(new Stage());
     }
 

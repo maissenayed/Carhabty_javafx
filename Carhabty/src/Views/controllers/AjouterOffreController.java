@@ -5,10 +5,9 @@
  */
 package Views.controllers;
 
+import BackBone.ClientToServer.ImageSender;
 import Entities.Offre;
 import Services.OffreServices;
-import Views.Authentification;
-import com.jfoenix.controls.*;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import io.datafx.controller.FXMLController;
@@ -20,13 +19,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.time.LocalDate;
-
 
 import javafx.event.ActionEvent;
 
 import javafx.fxml.FXML;
-
 
 import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
@@ -36,8 +32,6 @@ import javafx.stage.Stage;
 import static tray.notification.NotificationType.SUCCESS;
 import tray.notification.TrayNotification;
 
-
-
 /**
  *
  * @author GARCII
@@ -45,7 +39,6 @@ import tray.notification.TrayNotification;
 @FXMLController(value = "/Views/fxml/AjouterOffre.fxml", title = "Ajouter offre - Carhabty")
 public class AjouterOffreController {
 
-    
     @FXML
     private JFXTextField nom;
 
@@ -61,24 +54,24 @@ public class AjouterOffreController {
     @FXML
     private DatePicker date;
 
-     String fileName;
-    
-    
-    
-    
-    
+    File image;
+
     @FXML
     void uploadPhoto(ActionEvent event) {
 
-        
-        
-         FileChooser chooser = new FileChooser();
+        FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
-        File image = chooser.showOpenDialog(new Stage());
-        String filePath = image.getPath();
-        fileName = image.getName();
+         image = chooser.showOpenDialog(new Stage());
+        
+        
+        
 
-        try {
+    }
+
+    @FXML
+    void AjouterOffre(ActionEvent event) throws FlowException, VetoException, IOException {
+
+      /*  try {
 
             InputStream inStream = null;
             OutputStream outStream = null;
@@ -95,68 +88,45 @@ public class AjouterOffreController {
             }
             inStream.close();
             outStream.close();
-           
-            
-                TrayNotification tray = new TrayNotification("Félicitation", "Votre Image a été ajouter avec succées",SUCCESS);
-                tray.showAndWait();
 
-           
+            TrayNotification tray = new TrayNotification("Félicitation", "Votre Image a été ajouter avec succées", SUCCESS);
+            tray.showAndWait();
 
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+
+         ImageSender is=new ImageSender();
+         is.executeMultiPartRequest("http://localhost/Carhabtyy/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
+         //Session.actualUser.setImage(image.getName());
+       //  OffreServices offreService = new OffreServices();
+        
+      
+      
+      
+        Offre o = new Offre();
+        o.setNomOffre(nom.getText());
+        o.setDescriptionOffre(desc.getText());
+        o.setPrix(Float.parseFloat(prix.getText()));
+        o.setReduction(Integer.parseInt(reduc.getText()));
+        o.setDateExp(java.sql.Date.valueOf(date.getValue()));
+        o.setImage(image.getName());
+     //   System.out.println(fileName);
+       // o.setImage(fileName);
+
+        OffreServices OffreService = new OffreServices();
+
+        if (OffreService.add(o)) {
+
+            TrayNotification tray = new TrayNotification("Félicitation", "Votre offre a été ajouter avec succées", SUCCESS);
+            tray.showAndWait();
         }
 
-        
-        
-        
-        
-        
-        
-        
-        
+        nom.setText("");
+        desc.setText("");
+        prix.setText("");
+        reduc.setText("");
     }
+    //  date.setValue(LocalDate.now());
 
-   
-    
-      @FXML
-    void AjouterOffre(ActionEvent event) throws FlowException, VetoException, IOException {
-        
-        
-             Offre o = new Offre();
-             o.setNomOffre(nom.getText());
-             o.setDescriptionOffre(desc.getText());
-             o.setPrix(Float.parseFloat(prix.getText()));
-             o.setReduction(Integer.parseInt(reduc.getText()));
-             o.setDateExp(java.sql.Date.valueOf(date.getValue()));
-             System.out.println(fileName);
-             o.setImage(fileName);
-            
-             
-             OffreServices OffreService = new OffreServices();
-             
-             if(OffreService.add(o)){
-           
-              TrayNotification tray = new TrayNotification("Félicitation", "Votre offre a été ajouter avec succées",SUCCESS);
-              tray.showAndWait();
-             }
-       
-                 nom.setText("");
-                 desc.setText("");
-                 prix.setText("");
-                 reduc.setText("");}
-               //  date.setValue(LocalDate.now());
-                 
-                       
-           }
-        
-
-    
-
-  
-
-     
-    
-    
-
-
-
+}

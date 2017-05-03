@@ -19,53 +19,82 @@ import javax.annotation.PostConstruct;
 @FXMLController(value = "/Views/fxml/SideMenuAdmin.fxml", title = "")
 public class SideMenuAdminController {
 
-	@FXMLViewFlowContext
-	private ViewFlowContext context;
+    @FXMLViewFlowContext
+    private ViewFlowContext context;
 
-	
-	@FXML
-	@ActionTrigger("profile")
-	private Label profile;
-	
-        @FXML
-	@ActionTrigger("dashboard")
-	private Label dashboard;
-        
-    
-        
-        @FXML
-	@ActionTrigger("deconnexion")
-	private Label deconnexion;
-        
-	
-	
-	@FXML
-	private JFXListView<Label> sideList;
+    @FXML
+    @ActionTrigger("profile")
+    private Label profile;
 
-	@PostConstruct
-	public void init() throws FlowException, VetoException {
-		FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
-		sideList.propagateMouseEventsToParent();
-		sideList.getSelectionModel().selectedItemProperty().addListener((o,oldVal,newVal)->{
-			if(newVal!=null){
-				try {
-					contentFlowHandler.handle(newVal.getId());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}			
-			}
-		});
-		  Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+    @FXML
+    @ActionTrigger("count")
+    private Label count;
 
-		
-                  bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
-                  bindNodeToController(dashboard, DashboardAdminController.class, contentFlow, contentFlowHandler);                
-                  bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
+    @FXML
+    @ActionTrigger("ListUser")
+    private Label ListUser;
 
-	}
+    @FXML
+    @ActionTrigger("ListOffre")
+    private Label ListOffre;
 
-	private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow, FlowHandler flowHandler) {
-		flow.withGlobalLink(node.getId(), controllerClass);
-	}
+    @FXML
+    @ActionTrigger("ListEvent")
+    private Label ListEvent;
+
+    @FXML
+    @ActionTrigger("ListCoupon")
+    private Label ListCoupon;
+
+    @FXML
+    private JFXListView<Label> sideList;
+
+    @FXML
+    private JFXListView<Label> subsideList;
+
+    @FXML
+    @ActionTrigger("deconnexion")
+    private Label deconnexion;
+
+    @PostConstruct
+    public void init() throws FlowException, VetoException {
+        FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
+        sideList.propagateMouseEventsToParent();
+        sideList.getSelectionModel().selectedItemProperty().addListener((o, oldVal, newVal) -> {
+            if (newVal != null) {
+                try {
+                    contentFlowHandler.handle(newVal.getId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        subsideList.propagateMouseEventsToParent();
+        subsideList.getSelectionModel().selectedItemProperty().addListener((o, oldVal, newVal) -> {
+            if (newVal != null) {
+                try {
+                    contentFlowHandler.handle(newVal.getId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
+
+        bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(count, DashboardAdminController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(ListUser, DeconnexionController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(ListEvent, DeconnexionController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(ListOffre, DeconnexionController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(ListUser, DeconnexionController.class, contentFlow, contentFlowHandler);
+
+    }
+
+    private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow, FlowHandler flowHandler) {
+        flow.withGlobalLink(node.getId(), controllerClass);
+    }
 
 }
