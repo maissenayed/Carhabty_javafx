@@ -11,6 +11,7 @@ import javafx.geometry.VPos;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
@@ -28,37 +29,37 @@ public class EventFactory extends ListCell<Event> {
   
     private final GridPane gridPane = new GridPane(); 
    
-    private final Label DescriptionOffre = new Label(); 
-    private final Label solde = new Label(); 
+    private final Label titre = new Label(); 
+    private final Label Description = new Label(); 
     private final Label Adresse = new Label();
-    private final Label dateExpiration = new Label();
-    private final ImageView IconOffre = new ImageView(); 
+    private final Label dateEvent = new Label();
+    private final ImageView logo = new ImageView(); 
     private final AnchorPane content = new AnchorPane(); 
    
     public EventFactory() { 
         
         
-         IconOffre.setFitWidth(100);
-         IconOffre.setFitHeight(100);
+        logo.setFitWidth(100);
+         logo.setFitHeight(100);
         
-        IconOffre.setPreserveRatio(true); 
-        GridPane.setConstraints(IconOffre, 0, 0, 1, 4); 
-        GridPane.setValignment(IconOffre, VPos.TOP); 
+        logo.setPreserveRatio(true); 
+        GridPane.setConstraints(logo, 0, 0, 1, 4); 
+        GridPane.setValignment(logo, VPos.TOP); 
       
                 
-        DescriptionOffre.setStyle("-fx-font-size: 1.7em;-fx-text-fill: #2c3e50;"); 
-        GridPane.setConstraints(DescriptionOffre, 1, 0); 
+        titre.setStyle("-fx-font: bold 16 System;-fx-text-fill: #750101;-fx-font-size: 1.7em;"); 
+        GridPane.setConstraints(titre, 1, 0); 
         
         
-        dateExpiration.setStyle("-fx-text-fill: #3498db;-fx-font-size: 1.6em;"); 
-        GridPane.setConstraints(dateExpiration, 1, 2);
+        dateEvent.setStyle("-fx-font: bold 13 System;-fx-text-fill: #300511;-fx-font-size: 1.4em;"); 
+        GridPane.setConstraints(dateEvent, 1, 3);
         
-        Adresse.setStyle("-fx-text-fill: #16a085;-fx-font-size: 1.6em;"); 
-        GridPane.setConstraints(Adresse, 1, 3);
+        Adresse.setStyle("-fx-text-fill: #060c33;-fx-font-size: 1.6em;"); 
+        GridPane.setConstraints(Adresse, 1, 2);
        
       
-        solde.setStyle("-fx-font: bold 16 System;-fx-text-fill: #c0392b;-fx-font-size: 1.7em;");      
-        GridPane.setConstraints(solde, 1, 1); 
+       Description.setStyle("-fx-text-fill: #060c33;-fx-font-size: 1.6em;");      
+        GridPane.setConstraints(Description, 1, 1); 
               
         gridPane.getColumnConstraints().add(new ColumnConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.NEVER, HPos.LEFT, true)); 
         gridPane.getColumnConstraints().add(new ColumnConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.ALWAYS, HPos.LEFT, true)); 
@@ -69,7 +70,7 @@ public class EventFactory extends ListCell<Event> {
         gridPane.getRowConstraints().add(new RowConstraints(Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Region.USE_COMPUTED_SIZE, Priority.ALWAYS, VPos.CENTER, true)); 
         gridPane.setHgap(6); 
         gridPane.setVgap(6); 
-        gridPane.getChildren().setAll(IconOffre, DescriptionOffre,Adresse,dateExpiration, solde); 
+        gridPane.getChildren().setAll(logo, titre,Adresse,dateEvent, Description); 
         AnchorPane.setTopAnchor(gridPane, 0d); 
         AnchorPane.setLeftAnchor(gridPane, 0d); 
         AnchorPane.setBottomAnchor(gridPane, 0d); 
@@ -93,11 +94,11 @@ public class EventFactory extends ListCell<Event> {
             
             
         
-            DescriptionOffre.setText(item.getTitle());           
-            //IconOffre.setImage(new Image("Image/"+item.getPhoto())); 
-            solde.setText("\nDescription :"+item.getDescription());          
+            titre.setText(item.getTitle());           
+            logo.setImage(new Image("Image/karhabty-logo.png")); 
+            Description.setText("\nDescription :"+item.getDescription());          
             Adresse.setText("Adresse : "+item.getAdresse());                  
-            dateExpiration.setText("date de l'evenément : "+item.getEventDate());
+            dateEvent.setText("La date de l'événement : "+item.getEventDate()+"\n"+"\n");
         
             setText(null); 
             setGraphic(content); 
@@ -105,3 +106,4 @@ public class EventFactory extends ListCell<Event> {
         } 
     } 
 }
+//"-fx-font-size: bold 16 System;-fx-text-fill: 1.7em;-fx-text-fill: #2c3e50;"
