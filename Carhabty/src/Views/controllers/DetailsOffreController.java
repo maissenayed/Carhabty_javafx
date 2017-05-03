@@ -7,6 +7,7 @@ package Views.controllers;
 
 import Functions.CurrentOffre;
 import Services.UserServices;
+import Services.AstuceRateServices;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -76,6 +77,7 @@ public class DetailsOffreController implements Initializable {
 
         int idUser = CurrentOffre.Currento.getUser().getId();
         UserServices user = new UserServices();
+       
         String Adresse = user.findById(idUser).getAdresse();
         String Activite = user.findById(idUser).getActivite();
         String tele = user.findById(idUser).getTel();

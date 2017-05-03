@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="565.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.AstuceDuJourController">
+   <children>
+      <Label layoutX="56.0" layoutY="55.0" prefHeight="38.0" prefWidth="226.0" text="Astuce du jour" textFill="#a83d3d" textOverrun="WORD_ELLIPSIS" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="image" fitHeight="236.0" fitWidth="393.0" layoutX="62.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true" />
+      <TextArea fx:id="description" layoutX="62.0" layoutY="129.0" prefHeight="164.0" prefWidth="384.0" />
+      <JFXButton fx:id="retour" layoutX="597.0" layoutY="465.0" onAction="#retour" prefHeight="51.0" prefWidth="173.0" style="-fx-background-color: #e67e22;" text="Retour" textFill="WHITE" />
+   </children>
+</AnchorPane>

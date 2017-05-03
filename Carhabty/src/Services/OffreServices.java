@@ -230,7 +230,8 @@ public class OffreServices implements IService<Offre> {
         }
         return liste;
     }
-    
+
+  
     
     
 

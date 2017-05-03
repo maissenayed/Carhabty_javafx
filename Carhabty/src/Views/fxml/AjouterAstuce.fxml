@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <JFXTextField fx:id="titre" layoutX="196.0" layoutY="49.0" promptText="titre" />
+      <JFXTextArea fx:id="desc" layoutX="196.0" layoutY="171.0" prefHeight="112.0" prefWidth="312.0" promptText="description" />
+      <JFXButton layoutX="212.0" layoutY="335.0" onAction="#ajouterAstuce" prefHeight="36.0" prefWidth="135.0" text="Ajouter" />
+      <JFXComboBox fx:id="theme" layoutX="196.0" layoutY="108.0" prefHeight="25.0" prefWidth="142.0" promptText="theme" />
+      <JFXButton layoutX="379.0" layoutY="335.0" onAction="#go" prefHeight="36.0" prefWidth="135.0" text="Voir astuces" />
+      <JFXButton fx:id="ajouterphoto" layoutX="59.0" layoutY="341.0" text="Ajouter photo" />
+      <ImageView fx:id="photo" fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

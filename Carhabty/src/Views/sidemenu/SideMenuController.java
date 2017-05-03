@@ -41,7 +41,9 @@ public class SideMenuController {
 	@ActionTrigger("deconnexion")
 	private Label deconnexion;
         
-	
+	  @FXML
+	@ActionTrigger("astuce")
+	private Label astuce;
         
 	@FXML
 	private JFXListView<Label> sideList;
@@ -66,7 +68,7 @@ public class SideMenuController {
                   bindNodeToController(offres, AfficherOffreController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(localisation, MapController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
-
+                  bindNodeToController(astuce, AjouterAstuceController.class, contentFlow, contentFlowHandler);
 
 	}
 
