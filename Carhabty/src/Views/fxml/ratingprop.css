@@ -1,0 +1,14 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+    .rating > .container > .button {
+  -fx-background-image: url("unselected-star.png");
+}
+.rating > .container > .button.strong {
+  -fx-background-image: url("selected-star.png");
+}
+
+}
+

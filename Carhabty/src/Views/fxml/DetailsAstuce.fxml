@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="565.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.DetailsAstuceController">
+   <children>
+      <ImageView fx:id="image" fitHeight="346.0" fitWidth="513.0" layoutX="520.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="46.0" layoutY="45.0" prefHeight="38.0" prefWidth="226.0" text="Détails de l'astuce" textFill="#a83d3d" textOverrun="WORD_ELLIPSIS" underline="true">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="theme" layoutX="46.0" layoutY="102.0" prefHeight="38.0" prefWidth="261.0" />
+      <Label fx:id="titre" layoutX="46.0" layoutY="202.0" prefHeight="38.0" prefWidth="251.0" />
+      <Label fx:id="description" layoutX="46.0" layoutY="293.0" prefHeight="180.0" prefWidth="358.0" />
+      <HBox fx:id="rate" layoutX="545.0" layoutY="498.0" prefHeight="30.0" prefWidth="261.0">
+      
+      </HBox>
+      <JFXButton fx:id="confirmer" layoutX="828.0" layoutY="487.0" onAction="#confirmerRate" prefHeight="51.0" prefWidth="173.0" style="-fx-background-color: #e74c3c;" text="Confirmer" textFill="WHITE" />
+      <JFXButton fx:id="retour" layoutX="48.0" layoutY="490.0" onAction="#retour" prefHeight="51.0" prefWidth="173.0" style="-fx-background-color: #e67e22;" text="Retour" textFill="WHITE" />
+   </children>
+</AnchorPane>

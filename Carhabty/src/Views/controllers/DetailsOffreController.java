@@ -8,6 +8,7 @@ package Views.controllers;
 import Functions.CurrentOffre;
 import Services.CouponServices;
 import Services.UserServices;
+import Services.AstuceRateServices;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
@@ -101,6 +102,7 @@ public class DetailsOffreController implements Initializable {
 
         int idUser = CurrentOffre.Currento.getUser().getId();
         UserServices user = new UserServices();
+       
         String Adresse = user.findById(idUser).getAdresse();
         String Activite = user.findById(idUser).getActivite();
         String tele = user.findById(idUser).getTel();

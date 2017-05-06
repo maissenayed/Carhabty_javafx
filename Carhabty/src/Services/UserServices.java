@@ -1,4 +1,4 @@
-/*
+﻿/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -306,7 +306,6 @@ public class UserServices implements IService<User> {
 
     
     
-    
      public int NombreUser() {
         int nb = 0;
         String req = "SELECT COUNT(*) FROM utilisateur";
@@ -329,7 +328,7 @@ public class UserServices implements IService<User> {
 
             }
     
-    
+
     
      public boolean getPaid(){
          
@@ -338,6 +337,7 @@ public class UserServices implements IService<User> {
          
      }
      
+
     
     
 }

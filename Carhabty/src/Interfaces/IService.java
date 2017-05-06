@@ -25,6 +25,7 @@ public interface IService<T> {
     List<T> findALL();
 
     T findById(int id);
+    
 
    
     

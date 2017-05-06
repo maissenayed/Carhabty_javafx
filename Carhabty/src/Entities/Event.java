@@ -125,14 +125,14 @@ public class Event {
         this.photo = photo;
     }
 
-    public Event(String description, String title, String adresse, String eventDate) {
+    public Event(String title, String description, String adresse, String eventDate) {
         this.description = description;
         this.title = title;
         this.adresse = adresse;
         this.eventDate = eventDate;
     }
 
-    public Event(int id, String description, String title, String adresse, String eventDate) {
+    public Event(int id, String title, String description, String adresse, String eventDate) {
         this.id = id;
         this.title = title;
         this.description = description;
