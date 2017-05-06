@@ -6,10 +6,8 @@ import Functions.PasswordGenerator;
 import Functions.getSalt;
 import Services.UserServices;
 import com.jfoenix.controls.*;
-import io.datafx.controller.flow.FlowException;
 import io.datafx.controller.flow.context.ActionHandler;
 import io.datafx.controller.flow.context.FlowActionHandler;
-import io.datafx.controller.util.VetoException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -20,8 +18,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
-
-
 
 public class ChangePasswordController implements Initializable {
 
@@ -37,14 +33,12 @@ public class ChangePasswordController implements Initializable {
     @FXML
     private JFXPasswordField rnpc;
 
-    
     @FXML
     private Label lab;
 
-    
-     @ActionHandler
+    @ActionHandler
     protected FlowActionHandler actionHandler;
-    
+
     @FXML
     void ChangePassword(ActionEvent event) throws IOException {
 
@@ -116,77 +110,55 @@ public class ChangePasswordController implements Initializable {
             u.setTel(Session.actualUser.getTel());
 
             UserServices UserService = new UserServices();
-            
-            if(npl.equals(rnpl)){
-            
-            UserService.update(u);
-            
-            
-            dl.setHeading(new Text("Information"));
-            dl.setBody(new Text("Votre mot de passe a été change avec succés"));
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event1) {
-                    dialog.close();
-                }
-            });
-            dl.setActions(button);
-            dialog.show();
-            
-            acc.setText("");
-            npc.setText("");
-            rnpc.setText("");
-            }else{
-            
-               
-            dl.setHeading(new Text("Erreur"));
-            dl.setBody(new Text("Les deux mot de passe ne sont pas identiques"));
-            button.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event1) {
-                    dialog.close();
-                }
-            });
-            dl.setActions(button);
-            dialog.show();
-            
-            
-            
+
+            if (npl.equals(rnpl)) {
+
+                UserService.update(u);
+
+                dl.setHeading(new Text("Information"));
+                dl.setBody(new Text("Votre mot de passe a été change avec succés"));
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event1) {
+                        dialog.close();
+                    }
+                });
+                dl.setActions(button);
+                dialog.show();
+
+                acc.setText("");
+                npc.setText("");
+                rnpc.setText("");
+            } else {
+
+                dl.setHeading(new Text("Erreur"));
+                dl.setBody(new Text("Les deux mot de passe ne sont pas identiques"));
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event1) {
+                        dialog.close();
+                    }
+                });
+                dl.setActions(button);
+                dialog.show();
+
             }
-            
-            
-            
-            // pane.getChildren().setAll( (AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/Profile.fxml")));
+
             if (pane != null) {
 
-//                pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/Profile.fxml")));
-
+//                
             } else {
-               // System.out.println("probléme");
+
             }
         }
 
     }
 
-    /*
-       
-        // User u = new User();
-        //UserServices userService = new UserServices();
-        //userService.update(u);
-     */
-    
-    
-    
-    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        
-        
         lab.setStyle("-fx-font: bold 16 System;-fx-text-fill: #00B16A;");
-        
-        
-        
+
     }
 
 }

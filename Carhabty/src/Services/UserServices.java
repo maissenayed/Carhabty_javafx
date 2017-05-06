@@ -38,15 +38,8 @@ public class UserServices implements IService<User> {
     @Override
     public boolean add(User t) {
 
-        String req = "INSERT INTO utilisateur (username,username_canonical,email,email_canonical,enabled,salt,password,roles,nom,prenom,telephone,adresse,nomsociete,activite,siret) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        /*      
-        StringBuffer y = new StringBuffer();
-        y.append("a:1:{i:0;s:15:");
-        y.append('"');
-        y.append("ROLE_PATICULIER");
-        y.append('"');
-        y.append(";}");
-         */
+        String req = "INSERT INTO utilisateur (username,username_canonical,email,email_canonical,enabled,salt,password,roles,nom,prenom,telephone,adresse,nomsociete,activite,siret,paid) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+       
         try {
 
             PreparedStatement ps = conn.prepareStatement(req);
@@ -65,6 +58,7 @@ public class UserServices implements IService<User> {
             ps.setString(13, t.getNomSociete());
             ps.setString(14, t.getActivite());
             ps.setString(15, t.getSiret());
+            ps.setInt(16,0);
 
             ps.executeUpdate();
             System.out.println("Insertion terminé");
@@ -337,6 +331,13 @@ public class UserServices implements IService<User> {
     
     
     
+     public boolean getPaid(){
+         
+         return true;
+         
+         
+     }
+     
     
     
 }

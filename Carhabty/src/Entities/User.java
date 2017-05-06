@@ -9,7 +9,7 @@ import java.util.Objects;
 public class User {
 
 
-    private int id;
+    private int id,paid;
     private String username;
     private String email;
     private String password;
@@ -22,6 +22,7 @@ public class User {
     private String activite;
     private String siret;
     private String image;
+  
 
     
     public User(){}
@@ -191,7 +192,16 @@ public class User {
 
     public void setImage(String image) {
         this.image = image;
-    }   
+    } 
+
+    public int getPaid() {
+        return paid;
+    }
+
+    public void setPaid(int paid) {
+        this.paid = paid;
+    }
+    
     
     @Override
     public String toString() {

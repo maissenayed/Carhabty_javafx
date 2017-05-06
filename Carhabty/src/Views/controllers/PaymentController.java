@@ -164,7 +164,7 @@ public class PaymentController implements Initializable {
 
                     dl.setHeading(new Text("Compte Bloqué"));
                     dl.setBody(new Text("On vous informe que votre compte bancaire a été bloqué"));
-                   sendSmsToUser.sendSmsToUser("+21625532465","");
+                    sendSmsToUser.sendSmsToUser("+21625532465", "");
                     button.setOnAction(new EventHandler<ActionEvent>() {
                         @Override
                         public void handle(ActionEvent event1) {

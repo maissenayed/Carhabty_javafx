@@ -144,6 +144,8 @@ public class ProfileController implements Initializable {
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
         File image = chooser.showOpenDialog(new Stage());
+       
+        
         ImageSender is=new ImageSender();
         is.executeMultiPartRequest("http://localhost/Carhabtyy/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
          Session.actualUser.setImage(image.getName());
