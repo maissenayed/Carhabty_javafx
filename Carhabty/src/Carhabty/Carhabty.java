@@ -18,15 +18,15 @@ public class Carhabty extends Application {
     private ViewFlowContext flowContext;
 
     public static void main(String[] args) {
-     new Thread(()->{
-			try {
-				SVGGlyphLoader.loadGlyphsFont(Carhabty.class.getResourceAsStream("/Views/fonts/icomoon.svg"),"icomoon.svg");
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-			}	
-		}).start();
-   
+        new Thread(() -> {
+            try {
+                SVGGlyphLoader.loadGlyphsFont(Carhabty.class.getResourceAsStream("/Views/fonts/icomoon.svg"), "icomoon.svg");
+            } catch (Exception e) {
+
+                e.printStackTrace();
+            }
+        }).start();
+
         launch(args);
     }
 
@@ -38,16 +38,17 @@ public class Carhabty extends Application {
         flowContext.register("Stage", stage);
         flow.createHandler(flowContext).start(container);
 
-        
-        ApplicationContext myApplicationContext=ApplicationContext.getInstance();
+        ApplicationContext myApplicationContext = ApplicationContext.getInstance();
         myApplicationContext.register("flowContext", flowContext);
-        
+
         JFXDecorator decorator = new JFXDecorator(stage, container.getView());
         decorator.setCustomMaximize(true);
         Scene scene = new Scene(decorator, 1020, 700);
-      //  scene.getStylesheets().add(Carhabty.class.getResource("/Views/css/jfoenix-fonts.css").toExternalForm());
+        //  scene.getStylesheets().add(Carhabty.class.getResource("/Views/css/jfoenix-fonts.css").toExternalForm());
         scene.getStylesheets().add(Carhabty.class.getResource("/Views/css/jfoenix-design.css").toExternalForm());
         scene.getStylesheets().add(Carhabty.class.getResource("/Views/css/jfoenix-main-demo.css").toExternalForm());
+        scene.getStylesheets().add(Carhabty.class.getResource("/Views/css/style.css").toExternalForm());
+
         //		stage.initStyle(StageStyle.UNDECORATED);
         //		stage.setFullScreen(true);
         stage.setMinWidth(700);
@@ -55,5 +56,5 @@ public class Carhabty extends Application {
         stage.setScene(scene);
         stage.show();
     }
- 
+
 }

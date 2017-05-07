@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import de.jensd.fx.fontawesome.Icon?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="640.0"  xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <AnchorPane id="rootS" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="490.0" prefWidth="640.0" >
+        <children>
+
+            <VBox id="repContainer" layoutX="451.0" layoutY="-49.0" maxHeight="300.0" maxWidth="250.0" minHeight="300.0" minWidth="250.0" prefHeight="300.0" prefWidth="250.0" styleClass="space1" />
+            <AnchorPane id="ecran" layoutX="-108.0" layoutY="-49.0" maxHeight="300.0" maxWidth="581.0" minHeight="300.0" minWidth="500.0" prefHeight="300.0" prefWidth="554.0" styleClass="space1">
+                <children>
+                    <Label id="quizNumber" >
+   
+                    </Label>
+                    <ImageView id="imageView" fitHeight="275.0" fitWidth="425.0" pickOnBounds="true" preserveRatio="true" styleClass="imageC" />
+                </children>
+            </AnchorPane>
+            <Pane layoutX="-106.0" layoutY="265.0" maxHeight="335.0" maxWidth="880.0" minHeight="231.0" minWidth="807.0" prefHeight="231.0" prefWidth="807.0" styleClass="space1">
+                <children>
+                    <JFXButton id="next" buttonType="RAISED" layoutX="681.0" layoutY="162.0" prefHeight="31.0" prefWidth="108.0" style="-fx-background-color: #34495E; -fx-background-radius: 0;" styleClass="controle" text="Suivant" textFill="WHITE">
+                        <font>
+                            <Font name="Cambria" size="16.0" />
+                        </font>
+                    </JFXButton>
+                    <Label id="laQuestion" layoutX="104.0" layoutY="14.0" prefHeight="69.0" prefWidth="609.0" text="Label">
+                        <font>
+                            <Font name="Cambria" size="16.0" />
+                        </font>
+                    </Label>
+                    <Label id="explication" layoutX="55.0" layoutY="77.0" prefHeight="77.0" prefWidth="680.0" text="Label">
+                        <font>
+                            <Font name="Cambria Bold" size="14.0" />
+                        </font>
+                    </Label>
+                    <HBox id="submitContainer" alignment="CENTER" layoutX="275.0" layoutY="139.0" prefHeight="77.0" prefWidth="258.0" />
+                    <JFXButton id="previous" buttonType="RAISED" layoutX="21.0" layoutY="162.0" prefHeight="30.0" prefWidth="108.0" style="-fx-background-color: #34495E; -fx-background-radius: 0;" styleClass="controle" text="Précédent" textFill="WHITE">
+                        <font>
+                            <Font name="Cambria" size="16.0" />
+                        </font>
+                    </JFXButton>
+                </children>
+            </Pane>
+        </children>
+    </AnchorPane>
+    
+    
+    
+    
+    	<JFXDialog fx:id="dialog">
+		<JFXDialogLayout id="diaLyout" >
+			<heading>
+				<Label>Valider les questions</Label>
+			</heading>
+			<body>
+			
+			</body>
+			<actions>
+                            <JFXButton fx:id="acceptButton" styleClass="dialog-accept">Valider</JFXButton>
+                            <JFXButton fx:id="canceltButton" styleClass="dialog-accept">Annuler</JFXButton>
+			</actions>
+		</JFXDialogLayout>
+	</JFXDialog>
+
+
+</StackPane>

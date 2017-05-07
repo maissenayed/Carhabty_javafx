@@ -25,7 +25,7 @@ public class SideMenuController {
     @FXML
     @ActionTrigger("profile")
     private Label profile;
-@FXML
+    @FXML
     @ActionTrigger("astuce")
     private Label astuce;
     @FXML
@@ -62,6 +62,15 @@ public class SideMenuController {
     @FXML
     private JFXListView<Label> sideList;
 
+    @FXML
+    private Label code;
+
+    @FXML
+    private Label stat;
+
+    @FXML
+    private JFXListView<Label> quizSubsideList;
+
     @PostConstruct
     public void init() throws FlowException, VetoException {
         FlowHandler contentFlowHandler = (FlowHandler) context.getRegisteredObject("ContentFlowHandler");
@@ -87,6 +96,17 @@ public class SideMenuController {
                 }
             }
         });
+
+        quizSubsideList.propagateMouseEventsToParent();
+        quizSubsideList.getSelectionModel().selectedItemProperty().addListener((o, oldVal, newVal) -> {
+            if (newVal != null) {
+                try {
+                    contentFlowHandler.handle(newVal.getId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
 
         bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
@@ -98,6 +118,8 @@ public class SideMenuController {
         bindNodeToController(oldoffres, AfficherOffreExpireeController.class, contentFlow, contentFlowHandler);
         bindNodeToController(contact, ContactController.class, contentFlow, contentFlowHandler);
         bindNodeToController(mescoupon, MyCouponListController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(code, QuizController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(stat, StatQuizController.class, contentFlow, contentFlowHandler);
 
     }
 
