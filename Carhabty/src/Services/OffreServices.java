@@ -252,12 +252,12 @@ public class OffreServices implements IService<Offre> {
      public List <Offre> SearchOffre (String entry) throws SQLException {
        
         List <Offre> liste = new ArrayList<>();
-        PreparedStatement ps = conn.prepareStatement("SELECT * FROM offre WHERE nom_offre "
-                + "LIKE ? OR date_expiration_offre LIKE ? OR prix LIKE ?");
+        PreparedStatement ps = conn.prepareStatement("SELECT * FROM offre WHERE (nom_offre "
+                + "LIKE ? OR date_expiration_offre LIKE ? OR prix LIKE ? )AND idUser= ?");
         ps.setString(1, "%" + entry + "%");
         ps.setString(2, "%" + entry + "%");
         ps.setString(3,"%" + entry + "%");
-       // ps.setInt(4,Session.getActualUser().getId());
+        ps.setInt(4,Session.getActualUser().getId());
         ResultSet set = ps.executeQuery();
         
         while (set.next())

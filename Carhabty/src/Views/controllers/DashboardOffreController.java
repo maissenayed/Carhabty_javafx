@@ -282,7 +282,7 @@ public class DashboardOffreController implements Initializable {
             OffreServices offreService = new OffreServices();
 
             offreService.remove(o);
-            Alert alertInfo = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
             alertInfo.setTitle("Information");
             alertInfo.setHeaderText("L'offre a été supprimé avec succès.");
             alertInfo.showAndWait();
@@ -303,15 +303,11 @@ public class DashboardOffreController implements Initializable {
 
         Offre o = new Offre();
 
-              if(reduction.getText().matches("[0-9]+") &&
-                !nom.getText().isEmpty() && 
-                !prix.getText().isEmpty() && 
-                 prix.getText().matches("[0-9]+") && 
-                !description.getText().isEmpty()&&
-                !prix.getText().isEmpty() &&
-                !reduction.getText().isEmpty()){
-            
-            
+              
+         //   int p = prix.getText();
+          //  int red = reduction.getText();
+            if(!prix.getText().isEmpty() && !reduction.getText().isEmpty() && !nom.getText().isEmpty() 
+                    && !description.getText().isEmpty() && prix.getText().matches("[0-9]+")&&reduction.getText().matches("[0-9]+") ){
         o.setNomOffre(nom.getText());
         o.setDescriptionOffre(description.getText());
         o.setPrix(Float.parseFloat(prix.getText()));
@@ -320,17 +316,10 @@ public class DashboardOffreController implements Initializable {
         o.setId(id_offre);
         OffreServices offreService = new OffreServices();
         offreService.update(o);
-        FillTable();
-    }else{
-
-            tray.notification.TrayNotification tr = new tray.notification.TrayNotification();
-            tr.setTitle("Carhabty");
-            tr.setMessage("Erreur de lors du Modification");
-            tr.setNotificationType(NotificationType.ERROR);
-            tr.setAnimationType(AnimationType.SLIDE);
-            tr.showAndDismiss(javafx.util.Duration.seconds(5));
-  
-}
+        FillTable();}
+        else{
+                System.out.println("empty");
+                }
 
 }
 }
