@@ -51,6 +51,9 @@ public class SideMenuController {
     @FXML
     @ActionTrigger("deconnexion")
     private Label deconnexion;
+    @FXML
+    @ActionTrigger("annonce")
+    private Label annonce;
 
     @FXML
     @ActionTrigger("mescoupon")
@@ -112,6 +115,7 @@ public class SideMenuController {
         bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
         bindNodeToController(offres, AfficherOffreController.class, contentFlow, contentFlowHandler);
         bindNodeToController(astuce, AjouterAstuceController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(annonce,AfficherAnnonceController.class, contentFlow, contentFlowHandler);
         bindNodeToController(localisation, MapController.class, contentFlow, contentFlowHandler);
         bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
         bindNodeToController(event, GestionEventsController.class, contentFlow, contentFlowHandler);
@@ -120,7 +124,7 @@ public class SideMenuController {
         bindNodeToController(mescoupon, MyCouponListController.class, contentFlow, contentFlowHandler);
         bindNodeToController(code, QuizController.class, contentFlow, contentFlowHandler);
         bindNodeToController(stat, StatQuizController.class, contentFlow, contentFlowHandler);
-
+        
     }
 
     private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow, FlowHandler flowHandler) {

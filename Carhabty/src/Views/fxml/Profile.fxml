@@ -10,6 +10,7 @@
    <children>
       <JFXButton fx:id="changePassword" layoutX="570.0" layoutY="301.0" onAction="#changePassword" prefHeight="51.0" prefWidth="241.0" style="-fx-background-color: #34495e;" text="change le mot de passe" textFill="WHITE" AnchorPane.rightAnchor="25.0" />
       <JFXButton fx:id="parametreCompte" layoutX="570.0" layoutY="363.0" onAction="#parametreCompte" prefHeight="51.0" prefWidth="241.0" style="-fx-background-color: #34495e;" text="Paramétre du compte" textFill="WHITE" AnchorPane.rightAnchor="25.0" />
+      <JFXButton fx:id="voiture" layoutX="570.0" layoutY="363.0" onAction="#voiture" prefHeight="51.0" prefWidth="241.0" style="-fx-background-color: #34495e;" text="vos voitures" textFill="WHITE" AnchorPane.rightAnchor="25.0" />
       <Label fx:id="bienvenu" layoutX="112.0" layoutY="39.0" prefHeight="39.0" prefWidth="319.0" textFill="#336e7b">
          <font>
             <Font name="System Bold" size="24.0" />

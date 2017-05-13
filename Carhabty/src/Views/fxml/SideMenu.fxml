@@ -72,6 +72,16 @@
                     
                     
         </Label>
+         <Label fx:id="annonce"> Annonce
+                    
+                    <graphic>
+			<Icon awesomeIcon="BOOKMARK" size="1em" style=";"
+				styleClass="option-jfx-list-view-icon" />
+		</graphic>
+                    
+                    
+                    
+        </Label>
        
         <Label fx:id="astuce"> Astuce 
                  <graphic>

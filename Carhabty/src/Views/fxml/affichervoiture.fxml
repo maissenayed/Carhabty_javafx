@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="560.0" prefWidth="824.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.AfficherVoitureController">
+   <children>
+      <JFXButton fx:id="insertvoiture" layoutX="457.0" layoutY="465.0" onAction="#insertvoiture" prefHeight="55.0" prefWidth="161.0" style="-fx-background-color: #4447fe;" text="inserer" textFill="#f5f5f5" />
+      <JFXButton fx:id="modvoiture" layoutX="27.0" layoutY="465.0" onAction="#modificationvoiture" prefHeight="55.0" prefWidth="133.0" style="-fx-background-color: #4447fe;" text="modification" textFill="#f5f5f5" />
+      <JFXButton fx:id="deletevoiture" layoutX="217.0" layoutY="465.0" onAction="#deletevoiture" prefHeight="55.0" prefWidth="94.0" style="-fx-background-color: #4447fe;" text="supprimer" textFill="#f5f5f5" />
+      <JFXButton fx:id="todolist" layoutX="693.0" layoutY="465.0" onAction="#todolist" prefHeight="55.0" prefWidth="113.0" style="-fx-background-color: red;" text="todolist" textFill="#f5f5f5" />
+      <SplitPane layoutX="375.0" layoutY="7.0" prefHeight="438.0" prefWidth="427.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <TableView fx:id="voitureview" prefHeight="419.0" prefWidth="386.0">
+              <columns>
+                <TableColumn fx:id="marquecell" prefWidth="92.0" text="marque" />
+                <TableColumn fx:id="modelcell" prefWidth="119.0" text="model" />
+                  <TableColumn fx:id="anneecell" prefWidth="90.0" text="annee" />
+              </columns>
+            </TableView>
+         </items>
+      </SplitPane>
+      <JFXTextField fx:id="marque" layoutX="50.0" layoutY="183.0" prefHeight="34.0" prefWidth="248.0" promptText="marque de voiture" />
+      <JFXTextField fx:id="model" layoutX="51.0" layoutY="275.0" prefHeight="25.0" prefWidth="248.0" promptText="model de voiture" />
+      <JFXDatePicker fx:id="annee" layoutX="52.0" layoutY="329.0" prefHeight="48.0" prefWidth="266.0" promptText="anneé" />
+      <Label layoutX="46.0" layoutY="28.0" text="gestion de voitures">
+         <font>
+            <Font name="System Bold Italic" size="26.0" />
+         </font>
+      </Label>
+      <JFXTextField fx:id="id" disable="true" layoutX="52.0" layoutY="109.0" prefHeight="38.0" prefWidth="248.0" promptText="id de voiture" />
+   </children>
+</AnchorPane>

@@ -94,6 +94,17 @@ public class ProfileController implements Initializable {
         }
 
     }
+     @FXML
+    public void voiture() throws IOException {
+        if (pane != null) {
+
+            pane.getChildren().setAll((AnchorPane) FXMLLoader.load(getClass().getClassLoader().getResource("Views/fxml/affichervoiture.fxml")));
+
+        } else {
+            System.out.println("probléme");
+        }
+
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
