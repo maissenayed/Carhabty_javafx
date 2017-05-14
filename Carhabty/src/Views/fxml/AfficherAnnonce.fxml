@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="pane" prefHeight="605.0" prefWidth="955.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <SplitPane dividerPositions="0.7" layoutX="86.0" layoutY="1.0" prefHeight="607.0" prefWidth="1007.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <items>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="603.0" prefWidth="586.0">
+               <children>
+                  <Label layoutX="48.0" layoutY="18.0" prefHeight="30.0" prefWidth="182.0" text="gestion d'annonce" textFill="#cd6312">
+                     <font>
+                        <Font size="22.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="recherche" layoutX="303.0" layoutY="14.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#recherche" pickOnBounds="false" prefHeight="32.0" prefWidth="98.0" promptText="recherche" AnchorPane.leftAnchor="366.0" AnchorPane.rightAnchor="20.0" />
+                  <TableView fx:id="annonceview" layoutX="62.0" layoutY="90.0" prefHeight="393.0" prefWidth="431.0">
+                    <columns>
+                      <TableColumn fx:id="titlecal" prefWidth="93.0" text="titre" />
+                      <TableColumn fx:id="categorycal" prefWidth="93.0" text="category" />
+                        <TableColumn fx:id="prixcal" minWidth="0.0" prefWidth="66.0" text="prix" />
+                        <TableColumn fx:id="datecal" prefWidth="85.0" text="annee de pub" />
+                        <TableColumn fx:id="payecal" minWidth="0.0" prefWidth="93.0" text="paye" />
+                    </columns>
+                  </TableView>
+                  <JFXButton fx:id="inserer" layoutX="159.0" layoutY="517.0" onAction="#inserer" prefHeight="51.0" prefWidth="197.0" style="-fx-background-color: blue;" text="inserer" textFill="WHITE" />
+               </children>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="596.0" prefWidth="345.0">
+               <children>
+                  <Separator layoutX="13.0" layoutY="63.0" prefHeight="0.0" prefWidth="338.0" />
+                  <JFXTextField fx:id="title" layoutX="66.0" layoutY="72.0" prefHeight="25.0" prefWidth="197.0" promptText="title" />
+                  <JFXTextArea fx:id="descreption" layoutX="68.0" layoutY="131.0" prefHeight="32.0" prefWidth="197.0" promptText="Descreption" />
+                  <Label layoutX="92.0" layoutY="14.0" prefHeight="25.0" prefWidth="218.0" text="detaile de l'annonce">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="prix" layoutX="68.0" layoutY="199.0" prefHeight="25.0" prefWidth="197.0" promptText="prix" />
+                  <JFXTextField fx:id="ville" layoutX="71.0" layoutY="263.0" prefHeight="25.0" prefWidth="58.0" promptText="ville" />
+                  <JFXTextField fx:id="region" layoutX="158.0" layoutY="263.0" prefHeight="25.0" prefWidth="31.0" promptText="region" />
+                  <JFXTextField fx:id="paye" layoutX="207.0" layoutY="263.0" prefHeight="14.0" prefWidth="58.0" promptText="paye" />
+                  <JFXDatePicker fx:id="annepub" layoutX="71.0" layoutY="328.0" prefHeight="32.0" prefWidth="197.0" promptText="anne de pub" />
+                  <JFXButton fx:id="modification" layoutX="23.0" layoutY="495.0" onAction="#modifier" prefHeight="57.0" prefWidth="138.0" ripplerFill="WHITE" style="-fx-background-color: red;" text="modification" textFill="WHITE" />
+                  <JFXButton fx:id="supp" layoutX="201.0" layoutY="498.0" onAction="#supprimer" prefHeight="51.0" prefWidth="105.0" style="-fx-background-color: blue;" text="supprimer" textFill="WHITE" />
+                  <JFXComboBox fx:id="categorie" layoutX="68.0" layoutY="399.0" prefHeight="25.0" prefWidth="164.0" />
+                  <Label fx:id="id" layoutX="263.0" layoutY="19.0" text="Labelid" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</AnchorPane>

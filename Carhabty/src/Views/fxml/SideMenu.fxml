@@ -72,6 +72,16 @@
                     
                     
         </Label>
+         <Label fx:id="annonce"> Annonce
+                    
+                    <graphic>
+			<Icon awesomeIcon="BOOKMARK" size="1em" style=";"
+				styleClass="option-jfx-list-view-icon" />
+		</graphic>
+                    
+                    
+                    
+        </Label>
        
         <Label fx:id="astuce"> Astuce 
                  <graphic>
@@ -81,15 +91,13 @@
           
                 
         </Label>
-        <Label fx:id="code"> Code de la Route 
-                
-                 <graphic>
-			<Icon awesomeIcon="CAR" size="1em" style=";"
-				styleClass="option-jfx-list-view-icon" />
-		</graphic>
-                
-                
-        </Label>
+		<JFXListView fx:id="quizSubsideList" styleClass="sublist">
+				<groupnode>
+					<Label styleClass="sub-label"> Code de la route </Label>
+				</groupnode>
+				<Label fx:id="code"> Quiz</Label>
+				<Label fx:id="stat"> Mes statistiques </Label>
+			</JFXListView>
         <Label fx:id="event"> Evénements 
                 
                 <graphic>

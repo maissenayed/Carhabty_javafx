@@ -53,6 +53,10 @@ public class SideMenuAdminController {
     private JFXListView<Label> subsideList;
 
     @FXML
+    @ActionTrigger("codeAction")
+    private Label code;
+
+    @FXML
     @ActionTrigger("deconnexion")
     private Label deconnexion;
 
@@ -89,6 +93,7 @@ public class SideMenuAdminController {
         bindNodeToController(ListUser, DeconnexionController.class, contentFlow, contentFlowHandler);
         bindNodeToController(ListEvent, DeconnexionController.class, contentFlow, contentFlowHandler);
         bindNodeToController(ListOffre, DeconnexionController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(code, CodeController.class, contentFlow, contentFlowHandler);
         bindNodeToController(ListUser, DeconnexionController.class, contentFlow, contentFlowHandler);
 
     }

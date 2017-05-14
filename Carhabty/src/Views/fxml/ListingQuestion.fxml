@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.validation.RequiredFieldValidator?>
+<?import com.jfoenix.validation.ValidationFacade?>
+<?import de.jensd.fx.fontawesome.*?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.geometry.Insets?>
+
+<StackPane fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+       
+        <VBox>
+            <children>
+     
+                <HBox alignment="CENTER">
+                    <children>
+                        <Label styleClass="title3">Listing des Question</Label>
+                        <Label fx:id="treeTableViewCount" minWidth="80" styleClass="title-label" />
+                        <JFXButton fx:id="treeTableViewAdd" buttonType="FLAT" text="+" />
+                        <JFXButton fx:id="treeTableViewRemove" buttonType="FLAT" styleClass="icon-button-search">
+                                     
+                        </JFXButton>
+                        <StackPane HBox.hgrow="ALWAYS">
+                            <children>
+                                <StackPane maxWidth="200" StackPane.alignment="CENTER_RIGHT">
+                                    <children>
+                                        <JFXTextField fx:id="searchField" promptText="Search..." />
+                                    </children>
+                                </StackPane>
+                            </children>
+                        </StackPane>
+                    </children>
+                </HBox>
+                <JFXTreeTableView fx:id="treeTableView">
+                    <columns>
+                        <JFXTreeTableColumn fx:id="idQuestCol" maxWidth="40" minWidth="20" prefWidth="30" resizable="true" text="id" />
+                        <JFXTreeTableColumn fx:id="categorieCol" maxWidth="100" minWidth="80" prefWidth="90" resizable="true" text="Catégorie" />
+                        <JFXTreeTableColumn fx:id="questContentCol" minWidth="600" resizable="true" text="Question" />
+                    </columns>
+                </JFXTreeTableView>
+                           
+                           
+   
+              
+            </children>
+         
+        </VBox>
+    </children>
+   
+                                  
+</StackPane>

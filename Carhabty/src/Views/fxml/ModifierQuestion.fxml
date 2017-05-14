@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import java.net.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.collections.FXCollections?>
+
+<StackPane fx:id="root" prefHeight="578.0" prefWidth="401.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox>
+            <children>
+                <HBox>
+                    <children>
+                        <VBox fx:id="test" styleClass="space1" translateY="20.0" translateX="20.0" >
+                            <children>
+                                <HBox styleClass="compo">
+                                    <children>
+                                        <Label prefHeight="17.0" prefWidth="150.0" styleClass="title4" text="Question" translateY="15.0" />
+                                        <JFXTextField prefHeight="25.0" prefWidth="200" translateX="10.0" fx:id="questcon" />
+                                    </children>
+                                </HBox>
+                                
+                                <HBox styleClass="compo">
+                                    <children>
+                                        <Label prefHeight="17.0" prefWidth="150" styleClass="title4" text="Catégorie" translateY="20.0" />
+                                        <JFXComboBox prefHeight="25.0" prefWidth="200" translateX="30.0" fx:id="questcat" 
+                                            promptText="Select Item">
+							<items>
+								<FXCollections fx:factory="observableArrayList">
+							
+                                                                    <String fx:value="Priorié" />
+                                                                     <String fx:value="Signalétique" />
+                                                                    <String fx:value="Loi" />
+                                                                    <String fx:value="Securité" />
+						
+								</FXCollections>
+							</items>
+                                        </JFXComboBox>
+                                    </children>
+                                </HBox>
+                                
+                                <HBox styleClass="compo">
+                                    <children>
+                                        <Label prefHeight="17.0" prefWidth="76.0" styleClass="title4" text="Explication" translateY="20.0" />
+                                        <JFXTextArea prefHeight="200.0" prefWidth="250.0" translateX="60.0" fx:id="questexp" />
+                                    </children>
+                                </HBox>
+                                
+                            </children>
+                        </VBox>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                        <!-- ********** -->
+                        <VBox translateY="20.0" translateX="30.0">
+                            <styleClass>
+                                <String fx:value="space1" />
+                            </styleClass>
+                            <children> 
+                                <ImageView fx:id="imageView" fitHeight="187.0" fitWidth="265.0" pickOnBounds="true" preserveRatio="true" >
+   
+                                </ImageView>
+                                
+                                
+                                
+                                <HBox translateY="20.0" >
+                                    <children>
+                                        <Label fx:id="name" minWidth="180.0" prefHeight="5.0" text="upload"  styleClass="uploadLab"  translateY="15.0" ></Label>
+                                        <JFXButton fx:id="upload" translateX="30" >
+                                            <graphic>
+                                                <ImageView fitHeight="30.0" fitWidth="30.0">  
+                                                    <image>
+                                                        <Image url="Image/upload.png" />
+                                                    </image>
+                                                </ImageView>   
+                                            </graphic>
+                                        </JFXButton>
+                                    </children>
+                                </HBox>
+                                
+
+                                
+                            </children>
+
+            
+                        </VBox>
+                
+                
+                
+                
+                
+                        <!-- ********** -->
+                        <VBox styleClass="space1" translateY="20.0" translateX="40.0" prefWidth="400.0" >
+                            <children>
+                                <VBox fx:id="repVbox" >
+                                    
+                                </VBox>
+                                
+                                <StackPane><JFXButton fx:id="addRep" text="Ajouter" /></StackPane>
+                            </children>
+                        </VBox>
+                        
+                        
+                         
+                        
+               
+                    </children>
+                </HBox>
+      
+       
+       
+       
+                <HBox styleClass="space1" translateX="20"  translateY="50.0" maxWidth="1200"  fx:id="controlh">
+                    <children>
+                        <JFXButton fx:id="back" prefHeight="25.0" text="Listing" styleClass="backBtn" />
+      
+                    </children>
+                </HBox>
+       
+            </children>
+        </VBox>    
+    </children>  
+   
+                
+</StackPane>

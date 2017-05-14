@@ -12,10 +12,10 @@
     <JFXListView  fx:id="sideList">
 		
         <Label fx:id="profile"> Profile 
-         <graphic>
-                        <Icon awesomeIcon="USER" size="1em" style=";"
+            <graphic>
+                <Icon awesomeIcon="USER" size="1em" style=";"
                               styleClass="option-jfx-list-view-icon" />
-                    </graphic>
+            </graphic>
         
         
         
@@ -36,9 +36,9 @@
             <Label fx:id="count"> Statistiques Générales
                     
                 <graphic>
-                        <Icon awesomeIcon="SIGNAL" size="1em" style=";"
+                    <Icon awesomeIcon="SIGNAL" size="1em" style=";"
                               styleClass="option-jfx-list-view-icon" />
-                    </graphic>
+                </graphic>
                 
                 
                 
@@ -46,52 +46,52 @@
                                 
             </Label>
             <Label fx:id="ListUser"> Liste des utilisateurs 
-                       <graphic>
-                        <Icon awesomeIcon="LIST" size="1em" style=";"
+                <graphic>
+                    <Icon awesomeIcon="LIST" size="1em" style=";"
                               styleClass="option-jfx-list-view-icon" />
-                    </graphic>         
+                </graphic>         
                                 
                                 
                                 
             </Label>
             <Label fx:id="ListOffre"> Liste des Offres 
                                 
-                             <graphic>
-                        <Icon awesomeIcon="LIST" size="1em" style=";"
+                <graphic>
+                    <Icon awesomeIcon="LIST" size="1em" style=";"
                               styleClass="option-jfx-list-view-icon" />
-                    </graphic>   
+                </graphic>   
                                 
             </Label>
             <Label fx:id="ListEvent"> Liste des Evénements 
                                 
-                               <graphic>
-                        <Icon awesomeIcon="LIST" size="1em" style=";"
+                <graphic>
+                    <Icon awesomeIcon="LIST" size="1em" style=";"
                               styleClass="option-jfx-list-view-icon" />
-                    </graphic> 
+                </graphic> 
                                 
                                 
             </Label>
             <Label fx:id="ListCoupon"> Liste des Coupons
                                     
                                     
-                              <graphic>
-                        <Icon awesomeIcon="LIST" size="1em" style=";"
+                <graphic>
+                    <Icon awesomeIcon="LIST" size="1em" style=";"
                               styleClass="option-jfx-list-view-icon" />
-                    </graphic>      
+                </graphic>      
                                     
                                     
             </Label>
                                
         </JFXListView>
                         		
-		
+        <Label fx:id="code"> Code de la route </Label>
         <Label fx:id="deconnexion"> Déconnexion 
         
         
-         <graphic>
-                        <Icon awesomeIcon="REPLY" size="1em" style=";"
+            <graphic>
+                <Icon awesomeIcon="REPLY" size="1em" style=";"
                               styleClass="option-jfx-list-view-icon" />
-                    </graphic>
+            </graphic>
         
         </Label>
 		

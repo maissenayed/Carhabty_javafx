@@ -25,7 +25,7 @@ public class SideMenuController {
     @FXML
     @ActionTrigger("profile")
     private Label profile;
-@FXML
+    @FXML
     @ActionTrigger("astuce")
     private Label astuce;
     @FXML
@@ -51,6 +51,9 @@ public class SideMenuController {
     @FXML
     @ActionTrigger("deconnexion")
     private Label deconnexion;
+    @FXML
+    @ActionTrigger("annonce")
+    private Label annonce;
 
     @FXML
     @ActionTrigger("mescoupon")
@@ -61,6 +64,15 @@ public class SideMenuController {
 
     @FXML
     private JFXListView<Label> sideList;
+
+    @FXML
+    private Label code;
+
+    @FXML
+    private Label stat;
+
+    @FXML
+    private JFXListView<Label> quizSubsideList;
 
     @PostConstruct
     public void init() throws FlowException, VetoException {
@@ -87,18 +99,32 @@ public class SideMenuController {
                 }
             }
         });
+
+        quizSubsideList.propagateMouseEventsToParent();
+        quizSubsideList.getSelectionModel().selectedItemProperty().addListener((o, oldVal, newVal) -> {
+            if (newVal != null) {
+                try {
+                    contentFlowHandler.handle(newVal.getId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
         Flow contentFlow = (Flow) context.getRegisteredObject("ContentFlow");
 
         bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
         bindNodeToController(offres, AfficherOffreController.class, contentFlow, contentFlowHandler);
         bindNodeToController(astuce, AjouterAstuceController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(annonce,AfficherAnnonceController.class, contentFlow, contentFlowHandler);
         bindNodeToController(localisation, MapController.class, contentFlow, contentFlowHandler);
         bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);
         bindNodeToController(event, GestionEventsController.class, contentFlow, contentFlowHandler);
         bindNodeToController(oldoffres, AfficherOffreExpireeController.class, contentFlow, contentFlowHandler);
         bindNodeToController(contact, ContactController.class, contentFlow, contentFlowHandler);
         bindNodeToController(mescoupon, MyCouponListController.class, contentFlow, contentFlowHandler);
-
+        bindNodeToController(code, QuizController.class, contentFlow, contentFlowHandler);
+        bindNodeToController(stat, StatQuizController.class, contentFlow, contentFlowHandler);
+        
     }
 
     private void bindNodeToController(Node node, Class<?> controllerClass, Flow flow, FlowHandler flowHandler) {

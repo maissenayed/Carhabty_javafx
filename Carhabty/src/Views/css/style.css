@@ -1,0 +1,148 @@
+.title1{
+    -fx-font-size: 40; 
+}
+
+.title2{
+    -fx-font-size: 30;  
+}
+
+.title3{
+    -fx-font-size: 20; 
+}
+
+.title4{
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: black;
+    -fx-opacity: 0.6;
+}
+
+.space1{
+    -fx-background-color: white;
+    -fx-margin: 20;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+
+
+}
+.borderBox{
+    -fx-padding: 10;
+    -fx-border-style: solid inside;
+    -fx-border-width: 1;
+    -fx-border-insets: 5;
+    -fx-border-color: black;
+}
+
+.uploadLab{
+    -fx-background-color: #cccdce;
+    -fx-font-size: 6pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: black;
+    -fx-opacity: 0.6;
+}
+
+
+.compo{
+    -fx-padding: 10 20 10 20;
+}
+.icon-button-search {
+    -icon-paint: black;
+    -fx-background-color: -icon-paint;
+    -size: 10;
+    -fx-min-height: -size;
+    -fx-min-width: -size;
+    -fx-max-height: -size;
+    -fx-max-width: -size;
+
+    -fx-shape: "M658.286 475.428q0 105.714-75.143 180.857t-180.857 75.143-180.857-75.143-75.143-180.857 75.143-180.857 180.857-75.143 180.857 75.143 75.143 180.857zM950.857 0q0-29.714-21.714-51.429t-51.429-21.714q-30.857 0-51.429 21.714l-196 195.429q-102.286-70.857-228-70.857-81.714 0-156.286 31.714t-128.571 85.714-85.714 128.571-31.714 156.286 31.714 156.286 85.714 128.571 128.571 85.714 156.286 31.714 156.286-31.714 128.571-85.714 85.714-128.571 31.714-156.286q0-125.714-70.857-228l196-196q21.143-21.143 21.143-51.429z" ;
+    -fx-rotate: 90;
+
+}
+.roundbtn{
+    -fx-background-radius: 5em;
+    -fx-min-width: 10px;
+    -fx-min-height: 10px;
+    -fx-background-color: #e82222;
+}
+
+
+.updateBtn{
+    -fx-background-color: #4CAF50;
+    -fx-font-size: 16pt;   
+    -fx-text-fill: white;
+    -fx-padding: 5 22 5 22;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+
+.deleteBtn{
+    -fx-background-color: #c91010;  
+    -fx-font-size: 16pt;   
+    -fx-text-fill: white;
+    -fx-padding: 5 22 5 22;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+
+.backBtn{
+    -fx-background-color: #05338e;   
+    -fx-font-size: 16pt;   
+    -fx-text-fill: white;
+    -fx-padding: 5 22 5 22;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+
+.icon-button-search:hover {
+    -icon-paint: blue;
+}
+
+
+.largeInput{
+    -fx-background-color: transparent ;
+    -fx-font-weight: BOLD;
+    -fx-prompt-text-fill: #808080;
+    -fx-alignment: top-left ;
+    -fx-max-width: 700.0;
+    -fx-pref-width:700.0;
+    -jfx-focus-color: #365a7a;
+    -jfx-unfocus-color: #4d4d4d;       
+}
+
+
+.btn-rep{
+    -fx-background-color: #34495E;
+    -fx-text-fill: white;
+    -fx-padding: 5 22 5 22;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+    -fx-font-family: "Cambria";
+}
+
+.pressed{
+    -fx-background-color: #33e5e8;
+    -fx-text-fill: white;
+    -fx-padding: 5 22 5 22;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+
+.success{
+    -fx-background-color: #27AE60;
+    -fx-text-fill: white;
+    -fx-padding: 5 22 5 22;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+
+.faile{
+    -fx-background-color: #f29d1f;
+    -fx-text-fill: white;
+    -fx-padding: 5 22 5 22;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+    -fx-background-radius: 0;
+}
+
+.imageC{
+    width: 100%;
+}
