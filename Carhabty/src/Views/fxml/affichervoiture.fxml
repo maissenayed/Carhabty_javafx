@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -29,12 +29,12 @@
       </SplitPane>
       <JFXTextField fx:id="marque" layoutX="50.0" layoutY="183.0" prefHeight="34.0" prefWidth="248.0" promptText="marque de voiture" />
       <JFXTextField fx:id="model" layoutX="51.0" layoutY="275.0" prefHeight="25.0" prefWidth="248.0" promptText="model de voiture" />
-      <JFXDatePicker fx:id="annee" layoutX="52.0" layoutY="329.0" prefHeight="48.0" prefWidth="266.0" promptText="anneé" />
       <Label layoutX="46.0" layoutY="28.0" text="gestion de voitures">
          <font>
             <Font name="System Bold Italic" size="26.0" />
          </font>
       </Label>
       <JFXTextField fx:id="id" disable="true" layoutX="52.0" layoutY="109.0" prefHeight="38.0" prefWidth="248.0" promptText="id de voiture" />
+      <DatePicker fx:id="annee" layoutX="45.0" layoutY="368.0" prefHeight="17.0" prefWidth="248.0" promptText="année" />
    </children>
 </AnchorPane>

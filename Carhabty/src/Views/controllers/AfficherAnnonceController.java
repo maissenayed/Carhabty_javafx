@@ -24,6 +24,8 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -72,8 +74,7 @@ public class AfficherAnnonceController implements Initializable {
     @FXML
     private JFXTextField title;
 
-    @FXML
-    private JFXTextArea descreption;
+  
 
     @FXML
     private JFXTextField prix;
@@ -87,15 +88,13 @@ public class AfficherAnnonceController implements Initializable {
     @FXML
     private JFXTextField paye;
 
+   
     @FXML
-    private JFXButton modification;
+    private DatePicker annepub;
 
     @FXML
-    private JFXButton supp;
-    @FXML
-    private JFXDatePicker annepub;
-    @FXML
-    private JFXComboBox categorie;
+    private ComboBox categorie;
+    
     @FXML
     private JFXButton inserer;
 
@@ -115,8 +114,8 @@ public class AfficherAnnonceController implements Initializable {
             public void handle(MouseEvent event) {
               Date startDate = null;
                 Annonce cal = annonceview.getItems().get(annonceview.getSelectionModel().getSelectedIndex());
-                title.setText(cal.getMarque());   
-                descreption.setText(cal.getDescreption()); 
+                title.setText(cal.getTitle());   
+               
                 prix.setText(String.valueOf(cal.getPrix()));
                 ville.setText(cal.getVille());
                 region.setText(cal.getRegion());
@@ -167,14 +166,14 @@ public class AfficherAnnonceController implements Initializable {
 
     @FXML
     void modifier(ActionEvent event) {
-         if (title.getText().isEmpty() || descreption.getText().isEmpty() ||annepub.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).isEmpty()
+         if (title.getText().isEmpty() ||annepub.getValue().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")).isEmpty()
              || ville.getText().isEmpty()  || region.getText().isEmpty() || paye.getText().isEmpty()  ) {
             TrayNotification tray = new TrayNotification("ERROR", "LES CHAMPS NE SONT PAS VALID",NotificationType.ERROR);
         tray.showAndWait();        
             return;
         }
       String Title = title.getText();
-      String Descreption = descreption.getText();
+     
       java.sql.Date date = java.sql.Date.valueOf(annepub.getValue());
       float Prix =Float.valueOf(prix.getText()) ;
        String Ville = ville.getText();
@@ -185,7 +184,7 @@ public class AfficherAnnonceController implements Initializable {
       int Id =Integer.valueOf(id.getText());
       Annonce cal=new Annonce(); 
       cal.setTitle(Title);
-      cal.setDescreption(Descreption);
+     
       cal.setAnneePub(date);
       cal.setId(Id);
       cal.setPaye(Paye);
@@ -200,7 +199,7 @@ public class AfficherAnnonceController implements Initializable {
         tray.showAndWait();
         LoadDataFromDATAbase();
       title.clear();
-      descreption.clear();
+    
       ville.clear();
       region.clear();
       paye.clear();

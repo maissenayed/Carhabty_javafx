@@ -70,8 +70,9 @@ public class StatistiqueController {
         }
         lineChart.getData().addAll(series);
         ((List) series.getData()).stream().forEach(e -> System.out.println(((XYChart.Data< Integer, Integer>) e).getYValue()));
-        double i = ((XYChart.Data< Integer, Integer>) ((List) series.getData()).stream().max((e, f) -> ((XYChart.Data< Integer, Integer>) e).getYValue() - ((XYChart.Data< Integer, Integer>) f).getYValue()).get()).getYValue();
-        yAxis.setUpperBound(i + 1);
+      //  double i = ((XYChart.Data< Integer, Integer>) ((List) series.getData()).stream().max((e, f) -> ((XYChart.Data< Integer, Integer>) e).getYValue() - ((XYChart.Data< Integer, Integer>) f).getYValue()).get()).getYValue();
+      //  System.out.println(i);
+        yAxis.setUpperBound(5 + 1);
         Pane pnLine = new Pane();
         lineChart.setPrefWidth(1000);
         lineChart.setPrefHeight(500);

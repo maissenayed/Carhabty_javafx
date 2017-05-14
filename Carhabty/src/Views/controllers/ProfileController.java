@@ -158,62 +158,17 @@ public class ProfileController implements Initializable {
        
         
         ImageSender is=new ImageSender();
-        is.executeMultiPartRequest("http://localhost/Carhabtyy/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
+        is.executeMultiPartRequest("http://localhost/Carhabty_Web/Carhabty/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
          Session.actualUser.setImage(image.getName());
          UserServices userSerivce = new UserServices();
          userSerivce.updatePhoto(Session.actualUser);
-         photo.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + Session.actualUser.getImage()));
+         photo.setImage(new Image("http://localhost/Carhabty_Web/Carhabty/web/images/offres/" + Session.actualUser.getImage()));
         
         
         
         
         
-     /*   String filePath = image.getPath();
-        String fileName = image.getName();
-
-        try {
-
-            //    System.out.println(fileName);
-            File ImageUplaoded = new File("src/Image/" + fileName);
-
-            inStream = new FileInputStream(filePath);
-            outStream = new FileOutputStream(ImageUplaoded);
-            byte[] buffer = new byte[10240];
-            int length;
-
-            while ((length = inStream.read(buffer)) > 0) {
-                outStream.write(buffer, 0, length);
-            }
-            inStream.close();
-            outStream.close();
-            System.out.println("File is copied successful!");
-
-            UserServices userSerivce = new UserServices();
-
-            //  System.out.println(fileName);
-            //   System.out.println(Session.actualUser.getImage());
-            //    System.out.println(fileName);
-            Session.actualUser.setImage(fileName);
-            userSerivce.updatePhoto(Session.actualUser);
-            photo.setImage(new Image("/Image/" + Session.actualUser.getImage()));
-
-            //   userSerivce.findById(Session.actualUser.getId()).getImage()
-            Timer timer = new Timer();
-            timer.schedule(new TimerTask() {
-                @Override
-                public void run() {
-                    //     System.out.println(userSerivce.findById(Session.actualUser.getId()).getImage());
-                    System.out.println("Image/" + Session.actualUser.getImage());
-                   // photo.setImage(new Image("/Image/" + Session.actualUser.getImage()));
-                }
-            }, 3000);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
-*/
+    
 }
 
 

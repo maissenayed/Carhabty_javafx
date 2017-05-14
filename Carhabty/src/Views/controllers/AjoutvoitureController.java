@@ -4,10 +4,13 @@
  * and open the template in the editor.
  */
 package Views.controllers;
+import BackBone.ClientToServer.ImageSender;
 import DataBase.Session;
+import Entities.Media;
 import Entities.User;
 import Entities.Voiture;
 import Functions.CurrentVoiture;
+import Services.MediaService;
 import Services.UserServices;
 
 import Services.VoitureService;
@@ -31,10 +34,12 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -50,6 +55,9 @@ import tray.notification.TrayNotification;
  */
 @FXMLController(value = "/Views/fxml/ajoutervoiture.fxml", title = "Afficher offre - Carhabty")
 public class AjoutvoitureController implements Initializable {
+     private final String questionImgProp="http://localhost/Carhabty_web/Carhabty/web/images/voiture/";
+    private final String uploadServiceUrl="http://localhost/Carhabty_web/Carhabty/web/app_dev.php/quiz/uploadImg";
+    private final String dest="voiture";
     @FXML
     private ImageView photo;
     @FXML
@@ -57,14 +65,14 @@ public class AjoutvoitureController implements Initializable {
     @FXML
     private JFXTextField modele;
     @FXML
-    private JFXDatePicker annee;
+    private DatePicker annee;
     @FXML
     private JFXButton insert;
     @FXML
     private JFXButton upload;
-    
+     private File imageFile;
       String fileName;
-
+ private Voiture requested;
     /**
      * Initializes the controller class.
      */
@@ -113,14 +121,26 @@ public class AjoutvoitureController implements Initializable {
       String Modele = modele.getText();
       java.sql.Date date = java.sql.Date.valueOf(annee.getValue());
       
+     
+                
+      
+      
+      
+
+      
+      
+      
+      
+      
+      
       
       Voiture cal=new Voiture(); 
       cal.setMarque(Marque);
       cal.setModel(Modele);
       cal.setAnnee(date);
-      cal.setImage(CurrentVoiture.Currento.getImage());
-        VoitureService crud =new VoitureService();
-        System.out.println(cal);
+      cal.setImageName(fileName);
+      VoitureService crud =new VoitureService();
+      System.out.println(cal);
         crud.addVoiture(cal);
         TrayNotification tray = new TrayNotification("Félicitation", "Votre voiture a été ajouter avec succées",NotificationType.SUCCESS);
         tray.showAndWait();
@@ -133,6 +153,35 @@ public class AjoutvoitureController implements Initializable {
 
     @FXML
     private void handleimage(ActionEvent event) {
+    
+        
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        File image = chooser.showOpenDialog(new Stage());
+         String filePath = image.getPath();
+        fileName = image.getName();
+        
+         ImageSender is=new ImageSender();
+         is.executeMultiPartRequest("http://localhost/Carhabty_Web/Carhabty/web/app_dev.php/quiz/uploadImg", image, image.getName(),"voiture");
+         Session.actualUser.setImage(image.getName());
+         UserServices userSerivce = new UserServices();
+         userSerivce.updatePhoto(Session.actualUser);
+         photo.setImage(new Image("http://localhost/Carhabty_Web/Carhabty/web/images/voiture/"+fileName));
+        
+             if (filePath != null) {
+                        photo.setImage(new Image (image.toURI().toString()));
+
+                }
+        
+        
+        
+        
+        
+        
+        
+        
+        /*
+        
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
         File image = chooser.showOpenDialog(new Stage());
@@ -165,17 +214,15 @@ public class AjoutvoitureController implements Initializable {
             val.setCurrentVoiture(u);
             System.out.println(u.getImage()); 
             String Photo =u.getImage();
-            
-            photo.setImage(new Image("Image/avatar.jpg"));
-            photo.setImage(new Image ("Image/"+Photo));
-            
-            
-            
-            
-            
-            
-            
-            
+            System.out.println(Photo);
+             photo.setImage(new Image("Image/avatar.jpg"));
+            if (filePath != null) {
+                        photo.setImage(new Image (filePath));
+
+                }
+         
+           
+       
             
             
             
@@ -184,7 +231,15 @@ public class AjoutvoitureController implements Initializable {
             
             
             
-              TrayNotification tray = new TrayNotification("Félicitation", "Votre Image a été ajouter avec succées",NotificationType.SUCCESS);
+            
+            
+            
+            
+            
+            
+            
+            
+              TrayNotification tray = new TrayNotification("Félicitation", "Votre image est prete",NotificationType.SUCCESS);
               tray.showAndWait();
 
            
@@ -199,10 +254,15 @@ public class AjoutvoitureController implements Initializable {
         
         
         
-        
+        */
         
     }
-
+    
+    
+      
+    
+    
+    
    
     }
     

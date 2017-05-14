@@ -33,6 +33,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -53,9 +54,9 @@ public class CalanderController implements Initializable {
     @FXML
     private JFXButton insertEvent;
     @FXML
-    private JFXDatePicker StartDate;
+    private DatePicker StartDate;
     @FXML
-    private JFXDatePicker EndDate;
+    private DatePicker EndDate;
     @FXML
     private JFXTextField title;
     @FXML

@@ -55,13 +55,13 @@ public class VoitureService implements IVoiture{
           
             try {
                 System.out.println(V);
-        String req ="INSERT INTO `voiture`(`marque`,`annee`, `model`,`idUser`,photo) VALUES (?,?,?,?,?)";
+        String req ="INSERT INTO `voiture`(`marque`,`annee`, `model`,`idUser`,image_name) VALUES (?,?,?,?,?)";
         PreparedStatement pst =conn.prepareStatement(req);
         pst.setString(1, V.getMarque());
         pst.setDate(2, V.getAnnee());
         pst.setString(3, V.getModel());
         pst.setInt(4, Session.getActualUser().getId());
-        pst.setString(5, V.getImage());
+        pst.setString(5, V.getImageName());
         pst.executeUpdate();
                 System.out.println("insert done dude ");
           

@@ -36,6 +36,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -84,7 +85,7 @@ public class AfficherVoitureController implements Initializable {
     @FXML
     private JFXTextField model;
     @FXML
-    private JFXDatePicker annee;
+    private DatePicker annee;
     @FXML
     private JFXTextField id;
     

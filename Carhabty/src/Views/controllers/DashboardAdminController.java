@@ -68,11 +68,11 @@ public class DashboardAdminController {
 
         lab5.setText(Integer.toString(couponService.NombreCoupon()));
         lab6.setText(Integer.toString(offreService.NombreOffre()));
-<<<<<<< HEAD
+
        // lab7.setText(Integer.toString(eventService.NombreEvent()));
-=======
+
         //lab7.setText(Integer.toString(eventService.NombreEvent()));
->>>>>>> c7ed66f3995fbc586e503b26556ac5f4067f13db
+
         lab8.setText(Integer.toString(userService.NombreUser()));
 
     }

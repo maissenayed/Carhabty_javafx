@@ -42,7 +42,7 @@ public class AnnonceService implements Interfaces.IAnnonce{
         
         try {
               
-              String req =" INSERT INTO `annonce`( `title`, `annee_de_produit`, `region`, `ville`, `paye`, `prix`, `category`,`idUser`, `descreption`,annee_pub) VALUES (?,?,?,?,?,?,?,?,?,?)";
+              String req =" INSERT INTO `annonce`( `title`, `annee_de_produit`, `region`, `ville`, `paye`, `prix`, `category`,`idUser`, `descreption`,annee_pub,image_name) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
                   
         PreparedStatement pst =conn.prepareStatement(req);
         pst.setString(1, A.getTitle());
@@ -55,6 +55,7 @@ public class AnnonceService implements Interfaces.IAnnonce{
         pst.setString(7, A.getCategory());
         pst.setObject(8,Session.getActualUser().getId());
         pst.setString(9, A.getDescreption());
+        pst.setString(11, A.getImageName());
         pst.executeUpdate();
                 System.out.println("insert done dude ");
           

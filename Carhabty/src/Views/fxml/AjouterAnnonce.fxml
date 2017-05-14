@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import java.net.URL?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="577.0" prefWidth="861.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="Views.controllers.AjouterAnnonceController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="577.0" prefWidth="861.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Views.controllers.AjouterAnnonceController">
     <stylesheets>
         <URL value="@ajouterannonce.css" />
     </stylesheets>
@@ -23,12 +23,10 @@
       </Label>
       <JFXTextField fx:id="title" layoutX="134.0" layoutY="78.0" prefHeight="25.0" prefWidth="202.0" promptText="title" AnchorPane.bottomAnchor="474.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="506.0" AnchorPane.topAnchor="78.0" />
       <JFXTextField fx:id="descreption" layoutX="135.0" layoutY="148.0" prefHeight="25.0" prefWidth="202.0" promptText="descreption" AnchorPane.bottomAnchor="404.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="505.0" AnchorPane.topAnchor="148.0" />
-      <JFXDatePicker fx:id="anneepub" layoutX="134.0" layoutY="224.0" prefHeight="31.0" prefWidth="202.0" promptText="annee de produit" AnchorPane.bottomAnchor="322.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="506.0" AnchorPane.topAnchor="224.0" />
       <JFXTextField fx:id="prix" layoutX="132.0" layoutY="289.0" prefHeight="25.0" prefWidth="202.0" promptText="prix" AnchorPane.bottomAnchor="263.0" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="508.0" AnchorPane.topAnchor="289.0" />
       <JFXTextField fx:id="ville" layoutX="132.0" layoutY="358.0" prefHeight="32.0" prefWidth="42.0" promptText="ville" AnchorPane.bottomAnchor="187.0" AnchorPane.leftAnchor="132.0" AnchorPane.rightAnchor="668.0" AnchorPane.topAnchor="358.0" />
-      <JFXTextField fx:id="region" layoutX="187.0" layoutY="357.0" prefHeight="32.0" prefWidth="68.0" promptText="region" AnchorPane.bottomAnchor="188.0" AnchorPane.leftAnchor="187.0" AnchorPane.rightAnchor="587.0" AnchorPane.topAnchor="357.0" />
+      <JFXTextField fx:id="region" layoutX="187.0" layoutY="358.0" prefHeight="32.0" prefWidth="68.0" promptText="region" AnchorPane.bottomAnchor="187.0" AnchorPane.leftAnchor="187.0" AnchorPane.rightAnchor="587.0" AnchorPane.topAnchor="358.0" />
       <JFXTextField fx:id="paye" layoutX="268.0" layoutY="365.0" prefHeight="25.0" prefWidth="68.0" promptText="paye" AnchorPane.bottomAnchor="187.0" AnchorPane.leftAnchor="268.0" AnchorPane.rightAnchor="506.0" AnchorPane.topAnchor="365.0" />
-      <JFXComboBox fx:id="category" layoutX="134.0" layoutY="428.0" prefHeight="25.0" prefWidth="202.0" AnchorPane.bottomAnchor="124.0" AnchorPane.leftAnchor="134.0" AnchorPane.rightAnchor="506.0" AnchorPane.topAnchor="428.0" />
       <JFXButton fx:id="confirmer" layoutX="678.0" layoutY="515.0" onAction="#handleinsert" prefHeight="38.0" prefWidth="131.0" ripplerFill="BLACK" style="-fx-background-color: red;" text="confirmer" textFill="WHITE" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="678.0" AnchorPane.rightAnchor="33.0" AnchorPane.topAnchor="515.0" />
       <JFXButton fx:id="uploadphoto" layoutX="501.0" layoutY="515.0" onAction="#handleimage" prefHeight="38.0" prefWidth="118.0" style="-fx-background-color: blue;" text="upload photo" textFill="WHITE" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="501.0" AnchorPane.rightAnchor="223.0" AnchorPane.topAnchor="515.0" />
       <ImageView fx:id="photo" fitHeight="201.0" fitWidth="271.0" layoutX="523.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="237.0" AnchorPane.rightAnchor="48.0" AnchorPane.topAnchor="139.0" />
@@ -38,5 +36,7 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <DatePicker fx:id="anneepub" layoutX="135.0" layoutY="227.0" prefHeight="25.0" prefWidth="221.0" />
+      <ComboBox fx:id="category" layoutX="131.0" layoutY="438.0" prefHeight="25.0" prefWidth="234.0" />
    </children>
 </AnchorPane>

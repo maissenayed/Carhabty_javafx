@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.image.ImageView?>
@@ -13,7 +13,6 @@
    <children>
       <JFXTextField fx:id="marque" layoutX="77.0" layoutY="91.0" prefHeight="52.0" prefWidth="245.0" promptText="marque" />
       <JFXTextField fx:id="modele" layoutX="77.0" layoutY="198.0" prefHeight="52.0" prefWidth="245.0" promptText="modele" />
-      <JFXDatePicker fx:id="annee" layoutX="77.0" layoutY="296.0" prefHeight="52.0" prefWidth="245.0" promptText="annee" />
       <JFXButton fx:id="insert" layoutX="83.0" layoutY="444.0" onAction="#handleinsert" prefHeight="52.0" prefWidth="152.0" style="-fx-background-color: #00D6D5;" text="confirmer" textFill="WHITE" />
       <ImageView fx:id="photo" fitHeight="250.0" fitWidth="261.0" layoutX="515.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true" />
       <JFXButton fx:id="upload" layoutX="571.0" layoutY="444.0" onAction="#handleimage" prefHeight="52.0" prefWidth="152.0" style="-fx-background-color: #04FF54;" text="upload" textFill="WHITE" />
@@ -29,5 +28,6 @@
          </font>
       </Label>
       <Separator layoutX="395.0" layoutY="58.0" prefHeight="2.0" prefWidth="419.0" AnchorPane.rightAnchor="4.0" />
+      <DatePicker fx:id="annee" layoutX="79.0" layoutY="324.0" prefHeight="25.0" prefWidth="245.0" promptText="annee" />
    </children>
 </AnchorPane>

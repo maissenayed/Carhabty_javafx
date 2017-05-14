@@ -5,11 +5,14 @@
  */
 package Views.controllers;
 
+import BackBone.ClientToServer.ImageSender;
+import DataBase.Session;
 import Entities.Annonce;
 import Entities.Voiture;
 import Functions.CurrentAnnonce;
 import Functions.CurrentVoiture;
 import Services.AnnonceService;
+import Services.UserServices;
 import Services.VoitureService;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
@@ -32,6 +35,8 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
@@ -53,7 +58,7 @@ public class AjouterAnnonceController implements Initializable {
     private JFXTextField descreption;
 
     @FXML
-    private JFXDatePicker anneepub;
+    private DatePicker anneepub;
 
     @FXML
     private JFXTextField prix;
@@ -68,7 +73,7 @@ public class AjouterAnnonceController implements Initializable {
     private JFXTextField paye;
 
     @FXML
-    private JFXComboBox category;
+    private ComboBox category;
 
     @FXML
     private JFXButton uploadphoto;
@@ -77,7 +82,8 @@ public class AjouterAnnonceController implements Initializable {
     private ImageView photo;
     @FXML
     private JFXButton confirmer;
-
+ private File imageFile;
+     
  String fileName;
     /**
      * Initializes the controller class.
@@ -120,6 +126,24 @@ public class AjouterAnnonceController implements Initializable {
 
  @FXML
     void handleimage(ActionEvent event) {
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open File");
+        File image = chooser.showOpenDialog(new Stage());
+         String filePath = image.getPath();
+        fileName = image.getName();
+        
+         ImageSender is=new ImageSender();
+         is.executeMultiPartRequest("http://localhost/Carhabty_Web/Carhabty/web/app_dev.php/quiz/uploadImg", image, image.getName(),"annonce");
+         Session.actualUser.setImage(image.getName());
+         UserServices userSerivce = new UserServices();
+         userSerivce.updatePhoto(Session.actualUser);
+         photo.setImage(new Image("http://localhost/Carhabty_Web/Carhabty/web/images/annonce/"+fileName));
+        
+             if (filePath != null) {
+                        photo.setImage(new Image (image.toURI().toString()));
+
+                }
+        /*
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open File");
         File image = chooser.showOpenDialog(new Stage());
@@ -183,7 +207,7 @@ public class AjouterAnnonceController implements Initializable {
         
         
         
-        
+        */
         
         
         
@@ -213,13 +237,13 @@ public class AjouterAnnonceController implements Initializable {
       cal.setTitle(Title);
       cal.setDescreption(Descreption);
       cal.setAnneeDeProduit(date);
-      cal.setImage(CurrentAnnonce.Currento.getImage());
+      cal.setImageName(fileName);
       cal.setVille(Ville);
       cal.setCategory(cat);
       cal.setPaye(Paye);
       cal.setRegion(Region);
       cal.setPrix(Prix);
-        if (cal.getImage().equals(null)) {
+        if (cal.getImageName().equals(null)) {
                   TrayNotification tray = new TrayNotification("ERROR", "upload une image",NotificationType.ERROR);
         tray.showAndWait();   
             

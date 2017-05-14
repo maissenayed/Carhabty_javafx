@@ -27,9 +27,7 @@ public class SideMenuProController {
 	@ActionTrigger("profile")
 	private Label profile;
         
-        @FXML
-	@ActionTrigger("astuce")
-	private Label astuce;
+      
 	
         @FXML
 	@ActionTrigger("dashboard")
@@ -72,7 +70,7 @@ public class SideMenuProController {
 		
                   bindNodeToController(profile, ProfileController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(dashboard, DashboardOffreController.class, contentFlow, contentFlowHandler);
-                  bindNodeToController(astuce, AfficherAstuceController.class, contentFlow, contentFlowHandler);
+              
                   bindNodeToController(newoffre, AjouterOffreController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(stat, StatistiqueController.class, contentFlow, contentFlowHandler);
                   bindNodeToController(deconnexion, DeconnexionController.class, contentFlow, contentFlowHandler);

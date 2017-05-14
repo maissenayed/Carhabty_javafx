@@ -97,7 +97,7 @@ public class AjouterOffreController {
         }*/
 
          ImageSender is=new ImageSender();
-         is.executeMultiPartRequest("http://localhost/Carhabtyy/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
+         is.executeMultiPartRequest("http://localhost/Carhabty_Web/Carhabty/web/app_dev.php/quiz/uploadImg", image, image.getName(),"offres");
          //Session.actualUser.setImage(image.getName());
        //  OffreServices offreService = new OffreServices();
         
