@@ -98,7 +98,7 @@ public class DetailsOffreController implements Initializable {
         
         
         
-        image.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + CurrentOffre.Currento.getImage()));
+        image.setImage(new Image("http://localhost/Carhabty_Web/Carhabty/web/images/offres/" + CurrentOffre.Currento.getImage()));
 
         int idUser = CurrentOffre.Currento.getUser().getId();
         UserServices user = new UserServices();

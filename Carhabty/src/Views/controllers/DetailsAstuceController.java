@@ -35,7 +35,7 @@ import org.controlsfx.control.Rating;
 public class DetailsAstuceController implements Initializable {
 
     final Rating rating = new Rating();
-    private AstuceRateServices rateService = new AstuceRateServices();
+     
 
     @FXML
     private AnchorPane pane;
@@ -61,6 +61,9 @@ public class DetailsAstuceController implements Initializable {
     @FXML
     private JFXButton retour;
 
+    
+    AstuceRateServices rateService = new AstuceRateServices();
+    
     @FXML
     void retour(ActionEvent event) throws IOException {
 
@@ -70,6 +73,7 @@ public class DetailsAstuceController implements Initializable {
 
     @FXML
     void confirmerRate(ActionEvent event) {
+      
         AstuceRate ar = new AstuceRate();
         ar.setAstuce(CurrentAstuce.Currenta);
         ar.setRate((float) rating.getRating());
@@ -84,6 +88,8 @@ public class DetailsAstuceController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        
+        
         rating.setRating(rateService.getAstuceRate(CurrentAstuce.Currenta.getId()));
         image.setImage(new Image("Image/" + CurrentAstuce.Currenta.getImage_name()));
 
@@ -92,7 +98,7 @@ public class DetailsAstuceController implements Initializable {
         description.setText(CurrentAstuce.Currenta.getDescription());
 
         //rating.setRating(0);
-        rate.getChildren().setAll(rating);
+        // rate.getChildren().setAll(rating);
 
     }
 

@@ -120,7 +120,7 @@ public class ProfileController implements Initializable {
             photo.setImage(new Image("/Image/avatar.jpg"));
         } else {
             System.out.println(Session.actualUser.getImage());
-            photo.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + Session.actualUser.getImage()));
+            photo.setImage(new Image("http://localhost/Carhabty_Web/Carhabty/web/images/offres/" + Session.actualUser.getImage()));
 
         }
         bienvenu.setText("Bienvenue " + Session.actualUser.getNom());

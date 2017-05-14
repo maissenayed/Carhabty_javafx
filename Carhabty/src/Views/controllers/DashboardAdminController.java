@@ -68,7 +68,7 @@ public class DashboardAdminController {
 
         lab5.setText(Integer.toString(couponService.NombreCoupon()));
         lab6.setText(Integer.toString(offreService.NombreOffre()));
-        lab7.setText(Integer.toString(eventService.NombreEvent()));
+       // lab7.setText(Integer.toString(eventService.NombreEvent()));
         lab8.setText(Integer.toString(userService.NombreUser()));
 
     }

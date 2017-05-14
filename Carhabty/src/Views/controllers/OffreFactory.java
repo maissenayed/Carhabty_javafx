@@ -89,7 +89,7 @@ public class OffreFactory extends ListCell<Offre> {
             economie = (item.getPrix() * item.getReduction()) / 100;
 
             DescriptionOffre.setText(item.getNomOffre());
-            IconOffre.setImage(new Image("http://localhost/Carhabtyy/web/images/offres/" + item.getImage()));
+            IconOffre.setImage(new Image("http://localhost/Carhabty_Web/Carhabty/web/images/offres/" + item.getImage()));
             solde.setText("Prix :" + PrixFinal + " DT\n" + "Valeur : " + item.getPrix() + " DT\nRemise : " + item.getReduction() + " %\nEconomie :" + economie + " DT");
 
             int idUser = item.getUser().getId();

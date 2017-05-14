@@ -64,7 +64,7 @@ public class AstuceDuJourController implements Initializable {
             // https://developers.facebook.com/tools/explorer
             // Copy and paste it below.
             String accessTokenString = facebook.getOAuthAppAccessToken().getToken();
-            AccessToken at = new AccessToken("EAACEdEose0cBADH2bLYj3PyxinzqRFZAXEwDGOzwXlZAROWgVxlo2AH2ge1twv4ByOkui3z07QrKTxFjkJq9kkHcZAADV6qezPklAuQxfAUQVamcJySSyJtWZBvGmZBqF1GK521sWGGnXL2zFLozfwbRqtwKVq9jxkti8U0ZCXg8iAH245pkM2oTN0VZBhCBo0ZD");
+            AccessToken at = new AccessToken("EAACEdEose0cBAKVDDicSGP9O2axWxPZAnntPnIpS86WuHHqJharF9xBmiAs4xVTYT4N3zhkvp7quUM280HGpaOdwlT9OXVq7jb1tViZBVz9SVw7LdtXZBknJZB3c9vV7bZBIUA9eisUBcUKRgIaVytjOiqMxRdXu3lFdkmdyNKZBZCRNnvl88dNTNRRIwkOdbsZD");
             // Set access token.
             facebook.setOAuthAccessToken(at);
 

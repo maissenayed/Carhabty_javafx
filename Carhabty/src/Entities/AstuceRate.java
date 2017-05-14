@@ -9,7 +9,7 @@ package Entities;
  *
  * @author lenovo
  */
-public class AstuceRate {
+public class AstuceRate  {
     private int id;
 
    
